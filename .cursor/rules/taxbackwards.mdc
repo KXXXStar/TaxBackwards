@@ -1,0 +1,144 @@
+# TaxBackwards.ca — Cursor Project Rules
+
+## Project Overview
+TaxBackwards.ca is a Canadian reverse sales tax calculator for bookkeepers, freelancers, sole proprietors, and small business owners. Users enter a gross transaction total, select a province, and receive a net consideration base and claimable Input Tax Credit (ITC) amount. All calculations run entirely client-side with no backend, no API calls, and no external dependencies.
+
+## Tech Stack
+- Vanilla HTML, CSS, JavaScript only
+- No frameworks, no libraries, no npm packages in the frontend
+- Node.js and npm used only for the backend scraper and test suite
+- Hosted on Cloudflare Pages via GitHub repository
+- Analytics via Cloudflare Web Analytics or Plausible script tag only
+
+## Core Coding Rules
+- Never introduce frontend frameworks or dependencies under any circumstances
+- Never use React, Vue, Angular, jQuery, or any other frontend library
+- Never use innerHTML to render user input or calculation outputs — always use textContent to prevent XSS vulnerabilities
+- Never use eval() anywhere in the codebase
+- Prefer simple readable code over clever solutions
+- No build steps, no bundlers, no webpack, no vite in the frontend
+- No package.json dependencies for the frontend — the frontend is pure static files only
+- Every function must do one thing and be named to describe that thing
+- All code must be written to be understandable by a developer with limited experience
+
+## Critical Math Rules — Non-Negotiable
+- Never use native JavaScript floating point arithmetic directly on currency values — floating point errors corrupt accounting calculations
+- All currency inputs must be immediately converted to integers by scaling: Math.round(value * 10000)
+- All calculations must be performed on scaled integers only
+- Results must be divided back to floating point only at the final output formatting step
+- Use Number.EPSILON in rounding functions to handle edge cases: Math.round((value + Number.EPSILON) * 100) / 100
+- Never use toFixed() for calculation logic — only use it for display formatting after all math is complete
+- The Quebec QST rate is 9.975% calculated directly on the net consideration base — it does not compound on top of GST
+- All provincial tax rates must be sourced exclusively from src/data/taxRates.js — never hardcode a tax rate anywhere else in the codebase
+
+## Security Rules
+- All user inputs must be cast to Number() immediately on receipt and validated before any processing
+- Reject any input that returns NaN, is less than or equal to zero, or is not finite
+- Never use innerHTML — always use textContent for outputs
+- All third party scripts loaded from CDNs must include an integrity attribute with a valid SRI hash
+- If URL parameters are ever used to pre-populate fields they must be sanitized through Number() casting before touching the DOM
+- Content Security Policy headers are defined in public/_headers — never weaken them without explicit documented justification
+- Never log or pass user financial input values to any analytics service, URL parameter, or external script
+
+## File Structure Rules
+- src/data/taxRates.js is the single source of truth for all provincial tax rates, editorial text, exemption notices, and official CRA links
+- Never hardcode provincial data anywhere outside taxRates.js
+- src/js/app.js contains the calculation engine and UI interaction logic only
+- src/css/style.css contains all styling including print media queries — print styles must never be in a separate file
+- public/_headers contains all CSP and security header definitions
+- index.html is the root calculator interface
+- Provincial sub-pages live under /provinces/[province-code]/index.html
+- Test files live under src/test/
+
+## Terminology Rules — Enforced in All UI Copy
+- Input field label: "Total Paid (Gross Transaction Amount)" — never "Price" or "Receipt Total"
+- Net output label: "Base Cost (Net Consideration)" — never "Pre-Tax Price"
+- Tax output label: "Tax Removed (Input Tax Credit / ITC Eligible)" — never "Tax Back" or "Refund"
+- Province selector label: "Target Jurisdiction" — never just "Province"
+- Auditor Mode toggle label: "Activate Auditor Precision View Mode (4 Decimals)"
+- Never use the word "refund" in any UI label — ITCs are not refunds they are credits
+
+## Localization Rules
+- When Quebec (QC) is selected all currency outputs must use French-Canadian format: toLocaleString('fr-CA') with trailing $ symbol (e.g. 100,00 $)
+- All other provinces use English-Canadian format: toLocaleString('en-CA') with leading $ symbol (e.g. $100.00)
+- Clipboard copy function must strip all formatting symbols before writing to clipboard — write only the raw numeric string (e.g. 1250.50)
+- Negative values must display in accounting parentheses format ($254.10) not with a negative sign (-$254.10)
+
+## Legal and Disclaimer Rules
+- The following disclaimer must appear adjacent to the calculate button on every page that contains a calculator: "Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing."
+- Never label any output as "tax advice" or imply the tool provides regulatory guidance
+- Never use the phrase "guaranteed accurate" anywhere in the interface
+
+## Accessibility Rules
+- All input fields must have explicit label elements with matching for and id attributes
+- All tooltip elements must include role="tooltip" and aria-label attributes
+- Results section must include aria-live="polite" so screen readers announce updated values
+- All interactive elements must be keyboard navigable
+- Color must never be the only indicator of state — always pair color with text or iconography
+
+## CSS and Print Rules
+- Print media queries must be contained within src/css/style.css — never in a separate file to avoid CSP blocking issues
+- Print styles must hide: header, footer, aside, button, .province-grid, select, input, .help-icon, .cookie-banner
+- Print styles must display: .print-only-ledger-header
+- Print body font must be system sans-serif stack for modern output — never Courier New
+- Print page size must be letter portrait with 0.6in 0.8in margins to prevent two-page overflow
+- All print text must be forced to #000000 on #ffffff background
+
+## Tooltip Rules
+- Tooltips must be implemented in pure CSS using data-tooltip attribute and ::after pseudo-element — never use JavaScript tooltip libraries
+- Tooltip width: 220px maximum
+- Tooltip background: #1e293b
+- Tooltip text color: #ffffff
+- Tooltip must be visible on both :hover and :focus states for keyboard accessibility
+- Tooltip trigger element must use cursor: help
+
+## SEO and Schema Rules
+- Every HTML page must include a FinancialProduct JSON-LD schema in the head section
+- The root index.html must also include a FAQPage JSON-LD schema
+- Every page must include a canonical link tag
+- The html element must include lang="en-CA" on English pages
+- Quebec sub-pages must include lang="fr-CA"
+- Meta description must be present on every page and be unique per page
+
+## Testing Rules
+- The calculateReverseTax function must be exported from app.js for unit testing
+- Vitest is used for unit tests — test files live in src/test/
+- Playwright is used for E2E tests — test files live in tests/
+- The following test cases are mandatory and must always pass:
+  - Ontario $113.00 gross → $100.00 net, $13.00 tax
+  - Quebec $114.98 gross → $100.00 net, $14.98 tax
+  - Quebec French format $114.98 → net displays as "100,00 $"
+  - Auditor Mode Ontario $100.00 → tax displays as "$11.5044"
+- No code changes may be considered complete until all mandatory test cases pass
+
+## Automation Rules
+- GitHub Actions cron runs daily at 04:00 UTC
+- Cron job runs Vitest and Playwright test suites only — it does not scrape external websites
+- All GitHub Actions action references must be pinned to full SHA hashes — never use floating version tags like @v4
+- GITHUB_TOKEN permissions must be scoped to contents: read only
+- The Discord webhook URL must be stored as a GitHub repository secret named DISCORD_TAX_ALERTS_WEBHOOK — never hardcoded in any file
+- npm ci must be used in all automated environments — never npm install
+
+## Cloudflare and Deployment Rules
+- Deployment target is Cloudflare Pages connected to the GitHub repository
+- Build configuration: Static HTML / Vanilla JS — build command field must be left empty
+- Cloudflare Bot Fight Mode must be enabled
+- Cloudflare WAF free tier rules must be enabled
+- All CSP headers are defined in public/_headers — this file is the single source of truth for security headers
+- The AdSense script domain googlesyndication.com must only be added to CSP headers when AdSense is actively being used — not before
+
+## taxRates.js Data Structure Rules
+- Every province object must contain these fields: name, type, rate, fraction, editorialSummary, exemptionsNotice, officialCraLink
+- VERIFIED_TIMESTAMP must be updated to the current date whenever any provincial data is changed
+- Quebec object must also contain separate gst and qst rate fields in addition to the combined rate field
+- Never delete a province object — mark inactive provinces with active: false if needed
+
+## File Headers
+Every new JS and CSS file must begin with this comment:
+// © 2026 TaxBackwards.ca. All rights reserved.
+
+## Footer
+Every HTML page must include this footer before the closing </body> tag:
+<footer>
+<p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+</footer>
