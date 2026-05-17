@@ -1,0 +1,166 @@
+# TaxBackwards.ca — Complete Project Summary
+
+## Project Overview
+A Canadian reverse sales tax calculator web tool targeting bookkeepers, freelancers, sole proprietors, and small business owners. Allows users to extract pre-tax net amounts and claimable Input Tax Credits (ITCs) from gross transaction totals across all 13 Canadian provinces. Domain concept: TaxBackwards.ca
+
+Core Stack: Vanilla HTML/CSS/JS, GitHub, Cloudflare Pages, Plausible Analytics, GitHub Actions — all free. Operational overhead scales to zero outside domain registration (~$12/year CAD).
+
+## Documents Reviewed (12 Total)
+1. ReverseTax_CriticalAnalysis.pdf
+2. ReverseTaxToolTips.pdf
+3. ReverseTax_CompetitorAnalysis.pdf
+4. ReverseTaxTerminology.pdf
+5. ReverseTax_Development_Outline_UPDATED.pdf
+6. ReverseTaxToolTips.docx
+7. ReverseTax_AutomationUpdateBluePrint.pdf
+8. ReverseTax_SecurityInfo.pdf
+9. ReverseTax_SEOOptimization.pdf
+10. ReverseTax_TrafficTracking.pdf
+11. ReverseTax_Testing.pdf
+12. ReverseTaxSpecialFeatures.pdf
+
+## Core Viability Assessment
+Verdict: Viable long-term passive income project for a developer. Competitor traffic data (Calcul Conversion 476K–610K monthly visits) confirms real sustained demand. B2B audience commands premium ad CPM rates ($15–$35+). Zero operational cost infrastructure is legitimate and well-architected. However monetization timeline and competitive positioning claims in the source documents are optimistic and should be treated skeptically.
+
+## Key Issues Identified
+
+### 1. AdSense vs. Clean UX Contradiction
+Documents simultaneously pitch a clean ad-free experience as the competitive edge while requiring Google AdSense for revenue. These goals are mutually exclusive at launch. Auto Ads inject dynamic banners that destroy the speed and UX advantage over Calcul Conversion.
+
+### 2. Quebec Law 25 Compliance Complexity
+Cookie-free Plausible Analytics does not exempt the site from consent requirements once AdSense is active. Google drops behavioral tracking cookies the moment AdSense loads, triggering Quebec Law 25 opt-in consent requirements. A certified CMP banner adds friction that undermines the clean UX positioning.
+
+### 3. AdSense Approval Barrier
+A single-page calculator will be rejected by Google AdSense for low value content. Provincial sub-pages are mandatory before monetization is even possible, substantially increasing actual build scope beyond what the documents imply.
+
+### 4. SEO Timeline Underestimated
+Competing against Canada.ca institutional authority, Calcul Conversion's established domain age, and iBill's enterprise backing realistically requires 12–24 months of SEO runway before meaningful organic traffic. The documents present this as a faster process than it is.
+
+### 5. Automation Layer Fragility
+The GitHub Actions HTML scraper targeting the Retail Council website is brittle. CSS class changes, structural redesigns, or Cloudflare bot protection on the target site will cause silent failures or false alerts.
+
+## All Recommendations
+
+### Monetization
+- Delay AdSense — launch ad-free, build domain authority for 6–12 months, then introduce manually placed static ad units in fixed positions rather than Auto Ads
+- Pursue affiliate marketing instead of or before AdSense — single affiliate relationship with Wave, FreshBooks, or QuickBooks will generate more predictable revenue than AdSense at early traffic volumes without the Quebec Law 25 complications
+- Contextual affiliate placement: text link beneath ITC output results panel, not a banner
+
+### Privacy and Legal
+- Use Plausible Analytics exclusively for cookieless tracking — no consent banner required for analytics alone
+- If AdSense is eventually added, geofence the CMP consent banner to Quebec visitors only using Cloudflare Workers — preserves UX for majority of non-Quebec traffic
+- Gate only AdSense behind CMP, not the entire page
+- Add explicit PIPEDA compliance language to the privacy page covering all Canadian users not just Quebec
+- Retain the accounting disclaimer adjacent to the calculate button as documented
+
+### SEO and Content Phasing
+- Phase 1 Ontario and Quebec only — highest population, highest search volume, most competitive differentiation opportunity
+- Phase 2 BC, Alberta, Nova Scotia
+- Phase 3 remaining provinces, historical rate pages, status card exemption content
+- Build historical audit keyword pages (e.g. /history/ontario-2024/) for zero-competition long-tail traffic
+- Embed FinancialProduct and FAQPage JSON-LD schemas from day one
+
+### Automation
+- Replace the daily Retail Council HTML scraper with a manual quarterly review — Canadian tax rates change at most once annually at budget time
+- Repurpose GitHub Actions cron to run Vitest and Playwright test suite instead
+- Set a free Google Alert for "GST HST rate change" as the early warning system
+- Replace Discord webhook infrastructure with the Google Alert for simplicity at this stage
+
+### Security Additions Not Covered in Documents
+- Add Subresource Integrity (SRI) hashing to all third-party CDN scripts
+- Explicitly sanitize URL parameter inputs before any DOM interaction — likely attack vector if shareable calculation URLs are implemented
+- Add quarterly npm audit to GitHub Actions workflow for axios and cheerio dependencies
+- Add request throttling and crawl delays to the verify-rates.js scraper
+- Establish a Discord webhook rotation procedure — treat it as a rotatable secret, rotate quarterly or immediately if exposed in build logs
+- Enable Cloudflare Bot Fight Mode, verify DDoS protection is active, enable Cloudflare WAF free tier
+
+### Build Scope Reduction
+- Build and deploy MVP first — domain age starts counting on launch day not planning day
+- Keep MVP to a single HTML file, Ontario and Quebec only
+
+## Affiliate Strategy
+
+| Program | Platform | Approval Timeline | Priority |
+|---|---|---|---|
+| Wave Accounting | Impact.com | 1–3 weeks post-launch | First — lowest barrier |
+| FreshBooks | ShareASale | 1–2 weeks | Second — 30 days after Wave |
+| QuickBooks Canada | CJ Affiliate | 2–4 weeks | Third — after 3 months traffic |
+| Sage Canada | Partnerize | 2–6 weeks | Optional — more selective |
+
+Realistic first affiliate revenue timeline: 8–14 weeks post-launch
+
+## Staged Development Plan
+
+### Stage 1 — MVP Build and Launch
+Timeline: Week 1–2
+- Initialize GitHub repository with GPL-3.0 license
+- Build single HTML file with Ontario and Quebec calculations only
+- Implement integer-scaled math engine to prevent JS floating point errors
+- Add dual-label UI fields (plain language + accounting terminology)
+- Add CSS-only tooltips using data-tooltip and aria-label
+- Embed FinancialProduct JSON-LD schema in head
+- Add arithmetic disclaimer adjacent to calculate button
+- Add basic About/author section linking to GitHub profile
+- Add privacy page with PIPEDA and Google policy language
+- Implement Plausible Analytics cookieless tracking
+- Deploy to Cloudflare Pages with custom domain
+- Enable Cloudflare Bot Fight Mode and WAF free tier
+- Configure SRI hashing on any CDN-loaded scripts
+- Set up Google Alert for GST HST rate change
+Launch gate: working calculator live on domain
+
+### Stage 2 — Content Expansion for AdSense Eligibility
+Timeline: Week 3–8
+- Build /provinces/ontario/ informational sub-page
+- Build /provinces/quebec/ informational sub-page with French-Canadian context
+- Implement dynamic DOM injection from centralized taxRates.js registry
+- Add FAQPage JSON-LD schema
+- Add CRA and Revenu Quebec external reference link panel beneath results
+- Add Auditor Mode 4-decimal precision toggle with UI warning badge
+- Add one-click clipboard copy with try/catch fallback for restrictive browsers
+- Add French-Canadian number formatting for Quebec selections
+- Implement CSS print media query executive ledger layout
+- Apply to Wave affiliate program
+- Apply to FreshBooks affiliate program 30 days after Wave
+- Set up GitHub Actions cron for Vitest and Playwright automated testing
+- Add quarterly npm audit step to GitHub Actions workflow
+- Run initial Playwright link-checker test against all outbound CRA URLs
+Launch gate: minimum two provincial sub-pages live, affiliate application submitted
+
+### Stage 3 — Full Provincial Rollout and Monetization
+Timeline: Month 3–6
+- Add BC, Alberta, Nova Scotia to taxRates.js and build corresponding sub-pages
+- Build /rate-history/ section with historical rate documentation
+- Apply to QuickBooks Canada affiliate program
+- Introduce manually placed static AdSense ad units in fixed sidebar positions if traffic warrants — do not use Auto Ads
+- If AdSense added, implement geofenced CMP banner for Quebec visitors via Cloudflare Workers
+- Add Status Card / First Nations Section 87 exemption toggle
+- Build dedicated /status-card-exemptions/ sub-page for long-tail SEO
+- Add Apportionment Percentage Slider for freelancer partial expense claiming
+- Implement URL parameter sanitization before this feature if shareable URLs are added
+- Rotate Discord webhook if used, document rotation procedure
+Launch gate: AdSense application submitted with sufficient content volume
+
+### Stage 4 — Scale and Optimization
+Timeline: Month 6–12
+- Add remaining provinces and territories
+- Build Receipt Stack batch processor with CSV export
+- Add ITC Apportionment Slider
+- Implement historical rate sub-pages for prior fiscal years
+- Evaluate Ezoic or Mediavine header bidding if monthly traffic exceeds 10,000 page views
+- Quarterly manual tax rate verification against CRA
+- Quarterly npm audit run
+- Quarterly Discord webhook rotation if applicable
+- Review and update VERIFIED_TIMESTAMP in taxRates.js after each verification
+
+## Critical Path Items in Priority Order
+1. Launch MVP — nothing else starts the clock on domain age and SEO
+2. Apply to Wave affiliate — 4–8 weeks post-launch
+3. Build provincial sub-pages — prerequisite for AdSense approval
+4. Add URL parameter sanitization — before any shareable URL feature
+5. SRI hashing — before any third-party scripts are added
+6. Geofenced CMP — before AdSense is ever activated
+
+## What This Project Is and Is Not
+It is: A sound long-term passive income project for a developer with realistic 12–18 month horizon to meaningful revenue.
+It is not: A fast monetization opportunity. Anyone expecting significant ad revenue within the first 6 months should recalibrate expectations. Domain age, content volume, and organic traffic accumulation are time-dependent variables that no amount of technical optimization can shortcut.
