@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Sales Tax Calculator Canada — TaxBackwards.ca</title>
+  <meta name="description" content="Free Canadian reverse sales tax calculator. Extract net consideration and Input Tax Credits from gross transaction totals for Ontario (HST 13%) and Quebec (GST+QST 14.975%). Built for bookkeepers, freelancers, and small business owners.">
+  <link rel="canonical" href="https://taxbackwards.ca/">
+  <link rel="icon" href="public/images/favicon.svg" type="image/svg+xml">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="src/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "TaxBackwards.ca — Canadian Reverse Sales Tax Calculator",
+    "description": "Free reverse sales tax calculator for Canadian bookkeepers, freelancers, and small business owners. Extracts net consideration base and Input Tax Credits from gross transaction totals across all Canadian provinces.",
+    "url": "https://taxbackwards.ca",
+    "provider": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca",
+      "sameAs": "https://github.com/KXXXStar/TaxBackwards"
+    },
+    "feesAndCommissionsSpecification": "Free to use",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CAD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a reverse sales tax calculation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A reverse sales tax calculation extracts the net pre-tax amount and the sales tax portion from a known gross total. For example, if you paid $113.00 in Ontario (HST 13%), the net consideration base is $100.00 and the HST Input Tax Credit is $13.00."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an Input Tax Credit (ITC)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An Input Tax Credit (ITC) allows GST/HST-registered businesses to recover the sales tax paid on eligible business expenses. The tax amount extracted by TaxBackwards.ca represents the ITC-eligible portion of your transaction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Quebec's QST calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Since January 1, 2013, Quebec's QST (9.975%) is calculated directly on the net consideration base, not on top of GST. Both the federal GST (5%) and QST (9.975%) apply to the same pre-tax amount, for a combined effective rate of 14.975%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which Canadian provinces use HST?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ontario (13%), New Brunswick (15%), Nova Scotia (15%), Prince Edward Island (15%), and Newfoundland and Labrador (15%) use the Harmonized Sales Tax (HST), which combines the federal GST with the provincial component into a single rate administered by the CRA."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="public/images/logo.svg"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen"
+         width="200" height="48">
+    <img src="public/images/logo-print.svg"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         width="200" height="48"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main>
+    <div class="card">
+
+      <!-- Target Jurisdiction -->
+      <div class="field-group">
+        <label class="field-label" for="province-select">Target Jurisdiction</label>
+        <div class="select-wrapper">
+          <select id="province-select" name="province" autocomplete="off">
+            <!-- Populated by app.js populateProvinceSelector() on DOMContentLoaded -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Total Paid -->
+      <div class="field-group">
+        <div class="label-row">
+          <label class="field-label" for="price-input">Total Paid (Gross Transaction Amount)</label>
+          <button class="help-icon"
+                  type="button"
+                  data-tooltip="The complete monetary value from your receipt or bank statement, inclusive of all combined sales taxes."
+                  aria-label="About Total Paid (Gross Transaction Amount)">?</button>
+        </div>
+        <input type="text"
+               id="price-input"
+               name="price"
+               inputmode="decimal"
+               placeholder="0.00"
+               autocomplete="off"
+               spellcheck="false"
+               aria-describedby="price-input-error">
+        <span id="price-input-error" class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Auditor Mode toggle -->
+      <div class="field-group auditor-group">
+        <span id="auditor-label" class="auditor-label">
+          Activate Auditor Precision View Mode (4 Decimals)
+        </span>
+        <button id="auditor-toggle"
+                type="button"
+                role="switch"
+                aria-checked="false"
+                aria-labelledby="auditor-label"
+                class="toggle-switch">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Auditor Mode warning — shown by app.js when toggle is active -->
+      <p id="auditor-warning" class="auditor-warning">Extended precision is for auditing only. Do not paste 4-decimal values into standard invoicing software.</p>
+
+      <!-- Calculate -->
+      <button id="calculate-btn" type="button" class="btn-calculate">
+        Calculate
+      </button>
+
+      <!-- Disclaimer — must be directly below Calculate button, nowhere else -->
+      <p class="disclaimer">
+        Calculations are arithmetic estimations only and do not constitute formal tax or
+        corporate auditing advice. All figures must be verified against current CRA
+        guidelines before filing.
+      </p>
+
+      <!-- Results -->
+      <section id="results-section"
+               class="results"
+               hidden
+               aria-live="polite"
+               aria-atomic="false">
+
+        <div class="results-divider"></div>
+
+        <!-- Base Cost (Net Consideration) -->
+        <div class="result-row result-primary">
+          <div class="result-label-group">
+            <span class="result-label-text">Base Cost (Net Consideration)</span>
+            <button class="help-icon"
+                    type="button"
+                    data-tooltip="The absolute pre-tax cost of the goods or services. This is the value logged into corporate expense accounts before consumption taxes are applied."
+                    aria-label="About Base Cost (Net Consideration)">?</button>
+          </div>
+          <div class="result-value-group">
+            <span id="result-pretax" class="result-pretax">—</span>
+            <button class="btn-copy"
+                    type="button"
+                    data-copy="pretax"
+                    aria-label="Copy base cost to clipboard">Copy</button>
+          </div>
+        </div>
+
+        <!-- Tax 1: HST or GST -->
+        <div class="result-row">
+          <div class="result-label-group">
+            <span id="result-tax1-label" class="result-label-text">HST Removed (ITC Eligible)</span>
+            <button class="help-icon"
+                    type="button"
+                    data-tooltip="The isolated consumption tax extracted from your transaction. For CRA-registered entities, this amount is logged as an Input Tax Credit (ITC) to reduce net tax liabilities."
+                    aria-label="About Tax Removed (ITC Eligible)">?</button>
+          </div>
+          <div class="result-value-group">
+            <span id="result-tax1" class="result-tax">—</span>
+            <button class="btn-copy"
+                    type="button"
+                    data-copy="tax1"
+                    aria-label="Copy tax amount to clipboard">Copy</button>
+          </div>
+        </div>
+
+        <!-- Tax 2: QST or PST — hidden for single-rate provinces -->
+        <div id="result-tax2-row" class="result-row" hidden>
+          <div class="result-label-group">
+            <span id="result-tax2-label" class="result-label-text">QST Removed (ITC Eligible)</span>
+            <button class="help-icon"
+                    type="button"
+                    data-tooltip="Since January 1, 2013, QST is calculated directly on the net consideration base at 9.975% — it does not compound on top of GST."
+                    aria-label="About QST">?</button>
+          </div>
+          <div class="result-value-group">
+            <span id="result-tax2" class="result-tax">—</span>
+            <button class="btn-copy"
+                    type="button"
+                    data-copy="tax2"
+                    aria-label="Copy QST amount to clipboard">Copy</button>
+          </div>
+        </div>
+
+        <!-- Total Paid (echo) -->
+        <div class="result-row result-total-row">
+          <span class="result-label-text">Total Paid (Gross)</span>
+          <span id="result-total" class="result-total">—</span>
+        </div>
+
+        <!-- Verified badge -->
+        <div class="verified-badge">
+          <span class="verified-badge-text">&#10003; Rates verified May 2026</span>
+        </div>
+
+        <!-- Clear -->
+        <button id="clear-btn" type="button" class="btn-clear">Clear</button>
+
+        <!-- Print-only ledger header (screen: hidden, print: visible) -->
+        <div class="print-only-ledger-header" aria-hidden="true">
+          TaxBackwards.ca — Reverse Tax Ledger Extract
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="src/js/app.js"></script>
+
+</body>
+</html>

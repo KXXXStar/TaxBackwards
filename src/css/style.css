@@ -1,1 +1,894 @@
-// © 2026 TaxBackwards.ca. All rights reserved.
+/* ù 2026 TaxBackwards.ca. All rights reserved. */
+
+/* =============================================================================
+   1. Design tokens ù dark mode default (:root)
+   ============================================================================= */
+
+:root {
+  /* Page colours */
+  --page-bg:        #162640;
+  --card-bg:        #1e3352;
+  --accent:         #3b82f6;
+  --accent-hover:   #2563eb;
+  --success:        #10b981;
+  --border:         #2e4a6a;
+
+  /* Text colours */
+  --text-primary:   #f1f5f9;
+  --text-secondary: #8eaabf;
+  --text-muted:     #5d7d96;
+
+  /* Semantic colours ù same across both themes */
+  --error:          #ef4444;
+  --on-accent:      #ffffff;
+
+  /* Tooltip ù fixed design token, does not theme-switch */
+  --tooltip-bg:            #1e293b;
+  --tooltip-text:          #ffffff;
+
+  /* Scrollbar ù fixed design token */
+  --scrollbar-thumb:       #334155;
+  --scrollbar-thumb-hover: #475569;
+
+  /* Transitions */
+  --transition-theme: 0.3s ease;
+  --transition-fast:  0.15s ease;
+}
+
+/* =============================================================================
+   2. Light mode overrides
+   ============================================================================= */
+
+[data-theme="light"] {
+  --page-bg:        #e8edf5;
+  --card-bg:        #ffffff;
+  --accent:         #2563eb;
+  --accent-hover:   #1d4ed8;
+  --success:        #059669;
+  --border:         #cbd5e1;
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+}
+
+/* =============================================================================
+   3. Reset
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   4. Base / body
+   ============================================================================= */
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition:
+    background-color var(--transition-theme),
+    color var(--transition-theme);
+}
+
+/* =============================================================================
+   5. Scrollbar
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--page-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* =============================================================================
+   6. Layout ù centred column, 480px max-width
+   ============================================================================= */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 28px 16px 12px;
+}
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+.site-footer {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.site-footer p + p {
+  margin-top: 4px;
+}
+
+.site-footer a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.site-footer a:hover {
+  color: var(--text-secondary);
+}
+
+/* Mobile ù full width, reduced padding */
+@media (max-width: 479px) {
+  .site-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* =============================================================================
+   7. Card
+   ============================================================================= */
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  transition:
+    background-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+}
+
+[data-theme="light"] .card {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 479px) {
+  .card {
+    border-radius: 0;
+    padding: 20px;
+  }
+}
+
+/* =============================================================================
+   8. Logo
+   ============================================================================= */
+
+.logo-screen {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 200px;
+}
+
+.logo-print {
+  display: none;
+}
+
+/* =============================================================================
+   9. Theme toggle
+   ============================================================================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Show sun in dark mode (click to go light), show moon in light mode */
+.theme-icon-dark  { display: inline; }
+.theme-icon-light { display: none;   }
+
+[data-theme="light"] .theme-icon-dark  { display: none;   }
+[data-theme="light"] .theme-icon-light { display: inline; }
+
+/* =============================================================================
+   10. Field groups ù 24px minimum vertical gap
+   ============================================================================= */
+
+.field-group {
+  margin-bottom: 24px;
+}
+
+.field-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Row that holds a label and a help icon side-by-side */
+.label-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+/* Section label: 11px / 500 / uppercase */
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  transition: color var(--transition-theme);
+}
+
+.label-row .field-label {
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+   11. Province select ù custom arrow, no browser default styling
+   ============================================================================= */
+
+.select-wrapper {
+  position: relative;
+}
+
+/* Custom dropdown arrow */
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  margin-top: -3px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  border: 5px solid transparent;
+  border-top-color: var(--text-secondary);
+  border-bottom: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-theme),
+    color var(--transition-theme);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Coming Soon options */
+select option:disabled {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* =============================================================================
+   12. Price input
+   ============================================================================= */
+
+#price-input {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-theme),
+    color var(--transition-theme);
+}
+
+#price-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+#price-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#price-input.input-error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.error-message {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--error);
+  min-height: 16px;
+  line-height: 1.4;
+}
+
+/* =============================================================================
+   13. Auditor Mode toggle ù custom CSS switch, no native checkbox
+   ============================================================================= */
+
+.auditor-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.auditor-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: default;
+  flex: 1;
+  line-height: 1.4;
+  transition: color var(--transition-theme);
+}
+
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-switch:focus-visible {
+  outline: none;
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.toggle-track {
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  background: var(--border);
+  border-radius: 12px;
+  padding: 2px;
+  transition: background 0.2s ease;
+}
+
+.toggle-switch[aria-checked="true"] .toggle-track {
+  background: var(--accent);
+}
+
+.toggle-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--card-bg);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.toggle-switch[aria-checked="true"] .toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* =============================================================================
+   14. Calculate button ù full width, 48px, translateY hover
+   ============================================================================= */
+
+/* =============================================================================
+   14b. Auditor warning ó hidden by default, shown via app.js
+   ============================================================================= */
+
+.auditor-warning {
+  display: none;
+  font-size: 11px;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.btn-calculate {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--on-accent);
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-calculate:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.btn-calculate:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-calculate:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* =============================================================================
+   15. Disclaimer ù 11px, directly below calculate button
+   ============================================================================= */
+
+.disclaimer {
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.5;
+  transition: color var(--transition-theme);
+}
+
+/* =============================================================================
+   16. Results divider ù CSS border-top, never <hr>
+   ============================================================================= */
+
+.results-divider {
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+  transition: border-color var(--transition-theme);
+}
+
+/* =============================================================================
+   17. Result rows
+   ============================================================================= */
+
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.result-row + .result-row {
+  border-top: 1px solid var(--border);
+}
+
+.result-label-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Section label: 11px / 500 / uppercase */
+.result-label-text {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: color var(--transition-theme);
+}
+
+.result-value-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Pre-tax value: 32px / 700 */
+.result-pretax {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: color var(--transition-theme);
+}
+
+/* Tax values: 24px / 700 */
+.result-tax {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  transition: color var(--transition-theme);
+}
+
+/* Total row */
+.result-total-row {
+  justify-content: space-between;
+}
+
+.result-total {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-theme);
+}
+
+/* Mobile: scale down the large pretax figure */
+@media (max-width: 479px) {
+  .result-pretax { font-size: 24px; }
+  .result-tax    { font-size: 20px; }
+}
+
+/* =============================================================================
+   18. Copy buttons ù pill shape, ghost at rest, filled flash on copy
+   ============================================================================= */
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 12px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.btn-copy:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-copy:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* 1.2s filled flash on successful copy */
+.btn-copy.copied {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* =============================================================================
+   19. Verified badge ù pill, green
+   ============================================================================= */
+
+.verified-badge {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px 0 4px;
+}
+
+.verified-badge-text {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid var(--success);
+  color: var(--success);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color var(--transition-theme), border-color var(--transition-theme);
+}
+
+/* =============================================================================
+   20. Clear button
+   ============================================================================= */
+
+.btn-clear {
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin-top: 16px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-clear:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.btn-clear:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =============================================================================
+   21. Help icon ù tooltip trigger
+   ============================================================================= */
+
+.help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  padding: 0;
+  background: var(--border);
+  color: var(--text-muted);
+  border: none;
+  border-radius: 50%;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: help;
+  flex-shrink: 0;
+  position: relative;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.help-icon:hover,
+.help-icon:focus-visible {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.help-icon:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =============================================================================
+   22. Tooltips ù CSS only, data-tooltip attribute + ::before/::after
+       Appear above trigger, arrow points down toward trigger.
+   ============================================================================= */
+
+[data-tooltip] {
+  position: relative;
+}
+
+/* Tooltip bubble */
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  padding: 8px 10px;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: normal;
+  text-align: left;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: normal;
+  opacity: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.15s ease;
+}
+
+/* Downward-pointing arrow */
+[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--tooltip-bg);
+  border-bottom: none;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 101;
+  transition: opacity 0.15s ease;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:hover::before,
+[data-tooltip]:focus-visible::after,
+[data-tooltip]:focus-visible::before {
+  opacity: 1;
+}
+
+/* =============================================================================
+   23. Screen-reader-only utility
+   ============================================================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =============================================================================
+   24. Print-only ledger header ù hidden on screen
+   ============================================================================= */
+
+.print-only-ledger-header {
+  display: none;
+}
+
+/* =============================================================================
+   25. Print styles ù all in this file (CSP: no separate stylesheet)
+   ============================================================================= */
+
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.6in 0.8in;
+  }
+
+  /* Force white background, black text regardless of active theme */
+  *,
+  *::before,
+  *::after {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Hide elements that must not appear in print */
+  .site-header,
+  .site-footer,
+  aside,
+  .theme-toggle,
+  .btn-calculate,
+  .btn-copy,
+  .btn-clear,
+  #auditor-toggle,
+  .auditor-group,
+  .help-icon,
+  .field-group,
+  .disclaimer,
+  .cookie-banner {
+    display: none !important;
+  }
+
+  /* Results always visible in print */
+  #results-section {
+    display: block !important;
+  }
+
+  /* Swap logo */
+  .logo-screen { display: none   !important; }
+  .logo-print  { display: block  !important; }
+
+  /* Show print-only ledger header */
+  .print-only-ledger-header {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 1px solid black;
+    margin-bottom: 16px;
+  }
+
+  /* Flatten card styling */
+  .card {
+    padding: 0;
+    border-radius: 0;
+  }
+}

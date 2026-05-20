@@ -1,4 +1,4 @@
-// © 2026 TaxBackwards.ca. All rights reserved.
+// ù 2026 TaxBackwards.ca. All rights reserved.
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
@@ -6,7 +6,18 @@
 import { TAX_RATES, PROVINCE_ORDER } from "../data/taxRates.js";
 
 // ---------------------------------------------------------------------------
-// Calculation engine ó pure functions, no DOM access, fully unit-testable
+// Module state
+// ---------------------------------------------------------------------------
+
+// Tracks whether Auditor Precision View Mode (4 decimals) is active.
+let isAuditorMode = false;
+
+// Holds the last successfully calculated result so copy buttons can access
+// the raw numeric values without re-parsing formatted display strings.
+let lastResult = null;
+
+// ---------------------------------------------------------------------------
+// Calculation engine ù pure functions, no DOM access, fully unit-testable
 // ---------------------------------------------------------------------------
 
 /**
@@ -29,7 +40,7 @@ export function calculateReverseTax(totalDollars, provinceKey) {
 
   if (province.type === "GST+QST") {
     // Quebec: both GST and QST are levied directly on the net consideration base.
-    // pretax = total / (1 + gst + qst), then each tax is pretax ◊ its own rate.
+    // pretax = total / (1 + gst + qst), then each tax is pretax ù its own rate.
     pretaxScaled = Math.round(totalScaled / (1 + province.gst + province.qst));
     tax1Scaled   = Math.round(pretaxScaled * province.gst);
     tax2Scaled   = Math.round(pretaxScaled * province.qst);
@@ -40,17 +51,17 @@ export function calculateReverseTax(totalDollars, provinceKey) {
     tax2Scaled   = Math.round(pretaxScaled * province.pst);
   } else {
     // HST provinces (ON, NB, NS, PE, NL) and GST-only jurisdictions (AB, NT, NU, YT):
-    // single combined rate ó tax is derived by subtraction to preserve integer identity.
+    // single combined rate ù tax derived by subtraction to preserve integer identity.
     pretaxScaled = Math.round(totalScaled / (1 + province.rate));
     tax1Scaled   = totalScaled - pretaxScaled;
     tax2Scaled   = 0;
   }
 
   return {
-    pretax:  pretaxScaled / 10000,
-    tax1:    tax1Scaled   / 10000,
-    tax2:    tax2Scaled   / 10000,
-    total:   totalDollars,
+    pretax:   pretaxScaled / 10000,
+    tax1:     tax1Scaled   / 10000,
+    tax2:     tax2Scaled   / 10000,
+    total:    totalDollars,
     province: provinceKey
   };
 }
@@ -67,24 +78,28 @@ export function calculateReverseTax(totalDollars, provinceKey) {
  * non-breaking space (e.g. "100,00\u00A0$").
  * All other provinces: English-Canadian locale with leading $ (e.g. "$100.00").
  *
+ * When Auditor Mode is active the caller passes decimals=4 for 4-decimal output.
+ *
  * @param {number} value        The numeric value to format
  * @param {string} provinceKey  Province key used to select locale rules
+ * @param {number} [decimals]   Decimal places (default 2; pass 4 for Auditor Mode)
  * @returns {string}
  */
-function formatCurrency(value, provinceKey) {
+function formatCurrency(value, provinceKey, decimals) {
+  const dp = decimals || 2;
   if (provinceKey === "QC") {
     return (
       value.toLocaleString("fr-CA", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: dp,
+        maximumFractionDigits: dp
       }) + "\u00A0$"
     );
   }
   return (
     "$" +
     value.toLocaleString("en-CA", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      minimumFractionDigits: dp,
+      maximumFractionDigits: dp
     })
   );
 }
@@ -118,58 +133,70 @@ function getTax2Label(provinceKey) {
 }
 
 // ---------------------------------------------------------------------------
-// UI ó province selector
+// UI ù province selector
 // ---------------------------------------------------------------------------
 
 /**
  * Populate the <select id="province-select"> element from PROVINCE_ORDER.
- * Uses createElement ó never innerHTML ó to prevent XSS.
+ * Active provinces render as normal selectable options.
+ * Inactive provinces render as disabled with "ù Coming Soon" suffix to
+ * signal future availability without removing them from the list.
+ * Uses createElement ù never innerHTML ù to prevent XSS.
  */
 export function populateProvinceSelector() {
   const select = document.getElementById("province-select");
   PROVINCE_ORDER.forEach(function (key) {
+    const province = TAX_RATES[key];
     const option = document.createElement("option");
     option.value = key;
-    option.textContent = TAX_RATES[key].name;
+    if (province.active) {
+      option.textContent = province.name;
+    } else {
+      option.textContent = province.name + " \u2014 Coming Soon";
+      option.disabled = true;
+    }
     select.appendChild(option);
   });
 }
 
 // ---------------------------------------------------------------------------
-// UI ó results rendering
+// UI ù results rendering
 // ---------------------------------------------------------------------------
 
 /**
  * Write calculation results to the results section of the DOM.
- * Uses textContent only ó never innerHTML ó to prevent XSS.
+ * Uses textContent only ù never innerHTML ù to prevent XSS.
  * Hides the secondary tax row for single-rate provinces (e.g. Ontario HST).
+ * Respects isAuditorMode for decimal precision.
  *
  * @param {{ pretax: number, tax1: number, tax2: number, total: number, province: string }} result
  */
 export function renderResults(result) {
   const provinceKey = result.province;
-  const province = TAX_RATES[provinceKey];
-  const fmt = function (v) { return formatCurrency(v, provinceKey); };
-  const hasTax2 = province.type === "GST+QST" || province.type === "GST+PST";
+  const province    = TAX_RATES[provinceKey];
+  const dp          = isAuditorMode ? 4 : 2;
+  const fmt         = function (v) { return formatCurrency(v, provinceKey, dp); };
+  const hasTax2     = province.type === "GST+QST" || province.type === "GST+PST";
 
-  document.getElementById("result-pretax").textContent = fmt(result.pretax);
-  document.getElementById("result-tax1").textContent   = fmt(result.tax1);
-  document.getElementById("result-tax1-label").textContent = getTax1Label(provinceKey);
+  document.getElementById("result-pretax").textContent          = fmt(result.pretax);
+  document.getElementById("result-tax1").textContent            = fmt(result.tax1);
+  document.getElementById("result-tax1-label").textContent      = getTax1Label(provinceKey);
 
   const tax2Row = document.getElementById("result-tax2-row");
   if (hasTax2) {
     tax2Row.hidden = false;
-    document.getElementById("result-tax2").textContent       = fmt(result.tax2);
-    document.getElementById("result-tax2-label").textContent = getTax2Label(provinceKey);
+    document.getElementById("result-tax2").textContent          = fmt(result.tax2);
+    document.getElementById("result-tax2-label").textContent    = getTax2Label(provinceKey);
   } else {
     tax2Row.hidden = true;
   }
 
-  document.getElementById("result-total").textContent = fmt(result.total);
+  // Total always displays at 2dp ù it is the user-entered gross amount.
+  document.getElementById("result-total").textContent = formatCurrency(result.total, provinceKey, 2);
 }
 
 // ---------------------------------------------------------------------------
-// UI ó input error state
+// UI ù input error state
 // ---------------------------------------------------------------------------
 
 /**
@@ -205,7 +232,7 @@ function clearInputError(inputId) {
 }
 
 // ---------------------------------------------------------------------------
-// UI ó event handlers
+// UI ù event handlers
 // ---------------------------------------------------------------------------
 
 /**
@@ -221,7 +248,7 @@ export function handleCalculate(e) {
   e.preventDefault();
   clearInputError("price-input");
 
-  const rawInput    = document.getElementById("price-input").value.trim();
+  const rawInput     = document.getElementById("price-input").value.trim();
   const totalDollars = Number(rawInput);
 
   if (!rawInput || isNaN(totalDollars) || !isFinite(totalDollars) || totalDollars <= 0) {
@@ -232,6 +259,7 @@ export function handleCalculate(e) {
   const provinceKey = document.getElementById("province-select").value;
   const result      = calculateReverseTax(totalDollars, provinceKey);
 
+  lastResult = result;
   renderResults(result);
 
   const resultsSection = document.getElementById("results-section");
@@ -242,11 +270,12 @@ export function handleCalculate(e) {
 
 /**
  * Reset the price input and hide the results section.
- * Clears any active input error state.
+ * Clears any active input error state and resets lastResult.
  */
 export function handleClear() {
   document.getElementById("price-input").value = "";
   clearInputError("price-input");
+  lastResult = null;
   const resultsSection = document.getElementById("results-section");
   if (resultsSection) {
     resultsSection.hidden = true;
@@ -276,6 +305,113 @@ function handlePriceKeydown(e) {
   }
 }
 
+/**
+ * Toggle the dark/light theme, persist the choice to localStorage,
+ * and update the toggle button's aria-label.
+ */
+function handleThemeToggle() {
+  const html    = document.documentElement;
+  const current = html.getAttribute("data-theme");
+  const next    = current === "dark" ? "light" : "dark";
+
+  html.setAttribute("data-theme", next);
+  localStorage.setItem("tb-theme", next);
+
+  const btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.setAttribute(
+      "aria-label",
+      next === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
+  }
+}
+
+/**
+ * Toggle Auditor Precision View Mode (4 decimals).
+ * Updates aria-checked on the switch and re-renders results if available.
+ */
+function handleAuditorToggle() {
+  isAuditorMode = !isAuditorMode;
+  const btn = document.getElementById("auditor-toggle");
+  if (btn) {
+    btn.setAttribute("aria-checked", isAuditorMode ? "true" : "false");
+  }
+  const warning = document.getElementById("auditor-warning");
+  if (warning) warning.style.display = isAuditorMode ? "block" : "none";
+  if (lastResult) {
+    renderResults(lastResult);
+  }
+}
+
+/**
+ * Write a raw numeric string (no currency symbols or locale separators) to
+ * the clipboard. Falls back to document.execCommand for older browsers.
+ * Flashes the copy button with class "copied" for 1.2 seconds.
+ *
+ * Clipboard copy must strip all formatting symbols ù only the raw decimal
+ * string is written (e.g. "1250.50"), per localization rules.
+ *
+ * @param {Event} e  Click event from a .btn-copy button
+ */
+function handleCopy(e) {
+  if (!lastResult) return;
+
+  const key = e.currentTarget.getAttribute("data-copy");
+  let value;
+  if (key === "pretax") value = lastResult.pretax;
+  else if (key === "tax1") value = lastResult.tax1;
+  else if (key === "tax2") value = lastResult.tax2;
+  else return;
+
+  // Round to 2dp for clipboard, stripping all locale formatting symbols.
+  const raw  = Math.round((value + Number.EPSILON) * 100) / 100;
+  const text = raw.toFixed(2);
+
+  const btn = e.currentTarget;
+
+  function flashButton() {
+    btn.classList.add("copied");
+    btn.textContent = "Copied";
+    setTimeout(function () {
+      btn.classList.remove("copied");
+      btn.textContent = "Copy";
+    }, 1200);
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(flashButton).catch(function () {
+      fallbackCopy(text, flashButton);
+    });
+  } else {
+    fallbackCopy(text, flashButton);
+  }
+}
+
+/**
+ * Clipboard fallback using a temporary textarea and document.execCommand.
+ * Used when navigator.clipboard is unavailable (e.g. non-HTTPS or old browsers).
+ *
+ * @param {string}   text      The text to copy
+ * @param {Function} onSuccess Called after the copy attempt
+ */
+function fallbackCopy(text, onSuccess) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "absolute";
+  ta.style.left     = "-9999px";
+  ta.style.top      = "-9999px";
+  ta.setAttribute("aria-hidden", "true");
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    onSuccess();
+  } catch (_) {
+    // Silent failure ù copy is a convenience feature, not critical.
+  }
+  document.body.removeChild(ta);
+}
+
 // ---------------------------------------------------------------------------
 // Initialisation
 // ---------------------------------------------------------------------------
@@ -286,6 +422,22 @@ function handlePriceKeydown(e) {
  */
 export function init() {
   populateProvinceSelector();
+
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    // Sync aria-label to the current theme on first load.
+    const current = document.documentElement.getAttribute("data-theme");
+    themeToggle.setAttribute(
+      "aria-label",
+      current === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
+    themeToggle.addEventListener("click", handleThemeToggle);
+  }
+
+  const auditorToggle = document.getElementById("auditor-toggle");
+  if (auditorToggle) {
+    auditorToggle.addEventListener("click", handleAuditorToggle);
+  }
 
   const calculateBtn = document.getElementById("calculate-btn");
   if (calculateBtn) {
@@ -299,9 +451,14 @@ export function init() {
 
   const priceInput = document.getElementById("price-input");
   if (priceInput) {
-    priceInput.addEventListener("blur", handlePriceBlur);
+    priceInput.addEventListener("blur",    handlePriceBlur);
     priceInput.addEventListener("keydown", handlePriceKeydown);
   }
+
+  // Copy buttons ù delegate to a single handler per button.
+  document.querySelectorAll(".btn-copy").forEach(function (btn) {
+    btn.addEventListener("click", handleCopy);
+  });
 }
 
 // Guard against import in a Node.js test environment where document is undefined.
