@@ -1,0 +1,449 @@
+# TaxBackwards.ca — Master Project Reference
+> Single source of truth for Claude and Cursor. Read this at the start of every session.
+> Last updated: May 2026
+
+---
+
+## 1. Project Overview
+
+TaxBackwards.ca is a Canadian reverse sales tax calculator for bookkeepers, freelancers, sole proprietors, and small business owners. Users enter a gross transaction total, select a province, and receive:
+- A net consideration base (pre-tax amount)
+- A claimable Input Tax Credit (ITC) amount
+
+**All calculations run entirely client-side. No backend. No API calls. No external dependencies.**
+
+**Domain:** taxbackwards.ca  
+**Hosting:** Cloudflare Pages (connected to GitHub repo, auto-deploys on push to `main`)  
+**License:** GPL-3.0 (forces copycats to open-source their entire project)  
+**Analytics:** Cloudflare Web Analytics or Plausible (cookieless — no consent banner needed)  
+**Operational cost:** ~$12/year CAD (domain only)
+
+---
+
+## 2. Tech Stack — Non-Negotiable
+
+- Vanilla HTML, CSS, JavaScript **only**
+- No React, Vue, Angular, jQuery, or any frontend framework ever
+- No npm packages in the frontend — frontend is pure static files
+- Node.js/npm used **only** for the test suite and scraper
+- No build steps, no bundlers, no webpack, no vite in the frontend
+- Hosted on Cloudflare Pages via GitHub
+
+---
+
+## 3. File Structure
+
+```
+taxbackwards.ca/
+├── .cursor/
+│   └── rules/
+│       ├── project.mdc         ← this file
+│       └── design.mdc          ← design system rules
+├── .github/
+│   └── workflows/
+│       └── tax-audit.yml       ← GitHub Actions cron (SHA-pinned)
+├── public/
+│   ├── images/
+│   │   ├── logo.svg
+│   │   ├── logo-print.svg
+│   │   └── favicon.svg
+│   └── _headers                ← CSP and security headers (single source of truth)
+├── src/
+│   ├── data/
+│   │   └── taxRates.js         ← ONLY place provincial rates live
+│   ├── js/
+│   │   └── app.js              ← calculation engine + UI logic
+│   ├── css/
+│   │   └── style.css           ← all styles including print media queries
+│   └── test/
+│       └── calculator.test.js  ← Vitest unit tests
+├── tests/
+│   └── ui.spec.js              ← Playwright E2E tests
+├── index.html                  ← root calculator interface
+├── privacy/
+│   └── index.html              ← privacy policy page
+├── provinces/
+│   ├── ontario/index.html      ← Stage 2
+│   └── quebec/index.html       ← Stage 2
+├── package.json
+├── LICENSE
+└── verify-rates.js             ← rate validation script
+```
+
+---
+
+## 4. Critical Math Rules
+
+- **Never** use native JS floating-point arithmetic on currency values
+- All inputs must be scaled to integers immediately: `Math.round(value * 10000)`
+- All calculations performed on scaled integers only
+- Results divided back to float only at final display formatting step
+- Use `Number.EPSILON` in rounding: `Math.round((value + Number.EPSILON) * 100) / 100`
+- **Never** use `toFixed()` for calculation logic — only for display formatting
+- Quebec QST (9.975%) is calculated directly on the net consideration base — it does **not** compound on top of GST
+- All provincial rates sourced exclusively from `src/data/taxRates.js` — never hardcoded elsewhere
+
+### Mandatory Test Cases (must always pass)
+| Input | Province | Expected Net | Expected Tax |
+|---|---|---|---|
+| $113.00 | Ontario (HST 13%) | $100.00 | $13.00 |
+| $114.98 | Quebec (GST+QST) | $100.00 | $14.98 |
+| $114.98 | Quebec French format | `100,00 $` | — |
+| $100.00 | Ontario Auditor Mode | — | `$11.5044` |
+
+---
+
+## 5. Security Rules
+
+- **Never** use `innerHTML` — always `textContent` for outputs
+- All user inputs cast to `Number()` immediately and validated (reject NaN, ≤0, non-finite)
+- All CDN scripts must include `integrity` attribute with valid SRI hash
+- URL parameters sanitized through `Number()` casting before touching the DOM
+- CSP headers defined in `public/_headers` — never weaken without documented justification
+- **Never** log or pass user financial input values to analytics, URL params, or external scripts
+- Never use `eval()` anywhere
+
+---
+
+## 6. taxRates.js Structure
+
+```js
+// © 2026 TaxBackwards.ca. All rights reserved.
+export const TAX_RATES = {
+  ON: {
+    name: "Ontario",
+    type: "HST",
+    rate: 0.13,
+    fraction: "13/113",
+    editorialSummary: "...",
+    exemptionsNotice: "...",
+    officialCraLink: "https://canada.ca/...",
+    active: true
+  },
+  QC: {
+    name: "Quebec",
+    type: "GST+QST",
+    rate: 0.14975,
+    gst: 0.05,
+    qst: 0.09975,
+    fraction: "1/1.14975",
+    editorialSummary: "...",
+    exemptionsNotice: "...",
+    officialCraLink: "https://revenuquebec.ca/...",
+    active: true
+  }
+  // All 13 provinces present; inactive provinces have active: false
+};
+
+export const PROVINCE_ORDER = ["ON", "QC", "NS", "NB", "PE", "NL", "BC", "AB", "SK", "MB", "YT", "NT", "NU"];
+export const LAST_VERIFIED = "2026-05-15"; // Update on every rate verification
+```
+
+**Rules:**
+- Every province object must contain: `name, type, rate, fraction, editorialSummary, exemptionsNotice, officialCraLink, active`
+- Quebec must also have separate `gst` and `qst` fields
+- `LAST_VERIFIED` must be updated whenever any provincial data changes
+- Never delete a province object — use `active: false` instead
+
+---
+
+## 7. UI Terminology — Enforced Everywhere
+
+| Context | Correct Label | Never Use |
+|---|---|---|
+| Input field | `Total Paid (Gross Transaction Amount)` | "Price", "Receipt Total" |
+| Net output | `Base Cost (Net Consideration)` | "Pre-Tax Price" |
+| Tax output | `Tax Removed (Input Tax Credit / ITC Eligible)` | "Tax Back", "Refund" |
+| Province selector | `Target Jurisdiction` | just "Province" |
+| Auditor toggle | `Activate Auditor Precision View Mode (4 Decimals)` | — |
+| **Never use the word "refund" anywhere in the UI** | | |
+
+---
+
+## 8. Localization Rules
+
+- Quebec (QC) selected → all currency outputs use `toLocaleString('fr-CA')` with trailing `$` symbol → `100,00 $`
+- All other provinces → `toLocaleString('en-CA')` with leading `$` → `$100.00`
+- Clipboard copy function must strip all formatting symbols — write only raw numeric string (e.g. `1250.50`)
+- Negative values display in accounting parentheses: `($254.10)` not `-$254.10`
+
+---
+
+## 9. Legal & Disclaimer Rules
+
+The following disclaimer **must appear adjacent to every calculate button** on every page with a calculator:
+
+> *"Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing."*
+
+- Never label output as "tax advice"
+- Never use "guaranteed accurate"
+- Disclaimer placement: directly below calculate button, nowhere else
+
+---
+
+## 10. Accessibility Rules
+
+- All inputs must have visible `<label>` elements with matching `for` and `id` attributes
+- `aria-invalid` set on inputs with errors
+- Error messages in `<span>` with `id` referenced by `aria-describedby`
+- Focus rings never removed — only restyled
+- WCAG AA contrast minimum in both dark and light modes
+- Results section must include `aria-live="polite"` so screen readers announce updates
+- Toggle switches require `aria-checked` and `role="switch"`
+- All interactive elements must be keyboard navigable
+- Minimum touch target height: 44px
+- Color is never the only state indicator — always paired with text or iconography
+
+---
+
+## 11. Tooltip Rules
+
+- Pure CSS only using `data-tooltip` attribute and `::after` pseudo-element — no JS libraries
+- Visible on `:hover` and `:focus` states
+- Width: 220px max
+- Background: `#1e293b`, text: `#ffffff`
+- Trigger uses `cursor: help`
+
+### Tooltip Copy (exact wording)
+- **Total Paid:** "The complete monetary value from your receipt or bank statement, inclusive of all combined sales taxes."
+- **Base Cost:** "The absolute pre-tax cost of the goods or services. This is the value logged into corporate expense accounts before consumption taxes are applied."
+- **Tax Removed:** "The isolated consumption tax extracted from your transaction. For CRA-registered entities, this amount is logged as an Input Tax Credit (ITC) to reduce net tax liabilities."
+- **Quebec QST:** "Since January 1, 2013, QST is calculated directly on the net consideration base at 9.975% — it does not compound on top of GST."
+
+---
+
+## 12. CSS & Print Rules
+
+- Print media queries **must** be in `src/css/style.css` — never a separate file (CSP conflict)
+- `@media print` must hide: `header, footer, aside, button, .help-icon, select, input, .cookie-banner`
+- `@media print` must show: `.print-only-ledger-header`
+- Print font: system sans-serif stack — **never Courier New**
+- Print page: `letter portrait`, margins `0.6in 0.8in`
+- All print text forced to `#000000` on `#ffffff`
+- Print logo: swap `logo.svg` → `logo-print.svg` via `@media print`
+
+---
+
+## 13. SEO & Schema Rules
+
+- Every HTML page must include a `FinancialProduct` JSON-LD schema in `<head>`
+- `index.html` must also include a `FAQPage` JSON-LD schema
+- Every page must have a `<link rel="canonical">` tag
+- `<html>` must have `lang="en-CA"` on English pages, `lang="fr-CA"` on Quebec sub-pages
+- Meta description must be present and unique on every page
+- Footer links to public GitHub repo for E-E-A-T authority
+
+---
+
+## 14. Testing
+
+**Framework:** Vitest (unit), Playwright (E2E)
+
+```bash
+npx vitest run          # unit tests
+npx playwright test     # E2E + link checker
+```
+
+- `calculateReverseTax()` must be exported from `app.js` for unit testing
+- No code change is complete until all 4 mandatory test cases pass
+- Playwright link checker pings all outbound `href^="http"` anchors and fails on non-200
+
+---
+
+## 15. GitHub Actions Cron
+
+- Runs daily at `04:00 UTC`
+- Runs Vitest and Playwright test suites only — **does not scrape external websites**
+- All action references pinned to full SHA hashes — never `@v4` floating tags
+- `GITHUB_TOKEN` permissions scoped to `contents: read` only
+- Discord webhook URL stored as GitHub secret `DISCORD_TAX_ALERTS_WEBHOOK` — never hardcoded
+- Use `npm ci` in all automated environments — never `npm install`
+
+---
+
+## 16. Cloudflare & Deployment Rules
+
+- Build config: Static HTML / Vanilla JS — build command field **left empty**
+- Cloudflare Bot Fight Mode must be enabled
+- Cloudflare WAF free tier rules must be enabled
+- CSP headers in `public/_headers` — single source of truth
+- AdSense domain `googlesyndication.com` added to CSP **only when AdSense is actively used**
+
+---
+
+## 17. Competitor Landscape
+
+| Competitor | Weakness to Exploit |
+|---|---|
+| ReverseSalesTaxCalculator.net | No clipboard copy, no French-CA format, no auditor mode, ad-cluttered mobile |
+| Calcul Conversion | Heavy ad clutter, slow load, outdated monetization model |
+| iBill.ca | Forces subscription funnel, not a pure utility |
+| Canada.ca | Institutional authority but poor UX |
+
+**Our edge:** Zero ads at launch, copy buttons, French-CA formatting for Quebec, Auditor Mode 4-decimal toggle, open-source trust signal, GPL-3.0 license.
+
+---
+
+## 18. Monetization Strategy
+
+### Phase 1 (MVP launch) — No ads
+- Affiliate marketing only
+- Wave Accounting affiliate (Impact.com) — apply 1–3 weeks post-launch
+- FreshBooks (ShareASale) — apply 30 days after Wave
+- QuickBooks Canada (CJ Affiliate) — apply after 3 months traffic
+- Affiliate link placement: text link below ITC output results panel — never a banner
+
+### Phase 2 (Month 3–6, after provincial sub-pages exist)
+- Apply to Google AdSense only after sufficient content volume exists
+- Use manually placed static ad units in fixed positions — **never Auto Ads**
+- If AdSense added: geofence CMP consent banner to Quebec visitors only via Cloudflare Workers
+- Gate only AdSense behind consent — not the calculator itself
+
+### Phase 3 (Month 6–12, traffic >10K/month)
+- Evaluate Ezoic or Mediavine header bidding
+
+**Realistic first revenue: 8–14 weeks post-launch (affiliate)**  
+**Realistic SEO traction: 12–24 months to meaningful organic traffic**
+
+---
+
+## 19. Privacy & Legal
+
+- Plausible Analytics: cookieless — no consent banner required
+- Quebec Law 25: triggered the moment AdSense loads behavioral cookies — requires opt-in CMP
+- PIPEDA compliance language on privacy page covers all Canadian users
+- Never mix user financial input data with any analytics payload
+- IP anonymization if Google Analytics ever used
+
+---
+
+## 20. Planned Features by Stage
+
+### Currently Built (Stage 1 MVP)
+- [x] Ontario HST (13%) calculation
+- [x] Quebec GST+QST (5% + 9.975%) calculation
+- [x] Integer-scaled math engine
+- [x] All 13 provinces in dropdown (Ontario + Quebec active, rest greyed out "Coming Soon")
+- [x] Dark/light mode toggle with `localStorage` persistence
+- [x] Auditor Mode 4-decimal toggle
+- [x] Copy buttons (pill shape, 1.2s flash)
+- [x] French-CA formatting for Quebec
+- [x] `calculateReverseTax()` exported for testing
+- [x] 4 mandatory Vitest tests passing
+- [x] Cloudflare Pages deployment live
+- [x] taxbackwards.ca custom domain live
+- [x] SVGs committed to `public/images/`
+- [x] `design.mdc` in `.cursor/rules/`
+
+### Stage 2 (Weeks 3–8)
+- [ ] `index.html` + `style.css` built (next immediate task)
+- [ ] `/provinces/ontario/` informational sub-page
+- [ ] `/provinces/quebec/` sub-page (French context)
+- [ ] Dynamic DOM injection from `taxRates.js` for sub-page text
+- [ ] FAQPage JSON-LD schema
+- [ ] CRA external reference link panel below results
+- [ ] CSS print media query (executive ledger layout)
+- [ ] One-click clipboard copy with try/catch fallback
+- [ ] Wave and FreshBooks affiliate applications
+- [ ] GitHub Actions cron with Vitest + Playwright
+- [ ] Plausible Analytics tag
+
+### Stage 3 (Month 3–6)
+- [ ] BC, Alberta, Nova Scotia added
+- [ ] `/rate-history/` historical rate pages
+- [ ] Status Card / First Nations Section 87 exemption toggle
+- [ ] `/status-card-exemptions/` sub-page
+- [ ] Apportionment Percentage Slider (freelancer partial expense claiming)
+- [ ] URL parameter sanitization (before shareable URLs)
+- [ ] Geofenced CMP for Quebec if AdSense added
+- [ ] QuickBooks Canada affiliate application
+
+### Stage 4 (Month 6–12)
+- [ ] Remaining provinces and territories
+- [ ] Receipt Stack batch processor with CSV export
+- [ ] ITC Apportionment Slider
+- [ ] Historical rate sub-pages for prior fiscal years
+- [ ] Ezoic/Mediavine evaluation at >10K monthly page views
+
+---
+
+## 21. Maintenance Calendar
+
+### Monthly (~30 min)
+- Check affiliate dashboards for commissions and link integrity
+- Review analytics for traffic trends and anomalies
+- Verify Cloudflare dashboard shows no security alerts
+
+### Quarterly (~2–3 hrs)
+- Run `npm audit` and apply fixes
+- Run `npx playwright test` — verify all outbound links return 200
+- Manually verify key provincial tax rates against canada.ca
+- Update `LAST_VERIFIED` in `taxRates.js`
+- Rotate Discord webhook if applicable
+- Check Cloudflare security settings
+
+### Annually (~4–6 hrs)
+- Full review of all provincial sub-page content
+- Review FAQPage JSON-LD schema for accuracy
+- Domain renewal at Hover (set 30-day reminder)
+- Review affiliate relationships
+- Review CSP headers for any new third-party scripts
+- Full cross-browser and cross-device testing pass
+
+### As-Needed (event-triggered)
+| Trigger | Action | Time |
+|---|---|---|
+| Federal/provincial budget announces tax change | Update `taxRates.js`, run tests, push | 15–30 min |
+| CRA website breaks a link | Find new URL, update, run tests | 10–15 min |
+| Google Search Console flags structured data error | Fix JSON-LD schema | 20–30 min |
+| npm audit reports high severity | Apply fix, run tests, deploy | 15–30 min |
+
+**Rate change early warning system:** Free Google Alert for `"GST HST rate change"` — covers both federal and provincial levels.
+
+---
+
+## 22. What Cursor Must Never Do
+
+- Never use `innerHTML` — always `textContent`
+- Never hardcode a hex colour outside `:root` variable definitions in `style.css`
+- Never use a framework or external CSS library
+- Never use `<hr>` for dividers
+- Never remove focus rings
+- Never use the word "refund" in any visible text
+- Never place disclaimer text anywhere except directly below the calculate button
+- Never create placeholder sub-pages with thin or lorem ipsum content
+- Never suggest npm packages for frontend features
+- Never use floating GitHub Actions version tags like `@v4` — always SHA hashes
+
+---
+
+## 23. Every New File Header
+
+Every new JS and CSS file must begin with:
+```js
+// © 2026 TaxBackwards.ca. All rights reserved.
+```
+
+---
+
+## 24. Every HTML Page Footer
+
+```html
+<footer>
+  <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+</footer>
+```
+
+---
+
+## 25. Immediate Next Steps (in order)
+
+1. **Write Cursor prompt for `index.html` + `style.css`** — together in one prompt, referencing both `project.mdc` and `design.mdc`
+2. **Verify locally** in browser before pushing
+3. **Run `npx vitest run`** — confirm all 4 tests still pass
+4. **Push to main** — Cloudflare auto-deploys
+5. **Check securityheaders.com** with `taxbackwards.ca`
+6. **Enable Bot Fight Mode** — Cloudflare → Security → Settings
+7. **Set up Google Alert** for `"GST HST rate change"`
+8. **Build `/provinces/ontario/` and `/provinces/quebec/`** sub-pages
+9. **Apply to Wave affiliate program** — 1–3 weeks after launch
