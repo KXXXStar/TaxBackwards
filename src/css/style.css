@@ -198,9 +198,9 @@ main {
 
 .logo-screen {
   display: block;
-  height: 56px;
+  height: 48px;
   width: auto;
-  max-width: 200px;
+  max-width: 240px;
 }
 
 .logo-print {
