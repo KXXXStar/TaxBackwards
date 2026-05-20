@@ -1,0 +1,132 @@
+# TaxBackwards.ca — Design Rules
+
+## Colour Tokens
+
+All colours are defined as CSS custom properties. Never hardcode a hex value 
+outside of `:root` / `[data-theme="light"]` definitions in `style.css`.
+
+### Dark mode (default — `:root`)
+- `--page-bg: #162640`
+- `--card-bg: #1e3352`
+- `--accent: #3b82f6`
+- `--accent-hover: #2563eb`
+- `--success: #10b981`
+- `--border: #2e4a6a`
+- `--text-primary: #f1f5f9`
+- `--text-secondary: #8eaabf`
+- `--text-muted: #5d7d96`
+
+### Light mode — `[data-theme="light"]`
+- `--page-bg: #e8edf5`
+- `--card-bg: #ffffff`
+- `--accent: #2563eb`
+- `--accent-hover: #1d4ed8`
+- `--success: #059669`
+- `--border: #cbd5e1`
+- `--text-primary: #0f172a`
+- `--text-secondary: #475569`
+- `--text-muted: #94a3b8`
+
+Logo red `#CC2936` is hardcoded only inside SVG files. Never use it in CSS.
+
+## Typography
+
+- Font: Inter, loaded from Google Fonts with SRI hash
+- Fallback: `-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif`
+- Brand title: 28px / 700 (22px on mobile)
+- Section labels: 11px / 500 / uppercase / `letter-spacing: 0.08em`
+- Input values: 18px / 600
+- Output pre-tax value: 32px / 700 (24px on mobile)
+- Output tax values: 24px / 700
+- Body: 14px / 400
+- Helper/disclaimer: 11px / 400
+- Minimum font size: 11px — never go below this
+
+## Layout
+
+- Single centred column, `max-width: 480px`
+- Card: 32px padding, 16px border-radius, themed `box-shadow`
+- Mobile (< 480px): full width, 20px padding
+- Minimum 24px vertical gap between field groups
+- Results section separated from inputs with a CSS `border-bottom` divider — never `<hr>`
+- All touch targets minimum 44px height
+
+## Components
+
+**Inputs**
+- Padding: 14px top/bottom, 16px left/right
+- Border-radius: 8px
+- Focus ring: `0 0 0 3px rgba(37,99,235,0.15)`
+
+**Calculate button**
+- Full width, 48px height, 8px border-radius
+- Hover: `translateY(-1px)`, `transition: all 0.15s ease`
+
+**Copy buttons**
+- Pill shape: `border-radius: 20px`
+- Ghost style at rest; flash filled for 1.2s on click
+
+**Auditor toggle**
+- Custom CSS only — no native checkbox
+- Transition: `0.2s ease`
+- `aria-checked` and `role="switch"` required
+
+**Tooltips**
+- CSS only — no JavaScript
+- Arrow pointer, appear above trigger
+
+**Verified badge**
+- Pill shape, faint green background, green border and text
+
+**Province dropdown**
+- Custom arrow, no default browser styling
+- "Coming Soon" options: `disabled`, italic, muted colour
+
+## Theme Switching
+
+- `data-theme` attribute on `<html>` element; default value `"dark"`
+- All colour transitions: `0.3s ease`
+- `localStorage` key: `tb-theme`
+- Respect `prefers-color-scheme` on first visit
+- Inline script in `<head>` sets `data-theme` before first paint — no flash of wrong theme
+
+## Logo & Images
+
+- `logo.svg` in an `<img>` tag in the header — not inline SVG, not a CSS background
+- `logo-print.svg` swapped only via `@media print`
+- `favicon.svg` referenced in `<link rel="icon">` in `<head>`
+- All images live in `public/images/`
+- No raster images anywhere on the page
+
+## Accessibility
+
+- All inputs have visible `<label>` elements
+- `aria-invalid` set on inputs with errors
+- Error messages in `<span>` with `id` referenced by `aria-describedby`
+- Focus ring never removed — only restyled
+- WCAG AA contrast minimum in both modes
+- Toggle switches require `aria-checked` and `role="switch"`
+
+## Print Styles (`@media print`)
+
+- Hide: theme toggle, calculate button, copy buttons, auditor toggle
+- Swap `logo.svg` → `logo-print.svg`
+- Force white background, black text regardless of active theme
+- Results section always visible
+
+## Scrollbar
+
+- Width: 6px
+- Track: `var(--page-bg)`
+- Thumb: `#334155`
+- Thumb hover: `#475569`
+
+## What Cursor Must Never Do
+
+- Never use `innerHTML` — always `textContent`
+- Never hardcode a hex colour outside `:root` variable definitions
+- Never use a framework or external CSS library (no Tailwind, Bootstrap, etc.)
+- Never use `<hr>` for dividers
+- Never remove focus rings
+- Never use the word "refund" in any visible text
+- Never place disclaimer text anywhere except directly below the calculate button
