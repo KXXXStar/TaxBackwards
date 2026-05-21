@@ -125,6 +125,10 @@ main {
   padding: 0 16px 48px;
 }
 
+main.main--prose {
+  max-width: 720px;
+}
+
 .site-footer {
   max-width: 480px;
   margin: 0 auto;
@@ -183,6 +187,10 @@ main {
 
 [data-theme="light"] .card {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card--prose {
+  max-width: 720px;
 }
 
 @media (max-width: 479px) {
