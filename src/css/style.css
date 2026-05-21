@@ -114,7 +114,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 680px;
+  max-width: 480px;
   margin: 0 auto;
   padding: 28px 16px 12px;
 }
