@@ -1,7 +1,7 @@
-/* ù 2026 TaxBackwards.ca. All rights reserved. */
+/* ÔøΩ 2026 TaxBackwards.ca. All rights reserved. */
 
 /* =============================================================================
-   1. Design tokens ù dark mode default (:root)
+   1. Design tokens ÔøΩ dark mode default (:root)
    ============================================================================= */
 
 :root {
@@ -18,15 +18,15 @@
   --text-secondary: #8eaabf;
   --text-muted:     #5d7d96;
 
-  /* Semantic colours ù same across both themes */
+  /* Semantic colours ÔøΩ same across both themes */
   --error:          #ef4444;
   --on-accent:      #ffffff;
 
-  /* Tooltip ù fixed design token, does not theme-switch */
+  /* Tooltip ÔøΩ fixed design token, does not theme-switch */
   --tooltip-bg:            #1e293b;
   --tooltip-text:          #ffffff;
 
-  /* Scrollbar ù fixed design token */
+  /* Scrollbar ÔøΩ fixed design token */
   --scrollbar-thumb:       #334155;
   --scrollbar-thumb-hover: #475569;
 
@@ -107,7 +107,7 @@ body {
 }
 
 /* =============================================================================
-   6. Layout ù centred column, 480px max-width
+   6. Layout ÔøΩ centred column, 480px max-width
    ============================================================================= */
 
 .site-header {
@@ -149,7 +149,7 @@ main {
   color: var(--text-secondary);
 }
 
-/* Mobile ù full width, reduced padding */
+/* Mobile ÔøΩ full width, reduced padding */
 @media (max-width: 479px) {
   .site-header {
     padding-left: 20px;
@@ -198,9 +198,9 @@ main {
 
 .logo-screen {
   display: block;
-  height: 48px;
+  height: 120px;
   width: auto;
-  max-width: 240px;
+  max-width: 600px;
 }
 
 .logo-print {
@@ -248,7 +248,7 @@ main {
 [data-theme="light"] .theme-icon-light { display: inline; }
 
 /* =============================================================================
-   10. Field groups ù 24px minimum vertical gap
+   10. Field groups ÔøΩ 24px minimum vertical gap
    ============================================================================= */
 
 .field-group {
@@ -284,7 +284,7 @@ main {
 }
 
 /* =============================================================================
-   11. Province select ù custom arrow, no browser default styling
+   11. Province select ÔøΩ custom arrow, no browser default styling
    ============================================================================= */
 
 .select-wrapper {
@@ -387,7 +387,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   13. Auditor Mode toggle ù custom CSS switch, no native checkbox
+   13. Auditor Mode toggle ÔøΩ custom CSS switch, no native checkbox
    ============================================================================= */
 
 .auditor-group {
@@ -456,11 +456,11 @@ select option:disabled {
 }
 
 /* =============================================================================
-   14. Calculate button ù full width, 48px, translateY hover
+   14. Calculate button ÔøΩ full width, 48px, translateY hover
    ============================================================================= */
 
 /* =============================================================================
-   14b. Auditor warning ó hidden by default, shown via app.js
+   14b. Auditor warning ÔøΩ hidden by default, shown via app.js
    ============================================================================= */
 
 .auditor-warning {
@@ -508,7 +508,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   15. Disclaimer ù 11px, directly below calculate button
+   15. Disclaimer ÔøΩ 11px, directly below calculate button
    ============================================================================= */
 
 .disclaimer {
@@ -521,7 +521,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   16. Results divider ù CSS border-top, never <hr>
+   16. Results divider ÔøΩ CSS border-top, never <hr>
    ============================================================================= */
 
 .results-divider {
@@ -610,7 +610,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   18. Copy buttons ù pill shape, ghost at rest, filled flash on copy
+   18. Copy buttons ÔøΩ pill shape, ghost at rest, filled flash on copy
    ============================================================================= */
 
 .btn-copy {
@@ -650,7 +650,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   19. Verified badge ù pill, green
+   19. Verified badge ÔøΩ pill, green
    ============================================================================= */
 
 .verified-badge {
@@ -703,7 +703,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   21. Help icon ù tooltip trigger
+   21. Help icon ÔøΩ tooltip trigger
    ============================================================================= */
 
 .help-icon {
@@ -742,7 +742,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   22. Tooltips ù CSS only, data-tooltip attribute + ::before/::after
+   22. Tooltips ÔøΩ CSS only, data-tooltip attribute + ::before/::after
        Appear above trigger, arrow points down toward trigger.
    ============================================================================= */
 
@@ -818,7 +818,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   24. Print-only ledger header ù hidden on screen
+   24. Print-only ledger header ÔøΩ hidden on screen
    ============================================================================= */
 
 .print-only-ledger-header {
@@ -826,7 +826,7 @@ select option:disabled {
 }
 
 /* =============================================================================
-   25. Print styles ù all in this file (CSP: no separate stylesheet)
+   25. Print styles ÔøΩ all in this file (CSP: no separate stylesheet)
    ============================================================================= */
 
 @media print {
