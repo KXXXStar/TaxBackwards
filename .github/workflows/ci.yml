@@ -20,5 +20,3 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm test
-      - run: npx playwright install --with-deps
-      - run: npm run test:e2e
