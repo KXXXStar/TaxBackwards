@@ -145,6 +145,7 @@ function getTax2Label(provinceKey) {
  */
 export function populateProvinceSelector() {
   const select = document.getElementById("province-select");
+  if (!select) return;
   PROVINCE_ORDER.forEach(function (key) {
     const province = TAX_RATES[key];
     const option = document.createElement("option");

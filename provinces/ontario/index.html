@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ontario HST 13% — Reverse Sales Tax Guide | TaxBackwards.ca</title>
+  <meta name="description" content="Ontario charges 13% HST on most goods and services. Learn how to extract the net pre-tax amount and your Input Tax Credit from any gross total. Free calculator included.">
+  <link rel="canonical" href="https://taxbackwards.ca/provinces/ontario/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=2">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the HST rate in Ontario?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ontario's HST rate is 13%, combining the 5% federal GST and an 8% provincial component. It is administered by the Canada Revenue Agency."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate HST backwards from a total in Ontario?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide the gross total by 1.13 to get the net pre-tax amount. Multiply the net amount by 0.13 to get the HST portion. For example: $113.00 ÷ 1.13 = $100.00 net, $100.00 × 0.13 = $13.00 HST."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I claim Ontario HST as an Input Tax Credit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, if your business is registered for GST/HST with the CRA, the HST paid on eligible business expenses is recoverable as an Input Tax Credit (ITC). The ITC reduces your net tax remittance to the CRA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is exempt from HST in Ontario?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic groceries, prescription drugs, certain medical devices, most financial services, and insurance premiums are either zero-rated or exempt from HST in Ontario."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="prose">
+
+        <h1>Ontario HST: 13%</h1>
+
+        <p>Ontario's Harmonized Sales Tax is 13%, combining the 5% federal GST and an 8% provincial component into a single tax administered by the Canada Revenue Agency. For every $113.00 paid, $100.00 is the net consideration base and $13.00 is HST. Businesses registered for GST/HST can claim the $13.00 as an Input Tax Credit.</p>
+
+        <h2>How Ontario HST Reverse Calculation Works</h2>
+
+        <p>To extract the net pre-tax amount from a gross total, divide by 1.13. To isolate the HST portion, multiply the net amount by 0.13 — or simply subtract the net from the gross.</p>
+
+        <p>Worked example: $226.00 gross ÷ 1.13 = $200.00 net. $226.00 − $200.00 = $26.00 HST. The $26.00 is the ITC-eligible amount for a GST/HST-registered business.</p>
+
+        <h2>Common Ontario HST Amounts</h2>
+
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Gross Total</th>
+              <th scope="col">Net (Pre-Tax)</th>
+              <th scope="col">HST (13%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$11.30</td>
+              <td>$10.00</td>
+              <td>$1.30</td>
+            </tr>
+            <tr>
+              <td>$56.50</td>
+              <td>$50.00</td>
+              <td>$6.50</td>
+            </tr>
+            <tr>
+              <td>$113.00</td>
+              <td>$100.00</td>
+              <td>$13.00</td>
+            </tr>
+            <tr>
+              <td>$226.00</td>
+              <td>$200.00</td>
+              <td>$26.00</td>
+            </tr>
+            <tr>
+              <td>$565.00</td>
+              <td>$500.00</td>
+              <td>$65.00</td>
+            </tr>
+            <tr>
+              <td>$1,130.00</td>
+              <td>$1,000.00</td>
+              <td>$130.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>What Is an Input Tax Credit (ITC)?</h2>
+
+        <p>If your business is registered for GST/HST with the CRA, the HST you paid on eligible business expenses is recoverable as an Input Tax Credit. The ITC reduces your net tax remittance to the CRA. Use the extracted HST amount from this calculator as your ITC-eligible figure, and verify eligibility against CRA guidelines before filing.</p>
+
+        <h2>Ontario HST Exemptions</h2>
+
+        <p>Basic groceries, prescription drugs, certain medical devices, most financial services, and insurance premiums are either zero-rated or exempt from HST in Ontario. For a complete list, see the <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/list-taxable-supplies.html" rel="noopener noreferrer" target="_blank">CRA zero-rated and exempt supplies</a> page.</p>
+
+        <div class="cra-reference-panel">
+          <h3>Official CRA Resources</h3>
+          <ul>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
+          </ul>
+        </div>
+
+        <p class="back-link"><a href="/">&#8592; Calculate Ontario HST on TaxBackwards.ca</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>
