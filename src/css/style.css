@@ -114,7 +114,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 960px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 28px 16px 12px;
 }
@@ -198,9 +198,9 @@ main {
 
 .logo-screen {
   display: block;
-  height: 120px;
+  height: 160px;
   width: auto;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 .logo-print {
