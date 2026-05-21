@@ -1,4 +1,4 @@
-// ù 2026 TaxBackwards.ca. All rights reserved.
+// ? 2026 TaxBackwards.ca. All rights reserved.
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
@@ -17,7 +17,7 @@ let isAuditorMode = false;
 let lastResult = null;
 
 // ---------------------------------------------------------------------------
-// Calculation engine ù pure functions, no DOM access, fully unit-testable
+// Calculation engine ? pure functions, no DOM access, fully unit-testable
 // ---------------------------------------------------------------------------
 
 /**
@@ -40,7 +40,7 @@ export function calculateReverseTax(totalDollars, provinceKey) {
 
   if (province.type === "GST+QST") {
     // Quebec: both GST and QST are levied directly on the net consideration base.
-    // pretax = total / (1 + gst + qst), then each tax is pretax ù its own rate.
+    // pretax = total / (1 + gst + qst), then each tax is pretax ? its own rate.
     pretaxScaled = Math.round(totalScaled / (1 + province.gst + province.qst));
     tax1Scaled   = Math.round(pretaxScaled * province.gst);
     tax2Scaled   = Math.round(pretaxScaled * province.qst);
@@ -51,7 +51,7 @@ export function calculateReverseTax(totalDollars, provinceKey) {
     tax2Scaled   = Math.round(pretaxScaled * province.pst);
   } else {
     // HST provinces (ON, NB, NS, PE, NL) and GST-only jurisdictions (AB, NT, NU, YT):
-    // single combined rate ù tax derived by subtraction to preserve integer identity.
+    // single combined rate ? tax derived by subtraction to preserve integer identity.
     pretaxScaled = Math.round(totalScaled / (1 + province.rate));
     tax1Scaled   = totalScaled - pretaxScaled;
     tax2Scaled   = 0;
@@ -133,15 +133,15 @@ function getTax2Label(provinceKey) {
 }
 
 // ---------------------------------------------------------------------------
-// UI ù province selector
+// UI ? province selector
 // ---------------------------------------------------------------------------
 
 /**
  * Populate the <select id="province-select"> element from PROVINCE_ORDER.
  * Active provinces render as normal selectable options.
- * Inactive provinces render as disabled with "ù Coming Soon" suffix to
+ * Inactive provinces render as disabled with "? Coming Soon" suffix to
  * signal future availability without removing them from the list.
- * Uses createElement ù never innerHTML ù to prevent XSS.
+ * Uses createElement ? never innerHTML ? to prevent XSS.
  */
 export function populateProvinceSelector() {
   const select = document.getElementById("province-select");
@@ -161,12 +161,12 @@ export function populateProvinceSelector() {
 }
 
 // ---------------------------------------------------------------------------
-// UI ù results rendering
+// UI ? results rendering
 // ---------------------------------------------------------------------------
 
 /**
  * Write calculation results to the results section of the DOM.
- * Uses textContent only ù never innerHTML ù to prevent XSS.
+ * Uses textContent only ? never innerHTML ? to prevent XSS.
  * Hides the secondary tax row for single-rate provinces (e.g. Ontario HST).
  * Respects isAuditorMode for decimal precision.
  *
@@ -190,14 +190,16 @@ export function renderResults(result) {
     document.getElementById("result-tax2-label").textContent    = getTax2Label(provinceKey);
   } else {
     tax2Row.hidden = true;
+    document.getElementById("result-tax2").textContent       = "";
+    document.getElementById("result-tax2-label").textContent = "";
   }
 
-  // Total always displays at 2dp ù it is the user-entered gross amount.
+  // Total always displays at 2dp ? it is the user-entered gross amount.
   document.getElementById("result-total").textContent = formatCurrency(result.total, provinceKey, 2);
 }
 
 // ---------------------------------------------------------------------------
-// UI ù input error state
+// UI ? input error state
 // ---------------------------------------------------------------------------
 
 /**
@@ -233,7 +235,7 @@ function clearInputError(inputId) {
 }
 
 // ---------------------------------------------------------------------------
-// UI ù event handlers
+// UI ? event handlers
 // ---------------------------------------------------------------------------
 
 /**
@@ -277,6 +279,10 @@ export function handleClear() {
   document.getElementById("price-input").value = "";
   clearInputError("price-input");
   lastResult = null;
+  const tax2Row = document.getElementById("result-tax2-row");
+  if (tax2Row) {
+    tax2Row.hidden = true;
+  }
   const resultsSection = document.getElementById("results-section");
   if (resultsSection) {
     resultsSection.hidden = true;
@@ -349,7 +355,7 @@ function handleAuditorToggle() {
  * the clipboard. Falls back to document.execCommand for older browsers.
  * Flashes the copy button with class "copied" for 1.2 seconds.
  *
- * Clipboard copy must strip all formatting symbols ù only the raw decimal
+ * Clipboard copy must strip all formatting symbols ? only the raw decimal
  * string is written (e.g. "1250.50"), per localization rules.
  *
  * @param {Event} e  Click event from a .btn-copy button
@@ -408,7 +414,7 @@ function fallbackCopy(text, onSuccess) {
     document.execCommand("copy");
     onSuccess();
   } catch (_) {
-    // Silent failure ù copy is a convenience feature, not critical.
+    // Silent failure ? copy is a convenience feature, not critical.
   }
   document.body.removeChild(ta);
 }
@@ -456,7 +462,7 @@ export function init() {
     priceInput.addEventListener("keydown", handlePriceKeydown);
   }
 
-  // Copy buttons ù delegate to a single handler per button.
+  // Copy buttons ? delegate to a single handler per button.
   document.querySelectorAll(".btn-copy").forEach(function (btn) {
     btn.addEventListener("click", handleCopy);
   });
