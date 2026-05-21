@@ -193,6 +193,12 @@ main.main--prose {
   max-width: 720px;
 }
 
+/* Gap between stacked cards inside the same <main> */
+main > .card + .card,
+main > .card + section.card {
+  margin-top: 24px;
+}
+
 @media (max-width: 479px) {
   .card {
     border-radius: 0;
