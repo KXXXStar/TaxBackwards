@@ -97,7 +97,7 @@ export const TAX_RATES = {
     editorialSummary: "Alberta has no provincial sales tax. Only the 5% federal GST applies, making it the lowest-tax jurisdiction for most consumer purchases in Canada.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under federal GST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   SK: {
     name: "Saskatchewan",

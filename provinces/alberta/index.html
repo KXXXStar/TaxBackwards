@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alberta GST 5% — Reverse Sales Tax Guide | TaxBackwards.ca</title>
+  <meta name="description" content="Alberta has no provincial sales tax — only the 5% federal GST applies. Learn how to extract the net pre-tax amount and your Input Tax Credit from any Alberta gross total. Free calculator included.">
+  <link rel="canonical" href="https://taxbackwards.ca/provinces/alberta/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=3">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the sales tax rate in Alberta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Alberta has no provincial sales tax. Only the 5% federal Goods and Services Tax (GST) applies, making Alberta the lowest-tax province for consumer purchases in Canada. GST is administered by the Canada Revenue Agency."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate GST backwards from a total in Alberta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide the gross total by 1.05 to get the net pre-tax amount. Multiply the net by 0.05 to get the GST portion. For example: $105.00 ÷ 1.05 = $100.00 net, $100.00 × 0.05 = $5.00 GST."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I claim Alberta GST as an Input Tax Credit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If your business is registered for GST with the CRA, the GST paid on eligible business expenses is recoverable as an Input Tax Credit (ITC). The ITC reduces your net federal tax remittance to the CRA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is exempt from GST in Alberta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic groceries, prescription drugs, certain medical devices, most financial services, and insurance premiums are either zero-rated or exempt from GST across all Canadian provinces, including Alberta."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Alberta GST: 5%</h1>
+
+        <p>Need to calculate a reverse GST extraction? <a href="/">Use the TaxBackwards.ca calculator</a>.</p>
+
+        <p>Alberta is the only Canadian province with no provincial sales tax. The sole tax applied to most purchases is the 5% federal Goods and Services Tax (GST), administered by the Canada Revenue Agency. For every $105.00 paid in Alberta, $100.00 is the net consideration base and $5.00 is GST. Businesses registered for GST can claim the $5.00 as an Input Tax Credit.</p>
+
+        <h2>How Alberta GST Reverse Calculation Works</h2>
+
+        <p>To extract the net pre-tax amount from a gross total, divide by 1.05. To isolate the GST portion, multiply the net amount by 0.05 — or simply subtract the net from the gross.</p>
+
+        <p>Worked example 1: $105.00 gross ÷ 1.05 = $100.00 net. $105.00 − $100.00 = $5.00 GST. The $5.00 is the ITC-eligible amount for a GST-registered business.</p>
+
+        <p>Worked example 2: $210.00 gross ÷ 1.05 = $200.00 net. $210.00 − $200.00 = $10.00 GST.</p>
+
+        <h2>Common Alberta GST Amounts</h2>
+
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Gross Total</th>
+              <th scope="col">Net (Pre-Tax)</th>
+              <th scope="col">GST (5%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$10.50</td>
+              <td>$10.00</td>
+              <td>$0.50</td>
+            </tr>
+            <tr>
+              <td>$52.50</td>
+              <td>$50.00</td>
+              <td>$2.50</td>
+            </tr>
+            <tr>
+              <td>$105.00</td>
+              <td>$100.00</td>
+              <td>$5.00</td>
+            </tr>
+            <tr>
+              <td>$210.00</td>
+              <td>$200.00</td>
+              <td>$10.00</td>
+            </tr>
+            <tr>
+              <td>$525.00</td>
+              <td>$500.00</td>
+              <td>$25.00</td>
+            </tr>
+            <tr>
+              <td>$1,050.00</td>
+              <td>$1,000.00</td>
+              <td>$50.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>What Is an Input Tax Credit (ITC)?</h2>
+
+        <p>If your business is registered for GST with the CRA, the GST you paid on eligible business expenses is recoverable as an Input Tax Credit. The ITC reduces your net tax remittance to the CRA. Use the extracted GST amount from this calculator as your ITC-eligible figure, and verify eligibility against CRA guidelines before filing.</p>
+
+        <h2>Alberta GST Exemptions</h2>
+
+        <p>Basic groceries, prescription drugs, certain medical devices, most financial services, and insurance premiums are either zero-rated or exempt from GST in Alberta — the same federal exemption rules that apply across all provinces. For a complete list, see the <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/list-taxable-supplies.html" rel="noopener noreferrer" target="_blank">CRA zero-rated and exempt supplies</a> page.</p>
+
+        <div class="cra-reference-panel">
+          <h3>Official CRA Resources</h3>
+          <ul>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
+          </ul>
+        </div>
+
+        <p>Return to the <a href="/">Canadian reverse sales tax calculator</a>.</p>
+
+        <p class="back-link"><a href="/">&#8592; Calculate Alberta GST on TaxBackwards.ca</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>
