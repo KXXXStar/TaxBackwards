@@ -216,7 +216,7 @@ main > .card + section.card {
 
 .logo-screen {
   display: block;
-  height: 72px;
+  height: 120px;
   width: auto;
   max-width: 320px;
 }
