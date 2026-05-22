@@ -158,7 +158,7 @@ main.main--prose {
 }
 
 /* Mobile � full width, reduced padding */
-@media (max-width: 479px) {
+@media (max-width: 719px) {
   .site-header {
     max-width: 100%;
     padding-left: 20px;
@@ -200,7 +200,7 @@ main.main--prose {
   max-width: 720px;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 719px) {
   .card--prose {
     max-width: 100%;
   }
@@ -212,7 +212,7 @@ main > .card + section.card {
   margin-top: 24px;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 719px) {
   .card {
     max-width: 100%;
     border-radius: 0;
@@ -632,7 +632,7 @@ select option:disabled {
 }
 
 /* Mobile: scale down the large pretax figure */
-@media (max-width: 479px) {
+@media (max-width: 719px) {
   .result-pretax { font-size: 24px; }
   .result-tax    { font-size: 20px; }
 }
@@ -1020,7 +1020,7 @@ select option:disabled {
 }
 
 /* Mobile: scale down h1 */
-@media (max-width: 479px) {
+@media (max-width: 719px) {
   .prose h1 { font-size: 22px; }
   .prose h2 { font-size: 16px; }
 }
