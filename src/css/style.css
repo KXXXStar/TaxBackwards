@@ -118,13 +118,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 480px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 28px 32px 12px;
 }
 
 main {
-  max-width: 480px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 16px 48px;
 }
@@ -134,7 +134,7 @@ main.main--prose {
 }
 
 .site-footer {
-  max-width: 480px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 16px 16px 40px;
   font-size: 11px;
