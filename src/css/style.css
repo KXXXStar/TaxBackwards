@@ -200,6 +200,12 @@ main.main--prose {
   max-width: 720px;
 }
 
+@media (max-width: 479px) {
+  .card--prose {
+    max-width: 100%;
+  }
+}
+
 /* Gap between stacked cards inside the same <main> */
 main > .card + .card,
 main > .card + section.card {
