@@ -160,16 +160,19 @@ main.main--prose {
 /* Mobile � full width, reduced padding */
 @media (max-width: 479px) {
   .site-header {
+    max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
   }
 
   main {
+    max-width: 100%;
     padding-left: 0;
     padding-right: 0;
   }
 
   .site-footer {
+    max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
   }
