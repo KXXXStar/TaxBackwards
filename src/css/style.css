@@ -208,6 +208,7 @@ main > .card + section.card {
 
 @media (max-width: 479px) {
   .card {
+    max-width: 100%;
     border-radius: 0;
     padding: 20px;
   }
