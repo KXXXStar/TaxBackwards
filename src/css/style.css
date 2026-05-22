@@ -126,7 +126,7 @@ body {
 main {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 32px 48px;
+  padding: 0 16px 48px;
 }
 
 main.main--prose {
@@ -216,9 +216,9 @@ main > .card + section.card {
 
 .logo-screen {
   display: block;
-  height: 48px;
+  height: 72px;
   width: auto;
-  max-width: 280px;
+  max-width: 320px;
 }
 
 .logo-print {
