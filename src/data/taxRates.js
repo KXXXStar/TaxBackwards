@@ -87,7 +87,7 @@ export const TAX_RATES = {
     editorialSummary: "British Columbia applies the 5% federal GST alongside a 7% Provincial Sales Tax (PST). Both taxes apply to the pre-tax base.",
     exemptionsNotice: "Basic groceries and prescription drugs are generally exempt from PST. Consult the BC government website for the full exemption schedule.",
     officialCraLink: "https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst",
-    active: false
+    active: true
   },
   AB: {
     name: "Alberta",
