@@ -85,6 +85,7 @@ body {
   background-color: var(--page-bg);
   color: var(--text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
   transition:
     background-color var(--transition-theme),
     color var(--transition-theme);
