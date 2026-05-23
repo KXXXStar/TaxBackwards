@@ -1,6 +1,6 @@
 # TaxBackwards.ca — Master Project Reference
 > Single source of truth for Claude and Cursor. Read this at the start of every session.
-> Last updated: May 2026
+> Last updated: May 23, 2026
 
 ---
 
@@ -63,8 +63,11 @@ taxbackwards.ca/
 ├── privacy/
 │   └── index.html              ← privacy policy page
 ├── provinces/
-│   ├── ontario/index.html      ← Stage 2
-│   └── quebec/index.html       ← Stage 2
+│   ├── ontario/index.html
+│   ├── quebec/index.html
+│   ├── alberta/index.html
+│   ├── bc/index.html
+│   └── nova-scotia/index.html
 ├── package.json
 ├── LICENSE
 └── verify-rates.js             ← rate validation script
@@ -131,6 +134,18 @@ export const TAX_RATES = {
     exemptionsNotice: "...",
     officialCraLink: "https://revenuquebec.ca/...",
     active: true
+  },
+  BC: {
+    name: "British Columbia",
+    type: "GST+PST",
+    rate: 0.12,
+    gst: 0.05,
+    pst: 0.07,
+    fraction: "12/112",
+    editorialSummary: "...",
+    exemptionsNotice: "...",
+    officialCraLink: "https://www2.gov.bc.ca/...",
+    active: true
   }
   // All 13 provinces present; inactive provinces have active: false
 };
@@ -141,7 +156,8 @@ export const LAST_VERIFIED = "2026-05-15"; // Update on every rate verification
 
 **Rules:**
 - Every province object must contain: `name, type, rate, fraction, editorialSummary, exemptionsNotice, officialCraLink, active`
-- Quebec must also have separate `gst` and `qst` fields
+- Quebec (`GST+QST` type) must also have separate `gst` and `qst` fields
+- GST+PST provinces (BC, SK, MB) must also have separate `gst` and `pst` fields — same pattern as GST+QST
 - `LAST_VERIFIED` must be updated whenever any provincial data changes
 - Never delete a province object — use `active: false` instead
 
@@ -322,6 +338,9 @@ npx playwright test     # E2E + link checker
 ### Currently Built (Stage 1 MVP)
 - [x] Ontario HST (13%) calculation
 - [x] Quebec GST+QST (5% + 9.975%) calculation
+- [x] Alberta GST (5%) calculation
+- [x] BC GST+PST (5% + 7%) calculation
+- [x] Nova Scotia HST (15%) calculation
 - [x] Integer-scaled math engine
 - [x] All 13 provinces in dropdown (Ontario + Quebec active, rest greyed out "Coming Soon")
 - [x] Dark/light mode toggle with `localStorage` persistence
@@ -334,22 +353,29 @@ npx playwright test     # E2E + link checker
 - [x] taxbackwards.ca custom domain live
 - [x] SVGs committed to `public/images/`
 - [x] `design.mdc` in `.cursor/rules/`
+- [x] Mobile horizontal scroll fixed (overflow-x hidden on html + body)
+- [x] Responsive table wrapper (.table-scroll) implemented
+- [x] Google Search Console verified, sitemap submitted
+- [x] Bing Webmaster Tools verified, sitemap submitted
+- [x] /provinces/alberta/ sub-page live
+- [x] /provinces/bc/ sub-page live
+- [x] /provinces/nova-scotia/ sub-page live
 
 ### Stage 2 (Weeks 3–8)
-- [ ] `index.html` + `style.css` built (next immediate task)
-- [ ] `/provinces/ontario/` informational sub-page
-- [ ] `/provinces/quebec/` sub-page (French context)
+- [x] `index.html` + `style.css` built
+- [x] `/provinces/ontario/` informational sub-page
+- [x] `/provinces/quebec/` sub-page
 - [ ] Dynamic DOM injection from `taxRates.js` for sub-page text
-- [ ] FAQPage JSON-LD schema
-- [ ] CRA external reference link panel below results
-- [ ] CSS print media query (executive ledger layout)
+- [x] FAQPage JSON-LD schema (all live pages)
+- [x] CRA external reference link panel
+- [x] CSS print media query (executive ledger layout)
 - [ ] One-click clipboard copy with try/catch fallback
 - [ ] Wave and FreshBooks affiliate applications
 - [ ] GitHub Actions cron with Vitest + Playwright
 - [ ] Plausible Analytics tag
 
 ### Stage 3 (Month 3–6)
-- [ ] BC, Alberta, Nova Scotia added
+- [x] BC, Alberta, Nova Scotia added
 - [ ] `/rate-history/` historical rate pages
 - [ ] Status Card / First Nations Section 87 exemption toggle
 - [ ] `/status-card-exemptions/` sub-page
@@ -438,12 +464,13 @@ Every new JS and CSS file must begin with:
 
 ## 25. Immediate Next Steps (in order)
 
-1. **Write Cursor prompt for `index.html` + `style.css`** — together in one prompt, referencing both `project.mdc` and `design.mdc`
-2. **Verify locally** in browser before pushing
-3. **Run `npx vitest run`** — confirm all 4 tests still pass
-4. **Push to main** — Cloudflare auto-deploys
-5. **Check securityheaders.com** with `taxbackwards.ca`
-6. **Enable Bot Fight Mode** — Cloudflare → Security → Settings
-7. **Set up Google Alert** for `"GST HST rate change"`
-8. **Build `/provinces/ontario/` and `/provinces/quebec/`** sub-pages
-9. **Apply to Wave affiliate program** — 1–3 weeks after launch
+1. New Brunswick province page (HST 15% — same archetype as Nova Scotia)
+2. PEI province page (HST 15%)
+3. Newfoundland and Labrador province page (HST 15%)
+4. Saskatchewan province page (GST+PST 11% — same archetype as BC)
+5. Manitoba province page (GST+PST 12%)
+6. Apply to Wave affiliate program — trust sections and production deployment requirements now satisfied
+7. URL parameter sanitization (before shareable URLs feature)
+8. Quarterly npm audit GitHub Action setup
+9. Historical tax rate pages (/rate-history/)
+10. Homepage province guide index section with card layout

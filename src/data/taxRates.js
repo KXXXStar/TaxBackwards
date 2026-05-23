@@ -4,7 +4,7 @@
 "use strict";
 
 // Update LAST_VERIFIED whenever any provincial rate is changed and verified.
-export const LAST_VERIFIED = "2026-05-19";
+export const LAST_VERIFIED = "2026-05-23";
 
 // Single source of truth for all Canadian provincial and territorial tax rates.
 // Every province object must contain:
