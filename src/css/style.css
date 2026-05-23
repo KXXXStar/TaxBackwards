@@ -178,11 +178,6 @@ main.main--prose {
     padding-left: 20px;
     padding-right: 20px;
   }
-
-  .logo-screen {
-    height: auto;
-    max-width: 55vw; /* ~226px on a 411px screen — fits within header, preserves legibility */
-  }
 }
 
 /* =============================================================================
@@ -240,6 +235,13 @@ main > .card + section.card {
 
 .logo-print {
   display: none;
+}
+
+@media (max-width: 719px) {
+  .logo-screen {
+    height: auto;
+    max-width: 55vw; /* ~226px on a 411px screen — fits within header, preserves legibility */
+  }
 }
 
 /* =============================================================================
