@@ -45,7 +45,7 @@ export const TAX_RATES = {
     editorialSummary: "Nova Scotia collects a 15% Harmonized Sales Tax (HST), a single combined federal and provincial tax administered by the Canada Revenue Agency.",
     exemptionsNotice: "Basic groceries, prescription drugs, and children's clothing are among the items exempt from HST in Nova Scotia.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   NB: {
     name: "New Brunswick",
