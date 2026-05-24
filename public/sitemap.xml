@@ -37,4 +37,22 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://taxbackwards.ca/provinces/new-brunswick/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/provinces/prince-edward-island/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/provinces/newfoundland-labrador/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

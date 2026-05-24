@@ -1,6 +1,6 @@
 # TaxBackwards.ca — Master Project Reference
 > Single source of truth for Claude and Cursor. Read this at the start of every session.
-> Last updated: May 23, 2026
+> Last updated: May 24, 2026
 
 ---
 
@@ -67,7 +67,10 @@ taxbackwards.ca/
 │   ├── quebec/index.html
 │   ├── alberta/index.html
 │   ├── bc/index.html
-│   └── nova-scotia/index.html
+│   ├── nova-scotia/index.html
+│   ├── new-brunswick/index.html
+│   ├── prince-edward-island/index.html
+│   └── newfoundland-labrador/index.html
 ├── package.json
 ├── LICENSE
 └── verify-rates.js             ← rate validation script
@@ -360,6 +363,9 @@ npx playwright test     # E2E + link checker
 - [x] /provinces/alberta/ sub-page live
 - [x] /provinces/bc/ sub-page live
 - [x] /provinces/nova-scotia/ sub-page live
+- [x] /provinces/new-brunswick/ sub-page live
+- [x] /provinces/prince-edward-island/ sub-page live
+- [x] /provinces/newfoundland-labrador/ sub-page live
 
 ### Stage 2 (Weeks 3–8)
 - [x] `index.html` + `style.css` built
@@ -464,11 +470,8 @@ Every new JS and CSS file must begin with:
 
 ## 25. Immediate Next Steps (in order)
 
-1. New Brunswick province page (HST 15% — same archetype as Nova Scotia)
-2. PEI province page (HST 15%)
-3. Newfoundland and Labrador province page (HST 15%)
-4. Saskatchewan province page (GST+PST 11% — same archetype as BC)
-5. Manitoba province page (GST+PST 12%)
+1. Saskatchewan province page (GST+PST 11% — same archetype as BC)
+2. Manitoba province page (GST+PST 12%)
 6. Apply to Wave affiliate program — trust sections and production deployment requirements now satisfied
 7. URL parameter sanitization (before shareable URLs feature)
 8. Quarterly npm audit GitHub Action setup

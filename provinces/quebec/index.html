@@ -1,3 +1,4 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en-CA" data-theme="dark">
 <head>
@@ -26,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../src/css/style.css?v=5">
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
   {
@@ -68,6 +69,26 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Reverse GST+QST Calculator — Quebec",
+    "description": "Free reverse GST and QST calculator for Quebec. Extract the net pre-tax amount, 5% GST, and 9.975% QST from any gross transaction total at the 14.975% combined rate.",
+    "url": "https://taxbackwards.ca/provinces/quebec/",
+    "provider": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Quebec"
+    },
+    "feesAndCommissionsSpecification": "Free"
+  }
+  </script>
 </head>
 <body>
 
@@ -94,7 +115,7 @@
 
         <h1>Quebec GST + QST: 14.975%</h1>
 
-        <p>Need to calculate GST + QST from a gross total? <a href="/">Use the TaxBackwards.ca calculator</a>.</p>
+        <p>Need to separate GST and QST from a gross Quebec total? <a href="/">Use the TaxBackwards.ca reverse sales tax calculator</a>.</p>
 
         <p>Quebec applies two separate taxes to most purchases — the 5% federal Goods and Services Tax (GST) administered by the Canada Revenue Agency, and the 9.975% Quebec Sales Tax (QST) administered by Revenu Québec. Both taxes apply directly to the same net consideration base, for a combined effective rate of 14.975%. For every $114.975 paid, $100.00 is the net amount, $5.00 is GST, and $9.975 is QST.</p>
 
@@ -102,7 +123,9 @@
 
         <p>To extract the net pre-tax amount, divide the gross total by 1.14975. To isolate each tax, multiply the net by its rate: 0.05 for GST and 0.09975 for QST. Neither tax compounds on top of the other — both apply independently to the same net base.</p>
 
-        <p>Worked example: $229.95 gross ÷ 1.14975 = $200.00 net. GST: $200.00 × 0.05 = $10.00. QST: $200.00 × 0.09975 = $19.95. Total tax: $29.95.</p>
+        <p>Worked example 1: $114.98 gross ÷ 1.14975 = $100.00 net. GST: $100.00 × 0.05 = $5.00. QST: $100.00 × 0.09975 = $9.98. Total tax: $14.98.</p>
+
+        <p>Worked example 2: $229.95 gross ÷ 1.14975 = $200.00 net. GST: $200.00 × 0.05 = $10.00. QST: $200.00 × 0.09975 = $19.95. Total tax: $29.95.</p>
 
         <p>Note: since January 1, 2013, QST is no longer calculated on top of GST — it applies directly to the net consideration base at 9.975%.</p>
 
@@ -165,16 +188,29 @@
 
         <h2>Quebec Tax Exemptions</h2>
 
-        <p>Basic groceries, prescription drugs, and certain medical devices are generally exempt from both GST and QST. Some financial services carry partial exemptions. For the full schedule, see the <a href="https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/" rel="noopener noreferrer" target="_blank">Revenu Québec exemption schedule</a>.</p>
+        <ul>
+          <li>Basic groceries (most food intended for human consumption)</li>
+          <li>Prescription drugs and biologics</li>
+          <li>Certain medical devices and assistive technologies</li>
+          <li>Residential rent and related housing services</li>
+          <li>Most financial services (partial exemption)</li>
+        </ul>
 
         <h2>French-Canadian Number Formatting</h2>
 
         <p>In Quebec, monetary amounts are conventionally displayed with a comma as the decimal separator and a non-breaking space before the dollar sign — for example, 100,00&#x00A0;$. TaxBackwards.ca automatically applies this formatting when Quebec is selected as the target jurisdiction.</p>
 
+        <h2>Quebec and GST + QST: Background</h2>
+
+        <p>Quebec is the only province in Canada that did not adopt HST. When the federal Goods and Services Tax was introduced in 1991, most provinces eventually harmonized their provincial tax with the GST into a single HST return. Quebec chose a different path, retaining its own Quebec Sales Tax (QST) administered by Revenu Québec, separate from the Canada Revenue Agency. As a result, businesses operating in Quebec must register with two tax authorities — the CRA for the 5% GST, and Revenu Québec for the 9.975% QST — and file two separate consumption tax returns.</p>
+
+        <p>An important structural change took effect on January 1, 2013: QST is now calculated directly on the net consideration base at 9.975%, not on top of the GST-inclusive amount. Before 2013, there was a minor compounding effect because QST applied to the GST-included price. Under the current non-compounding structure, the combined effective rate is exactly 14.975%. GST recovery uses the Input Tax Credit (ITC) mechanism filed with the CRA; QST recovery uses the Input Tax Refund (ITR) mechanism filed with Revenu Québec — two distinct recovery systems that must be tracked separately.</p>
+
         <div class="cra-reference-panel">
           <h3>Official Tax Authority Resources</h3>
           <ul>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
             <li><a href="https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/" rel="noopener noreferrer" target="_blank">QST for businesses — Revenu Québec</a></li>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
             <li><a href="https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/itcs-and-itrs/" rel="noopener noreferrer" target="_blank">Input Tax Credits (ITCs) and Input Tax Refunds (ITRs) — Revenu Québec</a></li>

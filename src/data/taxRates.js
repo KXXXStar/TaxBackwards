@@ -55,7 +55,7 @@ export const TAX_RATES = {
     editorialSummary: "New Brunswick collects a 15% Harmonized Sales Tax (HST), a single combined federal and provincial tax administered by the Canada Revenue Agency.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated. Some financial services and insurance are also exempt.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   PE: {
     name: "Prince Edward Island",
@@ -65,7 +65,7 @@ export const TAX_RATES = {
     editorialSummary: "Prince Edward Island collects a 15% Harmonized Sales Tax (HST), a single combined federal and provincial tax administered by the Canada Revenue Agency.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under HST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   NL: {
     name: "Newfoundland and Labrador",
@@ -75,7 +75,7 @@ export const TAX_RATES = {
     editorialSummary: "Newfoundland and Labrador collects a 15% Harmonized Sales Tax (HST), a single combined federal and provincial tax administered by the Canada Revenue Agency.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under HST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   BC: {
     name: "British Columbia",

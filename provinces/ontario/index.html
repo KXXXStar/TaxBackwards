@@ -1,3 +1,4 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en-CA" data-theme="dark">
 <head>
@@ -26,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../src/css/style.css?v=5">
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
   {
@@ -68,6 +69,26 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Reverse HST Calculator — Ontario",
+    "description": "Free reverse HST calculator for Ontario. Extract the net pre-tax amount and Input Tax Credit from any gross transaction total at the 13% Ontario HST rate.",
+    "url": "https://taxbackwards.ca/provinces/ontario/",
+    "provider": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Ontario"
+    },
+    "feesAndCommissionsSpecification": "Free"
+  }
+  </script>
 </head>
 <body>
 
@@ -89,20 +110,22 @@
   </header>
 
   <main class="main--prose">
-      <div class="card card--prose">
+    <div class="card card--prose">
       <div class="prose">
 
         <h1>Ontario HST: 13%</h1>
 
-        <p>Need to calculate a reverse HST extraction? <a href="/">Use the TaxBackwards.ca calculator</a>.</p>
+        <p>Need to extract HST from a gross Ontario total? <a href="/">Use the TaxBackwards.ca reverse HST calculator</a>.</p>
 
         <p>Ontario's Harmonized Sales Tax is 13%, combining the 5% federal GST and an 8% provincial component into a single tax administered by the Canada Revenue Agency. For every $113.00 paid, $100.00 is the net consideration base and $13.00 is HST. Businesses registered for GST/HST can claim the $13.00 as an Input Tax Credit.</p>
 
         <h2>How Ontario HST Reverse Calculation Works</h2>
 
-        <p>To extract the net pre-tax amount from a gross total, divide by 1.13. To isolate the HST portion, multiply the net amount by 0.13 — or simply subtract the net from the gross.</p>
+        <p>To extract the net pre-tax amount from a gross Ontario total, divide by 1.13. To isolate the HST portion, multiply the net by 0.13 — or subtract the net from the gross.</p>
 
-        <p>Worked example: $226.00 gross ÷ 1.13 = $200.00 net. $226.00 − $200.00 = $26.00 HST. The $26.00 is the ITC-eligible amount for a GST/HST-registered business.</p>
+        <p>Worked example 1: $113.00 gross ÷ 1.13 = $100.00 net. $113.00 − $100.00 = $13.00 HST. The $13.00 is ITC-eligible for a CRA-registered business.</p>
+
+        <p>Worked example 2: $226.00 gross ÷ 1.13 = $200.00 net. $226.00 − $200.00 = $26.00 HST.</p>
 
         <h2>Common Ontario HST Amounts</h2>
 
@@ -156,12 +179,26 @@
 
         <h2>Ontario HST Exemptions</h2>
 
-        <p>Basic groceries, prescription drugs, certain medical devices, most financial services, and insurance premiums are either zero-rated or exempt from HST in Ontario. For a complete list, see the <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/list-taxable-supplies.html" rel="noopener noreferrer" target="_blank">CRA zero-rated and exempt supplies</a> page.</p>
+        <ul>
+          <li>Basic groceries (most food intended for human consumption)</li>
+          <li>Prescription drugs and biologics</li>
+          <li>Most medical devices and assistive technologies</li>
+          <li>Residential rent and related services</li>
+          <li>Most health and dental services</li>
+          <li>Most financial services and insurance premiums</li>
+        </ul>
+
+        <h2>Ontario and HST: Background</h2>
+
+        <p>Ontario adopted the Harmonized Sales Tax on July 1, 2010, replacing its 8% Retail Sales Tax (RST) with a unified 13% HST. The transition represented one of the largest provincial sales tax changes in Canadian history, affecting millions of consumers and businesses across Canada's most economically active province. Before HST, Ontario businesses navigated both the federal GST and the provincial RST simultaneously — two separate rates, two sets of exemptions, and two filing obligations.</p>
+
+        <p>Under HST, all Ontario sales tax is administered by the Canada Revenue Agency on a single combined return. There is no separate provincial tax authority for HST in Ontario. The full 13% is ITC-eligible for registered businesses — the provincial component carries no different recovery rules. Ontario has maintained the same 13% rate since adoption in 2010, and there are no Ontario-specific point-of-sale rebates on the provincial component for the general public.</p>
 
         <div class="cra-reference-panel">
           <h3>Official CRA Resources</h3>
           <ul>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
           </ul>
         </div>

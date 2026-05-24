@@ -1,3 +1,4 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en-CA" data-theme="dark">
 <head>
@@ -68,6 +69,26 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Reverse GST+PST Calculator — British Columbia",
+    "description": "Free reverse GST and PST calculator for British Columbia. Extract the net pre-tax amount, 5% GST, and 7% BC PST from any gross transaction total — and understand why BC PST is not an Input Tax Credit.",
+    "url": "https://taxbackwards.ca/provinces/bc/",
+    "provider": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "British Columbia"
+    },
+    "feesAndCommissionsSpecification": "Free"
+  }
+  </script>
 </head>
 <body>
 
@@ -94,7 +115,7 @@
 
         <h1>BC GST + PST: 12%</h1>
 
-        <p>Need to calculate reverse BC taxes from a gross total? <a href="/">Use the TaxBackwards.ca calculator</a>.</p>
+        <p>Need to separate GST and PST from a gross BC total? <a href="/">Use the TaxBackwards.ca reverse GST and PST calculator</a>.</p>
 
         <p>British Columbia applies two separate taxes on most purchases: the 5% federal Goods and Services Tax (GST) and the 7% BC Provincial Sales Tax (PST), for a combined rate of 12%. The taxes are administered by different authorities — GST by the Canada Revenue Agency, PST by the BC Ministry of Finance. The most important distinction for bookkeepers: <strong>PST is a consumer-level tax and is generally not recoverable as an Input Tax Credit.</strong></p>
 
@@ -180,12 +201,24 @@
 
         <h2>BC Tax Exemptions</h2>
 
-        <p>Basic groceries, prescription drugs, and certain medical devices are exempt from both GST and PST in BC. Some business inputs used directly in manufacturing or for resale may qualify for a PST exemption at point of purchase. For a complete list, see the <a href="https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst/exemptions" rel="noopener noreferrer" target="_blank">BC PST exemptions schedule</a>.</p>
+        <ul>
+          <li>Basic groceries (most food intended for human consumption)</li>
+          <li>Prescription drugs and biologics</li>
+          <li>Certain medical devices and assistive technologies</li>
+          <li>Some manufacturing inputs and qualifying resale inventory (PST exemption at point of purchase — requires a PST exemption certificate)</li>
+        </ul>
+
+        <h2>British Columbia and GST + PST: Background</h2>
+
+        <p>British Columbia was one of the early adopters of HST in Canada, implementing the Harmonized Sales Tax on July 1, 2010, alongside Ontario. The combined HST rate was 12%, replacing the separate GST and PST system. The transition was controversial: it altered the tax treatment of many consumer goods and services, and removed PST exemptions that had previously applied to certain business inputs. Within months of implementation, a citizen-initiated referendum organized under BC's Recall and Initiative Act gathered enough signatures to trigger a province-wide vote on reversing the change. In 2011, British Columbians voted to reject HST, making BC the only province in Canadian history to adopt and then formally repeal HST through a democratic referendum.</p>
+
+        <p>BC returned to the split GST + PST structure on April 1, 2013. Under the current system, the 5% federal GST is administered by the Canada Revenue Agency and is fully ITC-eligible for registered businesses. The 7% BC PST is administered by the BC Ministry of Finance and is generally not recoverable after purchase — it is a consumer-level tax, and there is no mechanism equivalent to an ITC for reclaiming PST on business inputs in the normal course of business. Businesses operating in BC must track both taxes separately: only the GST portion belongs on the ITC line of their CRA return; the PST portion is a real business expense.</p>
 
         <div class="cra-reference-panel">
           <h3>Official References</h3>
           <ul>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
             <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
             <li><a href="https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst" rel="noopener noreferrer" target="_blank">BC Provincial Sales Tax — BC Ministry of Finance</a></li>
             <li><a href="https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst/exemptions" rel="noopener noreferrer" target="_blank">BC PST Exemptions — BC Ministry of Finance</a></li>
