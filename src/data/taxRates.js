@@ -1,10 +1,10 @@
-// © 2026 TaxBackwards.ca. All rights reserved.
+// ù 2026 TaxBackwards.ca. All rights reserved.
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
 
 // Update LAST_VERIFIED whenever any provincial rate is changed and verified.
-export const LAST_VERIFIED = "2026-05-23";
+export const LAST_VERIFIED = "2026-05-24";
 
 // Single source of truth for all Canadian provincial and territorial tax rates.
 // Every province object must contain:
@@ -13,7 +13,7 @@ export const LAST_VERIFIED = "2026-05-23";
 // Quebec additionally carries separate gst and qst fields.
 // GST+PST provinces additionally carry separate gst and pst fields.
 // Never hardcode any tax rate outside this file.
-// Never delete a province object ó use active: false instead.
+// Never delete a province object ù use active: false instead.
 export const TAX_RATES = {
   ON: {
     name: "Ontario",
@@ -32,7 +32,7 @@ export const TAX_RATES = {
     gst: 0.05,
     qst: 0.09975,
     fraction: 14975 / 114975,
-    editorialSummary: "Quebec collects the 5% federal GST and the 9.975% Quebec Sales Tax (QST). Both taxes apply directly to the same net consideration base. QST is administered by Revenu QuÈbec, not the CRA.",
+    editorialSummary: "Quebec collects the 5% federal GST and the 9.975% Quebec Sales Tax (QST). Both taxes apply directly to the same net consideration base. QST is administered by Revenu Quùbec, not the CRA.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are generally exempt from both GST and QST. Some financial services carry partial exemptions.",
     officialCraLink: "https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/",
     active: true
@@ -40,9 +40,9 @@ export const TAX_RATES = {
   NS: {
     name: "Nova Scotia",
     type: "HST",
-    rate: 0.15,
-    fraction: 15 / 115,
-    editorialSummary: "Nova Scotia collects a 15% Harmonized Sales Tax (HST), a single combined federal and provincial tax administered by the Canada Revenue Agency.",
+    rate: 0.14,
+    fraction: 14 / 114,
+    editorialSummary: "Nova Scotia collects a 14% Harmonized Sales Tax (HST), reduced from 15% effective April 1, 2025. It is a single combined federal and provincial tax administered by the Canada Revenue Agency.",
     exemptionsNotice: "Basic groceries, prescription drugs, and children's clothing are among the items exempt from HST in Nova Scotia.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
     active: true

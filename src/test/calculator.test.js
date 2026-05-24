@@ -33,6 +33,15 @@ describe("calculateReverseTax — mandatory test cases", function () {
     expect(formatted).toBe("100,00\u00A0$");
   });
 
+  it("Nova Scotia $114.00 gross → $100.00 net, $14.00 HST", function () {
+    const result = calculateReverseTax(114.00, "NS");
+    expect(result.pretax).toBeCloseTo(100.00, 2);
+    expect(result.tax1).toBeCloseTo(14.00, 2);
+    expect(result.tax2).toBe(0);
+    expect(result.total).toBe(114.00);
+    expect(result.province).toBe("NS");
+  });
+
   it("Auditor Mode Ontario $100.00 gross → tax displays as '$11.5044' at 4 decimals", function () {
     const result = calculateReverseTax(100.00, "ON");
     // tax1 at 4dp precision: $100 × (13/113) = 11.504424...
