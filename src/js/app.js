@@ -122,19 +122,91 @@ function getTax1Label(provinceKey) {
  * Return the label for the secondary tax row, or an empty string for
  * single-rate provinces.
  *
+ * BC PST is a consumer-level tax and is NOT recoverable as an ITC —
+ * the label must reflect this accurately.
+ *
  * @param {string} provinceKey
  * @returns {string}
  */
 function getTax2Label(provinceKey) {
   const type = TAX_RATES[provinceKey].type;
   if (type === "GST+QST") return "QST Removed (ITC Eligible)";
-  if (type === "GST+PST") return "PST Removed (ITC Eligible)";
+  if (type === "GST+PST") return "PST Removed (NOT ITC Eligible)";
   return "";
 }
 
 // ---------------------------------------------------------------------------
 // UI ? province selector
 // ---------------------------------------------------------------------------
+
+/**
+ * Update the Tax 2 help button's tooltip text and aria-label to match the
+ * currently selected province type.
+ *
+ * QST (GST+QST): explains non-compounding structure since Jan 1, 2013.
+ * PST (GST+PST): explicitly states PST is NOT an ITC — avoids misleading
+ *   bookkeepers who might attempt to claim BC PST as a recoverable tax.
+ *
+ * Called on province change and on initial load.
+ *
+ * @param {string} provinceKey
+ */
+function updateTax2Tooltip(provinceKey) {
+  const tax2HelpBtn = document.querySelector("#result-tax2-row .help-icon");
+  if (!tax2HelpBtn) return;
+
+  const type = TAX_RATES[provinceKey] && TAX_RATES[provinceKey].type;
+
+  if (type === "GST+PST") {
+    tax2HelpBtn.setAttribute(
+      "data-tooltip",
+      "BC PST is a consumer-level tax and is generally not recoverable as an Input Tax Credit. " +
+      "Unlike the GST portion, PST paid on business inputs cannot be claimed back from the " +
+      "BC Ministry of Finance — it is a real cost to the business, not a recoverable tax."
+    );
+    tax2HelpBtn.setAttribute("aria-label", "About PST");
+  } else {
+    tax2HelpBtn.setAttribute(
+      "data-tooltip",
+      "Since January 1, 2013, QST is calculated directly on the net consideration base " +
+      "at 9.975% — it does not compound on top of GST."
+    );
+    tax2HelpBtn.setAttribute("aria-label", "About QST");
+  }
+}
+
+/**
+ * Clear all result output fields and hide the results section.
+ * Resets lastResult to null so copy buttons are disabled.
+ * Does NOT clear the price input — users must be able to switch provinces
+ * and re-calculate the same gross amount without re-entering it.
+ */
+function clearResults() {
+  lastResult = null;
+
+  const fields = ["result-pretax", "result-tax1", "result-tax2", "result-total"];
+  fields.forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = "\u2014";
+  });
+
+  const tax2Row = document.getElementById("result-tax2-row");
+  if (tax2Row) tax2Row.hidden = true;
+
+  const resultsSection = document.getElementById("results-section");
+  if (resultsSection) resultsSection.hidden = true;
+}
+
+/**
+ * Handle province selector change events.
+ * Clears stale results immediately and updates the Tax 2 tooltip so it
+ * always reflects the newly selected province's tax structure.
+ */
+function handleProvinceChange() {
+  const provinceKey = document.getElementById("province-select").value;
+  clearResults();
+  updateTax2Tooltip(provinceKey);
+}
 
 /**
  * Populate the <select id="province-select"> element from PROVINCE_ORDER.
@@ -429,6 +501,14 @@ function fallbackCopy(text, onSuccess) {
  */
 export function init() {
   populateProvinceSelector();
+
+  // Sync the Tax 2 tooltip to the province that is selected on load,
+  // then register the change handler for all subsequent selections.
+  const provinceSelect = document.getElementById("province-select");
+  if (provinceSelect) {
+    updateTax2Tooltip(provinceSelect.value);
+    provinceSelect.addEventListener("change", handleProvinceChange);
+  }
 
   const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
