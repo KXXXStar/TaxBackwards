@@ -51,6 +51,15 @@ describe("calculateReverseTax — mandatory test cases", function () {
     expect(result.province).toBe("SK");
   });
 
+  it("Manitoba $112.00 gross → $100.00 net, $5.00 GST (ITC eligible), $7.00 RST (not ITC eligible)", function () {
+    const result = calculateReverseTax(112.00, "MB");
+    expect(result.pretax).toBeCloseTo(100.00, 2);
+    expect(result.tax1).toBeCloseTo(5.00, 2);
+    expect(result.tax2).toBeCloseTo(7.00, 2);
+    expect(result.total).toBe(112.00);
+    expect(result.province).toBe("MB");
+  });
+
   it("Auditor Mode Ontario $100.00 gross → tax displays as '$11.5044' at 4 decimals", function () {
     const result = calculateReverseTax(100.00, "ON");
     // tax1 at 4dp precision: $100 × (13/113) = 11.504424...

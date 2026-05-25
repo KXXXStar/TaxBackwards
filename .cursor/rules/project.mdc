@@ -1,6 +1,6 @@
 # TaxBackwards.ca — Master Project Reference
 > Single source of truth for Claude and Cursor. Read this at the start of every session.
-> Last updated: May 25, 2026
+> Last updated: May 25, 2026 (MB added)
 
 ---
 
@@ -71,7 +71,8 @@ taxbackwards.ca/
 │   ├── new-brunswick/index.html
 │   ├── prince-edward-island/index.html
 │   ├── newfoundland-labrador/index.html
-│   └── saskatchewan/index.html
+│   ├── saskatchewan/index.html
+│   └── manitoba/index.html
 ├── package.json
 ├── LICENSE
 └── verify-rates.js             ← rate validation script
@@ -368,6 +369,7 @@ npx playwright test     # E2E + link checker
 - [x] /provinces/prince-edward-island/ sub-page live
 - [x] /provinces/newfoundland-labrador/ sub-page live
 - [x] /provinces/saskatchewan/ sub-page live
+- [x] /provinces/manitoba/ sub-page live
 
 ### Stage 2 (Weeks 3–8)
 - [x] `index.html` + `style.css` built
@@ -472,7 +474,7 @@ Every new JS and CSS file must begin with:
 
 ## 25. Immediate Next Steps (in order)
 
-1. Manitoba province page (GST+PST 12%)
+1. Yukon / Northwest Territories / Nunavut province pages (GST-only, 5%)
 6. Apply to Wave affiliate program — trust sections and production deployment requirements now satisfied
 7. URL parameter sanitization (before shareable URLs feature)
 8. Quarterly npm audit GitHub Action setup

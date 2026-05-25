@@ -118,10 +118,10 @@ export const TAX_RATES = {
     gst: 0.05,
     pst: 0.07,
     fraction: 12 / 112,
-    editorialSummary: "Manitoba applies the 5% federal GST alongside a 7% Retail Sales Tax (RST), commonly referred to as PST. Both taxes apply to the pre-tax base.",
-    exemptionsNotice: "Basic groceries and prescription drugs are exempt from RST. Other exemptions apply for specific goods and services.",
+    editorialSummary: "Manitoba applies the 5% federal GST alongside a 7% Retail Sales Tax (RST). Both taxes apply independently to the pre-tax base. RST is administered by Manitoba Finance ? Taxation Division; businesses must register and file separately with the province.",
+    exemptionsNotice: "Basic groceries, prescription drugs, children's clothing and footwear, books, and residential energy (heating fuel and electricity) are exempt from RST. A full grocery store RST removal is planned for July 1, 2026 under the 2026?27 provincial budget. Consult Manitoba Finance for the full schedule.",
     officialCraLink: "https://www.gov.mb.ca/finance/taxation/taxes/retail.html",
-    active: false
+    active: true
   },
   YT: {
     name: "Yukon",
