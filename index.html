@@ -291,8 +291,6 @@
           <li>Print-friendly ledger layout</li>
         </ul>
 
-        <p>Learn more about <a href="/provinces/ontario/">Ontario HST calculations</a>, <a href="/provinces/quebec/">Quebec GST/QST calculations</a>, <a href="/provinces/alberta/">Alberta GST calculations</a>, <a href="/provinces/bc/">BC GST+PST calculations</a>, <a href="/provinces/nova-scotia/">Nova Scotia HST calculations</a>, <a href="/provinces/new-brunswick/">New Brunswick HST calculations</a>, <a href="/provinces/prince-edward-island/">PEI HST calculations</a>, <a href="/provinces/newfoundland-labrador/">Newfoundland and Labrador HST calculations</a>, <a href="/provinces/saskatchewan/">Saskatchewan GST+PST calculations</a>, and <a href="/provinces/manitoba/">Manitoba GST+RST calculations</a>.</p>
-
       </div>
     </section>
 
@@ -323,48 +321,79 @@
 
         <p>Detailed reverse sales tax guides are available for currently supported jurisdictions, covering formulas, worked examples, common amounts, and ITC eligibility rules.</p>
 
-        <ul>
-          <li>
-            <a href="/provinces/ontario/">Ontario HST — 13%</a>
-            — How to reverse-calculate Ontario's Harmonized Sales Tax and determine the ITC-eligible amount from any gross total.
-          </li>
-          <li>
-            <a href="/provinces/quebec/">Quebec GST + QST — 14.975%</a>
-            — How to extract both the federal GST (5%) and the provincial QST (9.975%) from a Quebec gross total, with notes on dual-authority reporting and QST rules.
-          </li>
-          <li>
-            <a href="/provinces/alberta/">Alberta GST — 5%</a>
-            — How to reverse-calculate the federal GST from an Alberta gross total. Alberta has no provincial sales tax, making it the simplest jurisdiction for ITC extraction.
-          </li>
-          <li>
-            <a href="/provinces/bc/">BC GST + PST — 12%</a>
-            — How to extract both the federal GST (5%) and the BC PST (7%) from a gross total, with a key note on why PST is not an Input Tax Credit.
-          </li>
-          <li>
-            <a href="/provinces/nova-scotia/">Nova Scotia HST — 14%</a>
-            — How to reverse-calculate Nova Scotia's 14% HST and determine the ITC-eligible amount, including notes on the children's clothing point-of-sale rebate.
-          </li>
-          <li>
-            <a href="/provinces/new-brunswick/">New Brunswick HST — 15%</a>
-            — How to reverse-calculate New Brunswick's 15% HST from any gross invoice total and determine the ITC-eligible amount for CRA-registered businesses.
-          </li>
-          <li>
-            <a href="/provinces/prince-edward-island/">Prince Edward Island HST — 15%</a>
-            — How to extract the net pre-tax amount and HST from a PEI gross total, with background on PEI's 2013 transition from PST to HST.
-          </li>
-          <li>
-            <a href="/provinces/newfoundland-labrador/">Newfoundland and Labrador HST — 15%</a>
-            — How to reverse-calculate Newfoundland and Labrador's 15% HST, with notes on NL's original 1997 HST adoption and sector-specific guidance.
-          </li>
-          <li>
-            <a href="/provinces/saskatchewan/">Saskatchewan GST + PST — 11%</a>
-            — How to extract both the federal GST (5%) and the Saskatchewan PST (6%) from a gross total, with notes on why SK PST is not an ITC and the province's separate PST registration requirement.
-          </li>
-          <li>
-            <a href="/provinces/manitoba/">Manitoba GST + RST — 12%</a>
-            — How to extract both the federal GST (5%) and the Manitoba RST (7%) from a gross total, with notes on why RST is not an ITC, the 2026 digital services expansion, and the planned July 2026 grocery exemption.
-          </li>
-        </ul>
+        <div class="province-card-grid">
+
+          <a href="/provinces/ontario/" class="province-card">
+            <span class="province-card__name">Ontario</span>
+            <span class="province-card__rate">13%</span>
+            <span class="province-card__type">HST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/quebec/" class="province-card">
+            <span class="province-card__name">Quebec</span>
+            <span class="province-card__rate">14.975%</span>
+            <span class="province-card__type">GST + QST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/bc/" class="province-card">
+            <span class="province-card__name">British Columbia</span>
+            <span class="province-card__rate">12%</span>
+            <span class="province-card__type">GST + PST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/alberta/" class="province-card">
+            <span class="province-card__name">Alberta</span>
+            <span class="province-card__rate">5%</span>
+            <span class="province-card__type">GST only</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/nova-scotia/" class="province-card">
+            <span class="province-card__name">Nova Scotia</span>
+            <span class="province-card__rate">14%</span>
+            <span class="province-card__type">HST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/new-brunswick/" class="province-card">
+            <span class="province-card__name">New Brunswick</span>
+            <span class="province-card__rate">15%</span>
+            <span class="province-card__type">HST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/prince-edward-island/" class="province-card">
+            <span class="province-card__name">PEI</span>
+            <span class="province-card__rate">15%</span>
+            <span class="province-card__type">HST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/newfoundland-labrador/" class="province-card">
+            <span class="province-card__name">Newfoundland &amp; Labrador</span>
+            <span class="province-card__rate">15%</span>
+            <span class="province-card__type">HST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/saskatchewan/" class="province-card">
+            <span class="province-card__name">Saskatchewan</span>
+            <span class="province-card__rate">11%</span>
+            <span class="province-card__type">GST + PST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+          <a href="/provinces/manitoba/" class="province-card">
+            <span class="province-card__name">Manitoba</span>
+            <span class="province-card__rate">12%</span>
+            <span class="province-card__type">GST + RST</span>
+            <span class="province-card__cta">Province guide →</span>
+          </a>
+
+        </div>
 
       </div>
     </section>
