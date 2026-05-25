@@ -3,7 +3,7 @@
 
 "use strict";
 
-import { TAX_RATES, PROVINCE_ORDER } from "../data/taxRates.js";
+import { TAX_RATES, PROVINCE_ORDER, LAST_VERIFIED } from "../data/taxRates.js";
 
 // ---------------------------------------------------------------------------
 // Module state
@@ -542,10 +542,18 @@ export function init() {
     priceInput.addEventListener("keydown", handlePriceKeydown);
   }
 
-  // Copy buttons ? delegate to a single handler per button.
+  // Copy buttons — delegate to a single handler per button.
   document.querySelectorAll(".btn-copy").forEach(function (btn) {
     btn.addEventListener("click", handleCopy);
   });
+
+  // Populate the static rates-verified pill with month + year from LAST_VERIFIED.
+  // Append T00:00:00 to force local-time parsing and avoid UTC offset shifting the month.
+  const ratesDateEl = document.getElementById("rates-verified-date");
+  if (ratesDateEl) {
+    const d = new Date(LAST_VERIFIED + "T00:00:00");
+    ratesDateEl.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" });
+  }
 }
 
 // Guard against import in a Node.js test environment where document is undefined.
