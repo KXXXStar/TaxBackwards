@@ -1,10 +1,10 @@
-// ù 2026 TaxBackwards.ca. All rights reserved.
+// ? 2026 TaxBackwards.ca. All rights reserved.
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
 
 // Update LAST_VERIFIED whenever any provincial rate is changed and verified.
-export const LAST_VERIFIED = "2026-05-24";
+export const LAST_VERIFIED = "2026-05-25";
 
 // Single source of truth for all Canadian provincial and territorial tax rates.
 // Every province object must contain:
@@ -13,7 +13,7 @@ export const LAST_VERIFIED = "2026-05-24";
 // Quebec additionally carries separate gst and qst fields.
 // GST+PST provinces additionally carry separate gst and pst fields.
 // Never hardcode any tax rate outside this file.
-// Never delete a province object ù use active: false instead.
+// Never delete a province object ? use active: false instead.
 export const TAX_RATES = {
   ON: {
     name: "Ontario",
@@ -32,7 +32,7 @@ export const TAX_RATES = {
     gst: 0.05,
     qst: 0.09975,
     fraction: 14975 / 114975,
-    editorialSummary: "Quebec collects the 5% federal GST and the 9.975% Quebec Sales Tax (QST). Both taxes apply directly to the same net consideration base. QST is administered by Revenu Quùbec, not the CRA.",
+    editorialSummary: "Quebec collects the 5% federal GST and the 9.975% Quebec Sales Tax (QST). Both taxes apply directly to the same net consideration base. QST is administered by Revenu Qu?bec, not the CRA.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are generally exempt from both GST and QST. Some financial services carry partial exemptions.",
     officialCraLink: "https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/",
     active: true
@@ -106,10 +106,10 @@ export const TAX_RATES = {
     gst: 0.05,
     pst: 0.06,
     fraction: 11 / 111,
-    editorialSummary: "Saskatchewan applies the 5% federal GST and a 6% Provincial Sales Tax (PST). Both taxes apply to the pre-tax base.",
-    exemptionsNotice: "Basic groceries are exempt from federal GST. PST exemptions vary. Consult Saskatchewan Finance for the full schedule.",
+    editorialSummary: "Saskatchewan applies the 5% federal GST and a 6% Provincial Sales Tax (PST). Both taxes apply independently to the pre-tax base. PST is administered by the Saskatchewan Ministry of Finance ? businesses must register and file separately with the province.",
+    exemptionsNotice: "Basic groceries are exempt from federal GST. Saskatchewan PST exemptions include basic groceries, prescription drugs, children's clothing, and certain agricultural and manufacturing inputs. Consult the Saskatchewan Ministry of Finance for the full schedule.",
     officialCraLink: "https://www.saskatchewan.ca/business/taxes-licensing-and-reporting/provincial-taxes-policies-and-bulletins/provincial-sales-tax",
-    active: false
+    active: true
   },
   MB: {
     name: "Manitoba",

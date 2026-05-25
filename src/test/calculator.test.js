@@ -42,6 +42,15 @@ describe("calculateReverseTax — mandatory test cases", function () {
     expect(result.province).toBe("NS");
   });
 
+  it("Saskatchewan $111.00 gross → $100.00 net, $5.00 GST (ITC eligible), $6.00 PST (not ITC eligible)", function () {
+    const result = calculateReverseTax(111.00, "SK");
+    expect(result.pretax).toBeCloseTo(100.00, 2);
+    expect(result.tax1).toBeCloseTo(5.00, 2);
+    expect(result.tax2).toBeCloseTo(6.00, 2);
+    expect(result.total).toBe(111.00);
+    expect(result.province).toBe("SK");
+  });
+
   it("Auditor Mode Ontario $100.00 gross → tax displays as '$11.5044' at 4 decimals", function () {
     const result = calculateReverseTax(100.00, "ON");
     // tax1 at 4dp precision: $100 × (13/113) = 11.504424...
