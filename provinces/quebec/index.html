@@ -181,7 +181,14 @@
           </tbody>
         </table>
         </div>
-
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-05-25T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
         <h2>GST Input Tax Credits and QST Input Tax Refunds</h2>
 
         <p>Businesses registered for GST with the CRA can claim the GST portion as an Input Tax Credit (ITC) to reduce their net federal tax remittance. Businesses registered for QST with Revenu Québec can claim the QST portion as an Input Tax Refund (ITR). The GST and QST components must be tracked and reported separately — they are remitted to different tax authorities.</p>

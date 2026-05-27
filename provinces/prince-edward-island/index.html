@@ -140,7 +140,14 @@
           </tbody>
         </table>
         </div>
-
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-05-25T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
         <h2>HST Exemptions in Prince Edward Island</h2>
 
         <p>The following categories are zero-rated or exempt from HST under federal CRA rules that apply uniformly across all HST provinces, including PEI:</p>

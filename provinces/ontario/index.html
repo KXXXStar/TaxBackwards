@@ -172,7 +172,14 @@
           </tbody>
         </table>
         </div>
-
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-05-25T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
         <h2>What Is an Input Tax Credit (ITC)?</h2>
 
         <p>If your business is registered for GST/HST with the CRA, the HST you paid on eligible business expenses is recoverable as an Input Tax Credit. The ITC reduces your net tax remittance to the CRA. Use the extracted HST amount from this calculator as your ITC-eligible figure, and verify eligibility against CRA guidelines before filing.</p>
