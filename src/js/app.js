@@ -705,7 +705,8 @@ export function init() {
   const provinceSelect = document.getElementById("province-select");
   if (provinceSelect) {
     updateTax2Tooltip(provinceSelect.value);
-    updateMathExplainer(provinceSelect.value);
+    const initialProvince = provinceSelect.value || "ON";
+    updateMathExplainer(initialProvince);
     provinceSelect.addEventListener("change", handleProvinceChange);
   }
 

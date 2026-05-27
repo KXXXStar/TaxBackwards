@@ -1,6 +1,6 @@
 # TaxBackwards.ca — Master Project Reference
 > Single source of truth for Claude and Cursor. Read this at the start of every session.
-> Last updated: May 25, 2026 (MB added)
+> Last updated: May 26, 2026
 
 ---
 
@@ -103,7 +103,7 @@ taxbackwards.ca/
 
 ## 5. Security Rules
 
-- **Never** use `innerHTML` — always `textContent` for outputs
+- **Never** use `innerHTML` for user-supplied data or DOM output — always `textContent`. Exception: the math explainer formula block in app.js may use innerHTML to render trusted TAX_RATES constant data only.
 - All user inputs cast to `Number()` immediately and validated (reject NaN, ≤0, non-finite)
 - All CDN scripts must include `integrity` attribute with valid SRI hash
 - URL parameters sanitized through `Number()` casting before touching the DOM
@@ -370,6 +370,9 @@ npx playwright test     # E2E + link checker
 - [x] /provinces/newfoundland-labrador/ sub-page live
 - [x] /provinces/saskatchewan/ sub-page live
 - [x] /provinces/manitoba/ sub-page live
+- [x] Rates verified pill — static, always visible on homepage and all 10 province pages
+- [x] Dynamic math explainer section on homepage (updates on province change)
+- [x] Two-panel reference layout on BC and Quebec province pages (matches Manitoba/Saskatchewan pattern)
 
 ### Stage 2 (Weeks 3–8)
 - [x] `index.html` + `style.css` built
@@ -440,7 +443,7 @@ npx playwright test     # E2E + link checker
 
 ## 22. What Cursor Must Never Do
 
-- Never use `innerHTML` — always `textContent`
+- Never use `innerHTML` for user-supplied data or DOM output — always `textContent`. Exception: the math explainer formula block in app.js may use innerHTML to render trusted TAX_RATES constant data only.
 - Never hardcode a hex colour outside `:root` variable definitions in `style.css`
 - Never use a framework or external CSS library
 - Never use `<hr>` for dividers
@@ -474,9 +477,9 @@ Every new JS and CSS file must begin with:
 
 ## 25. Immediate Next Steps (in order)
 
-1. Yukon / Northwest Territories / Nunavut province pages (GST-only, 5%)
-6. Apply to Wave affiliate program — trust sections and production deployment requirements now satisfied
-7. URL parameter sanitization (before shareable URLs feature)
-8. Quarterly npm audit GitHub Action setup
-9. Historical tax rate pages (/rate-history/)
-10. Homepage province guide index section with card layout
+1. URL parameter sanitization — required before shareable URL feature
+2. Quarterly npm audit GitHub Action — add to existing workflow
+3. Affiliate application (FreshBooks via Awin) — apply once Search Console shows meaningful impressions; email affiliates@freshbooks.com directly rather than going through the Awin queue
+4. Historical tax rate pages — /rate-history/ for topical authority and long-tail SEO
+5. Territory pages — YT, NT, NU after evaluating single comparison page vs three individual pages
+6. Print-friendly ledger layout — needs to be built or removed from About section feature list
