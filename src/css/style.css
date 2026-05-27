@@ -1172,3 +1172,28 @@ select option:disabled {
   margin-top: auto;
   padding-top: 6px;
 }
+
+/* =============================================================================
+   31. Math explainer — dynamic reverse-tax formula section (homepage)
+   ============================================================================= */
+
+.math-explainer-formula {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 16px;
+  margin: 16px 0;
+  background: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  transition:
+    background-color var(--transition-theme),
+    border-color var(--transition-theme),
+    color var(--transition-theme);
+}
+
+.math-explainer .prose p#math-explainer-example {
+  margin-bottom: 0;
+}

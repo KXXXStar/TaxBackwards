@@ -136,6 +136,203 @@ function getTax2Label(provinceKey) {
 }
 
 // ---------------------------------------------------------------------------
+// UI — math explainer (homepage)
+// ---------------------------------------------------------------------------
+
+/**
+ * Format a decimal rate (e.g. 0.13) as a display percentage string.
+ *
+ * @param {number} rate
+ * @returns {string}
+ */
+function formatRatePercent(rate) {
+  const pct = rate * 100;
+  return parseFloat(pct.toFixed(3)).toString() + "%";
+}
+
+/**
+ * Format 1 + combinedRate as a divisor string (e.g. 1.14975).
+ *
+ * @param {number} combinedRate
+ * @returns {string}
+ */
+function formatDivisor(combinedRate) {
+  return parseFloat((1 + combinedRate).toFixed(5)).toString();
+}
+
+/**
+ * Format a currency value for the math explainer (always en-CA, 2dp).
+ *
+ * @param {number} value
+ * @returns {string}
+ */
+function formatExplainerMoney(value) {
+  return "$" + value.toLocaleString("en-CA", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+/**
+ * Return the provincial secondary-tax label for GST+PST provinces.
+ * Manitoba uses RST; all others use PST.
+ *
+ * @param {string} provinceKey
+ * @returns {string}
+ */
+function getProvincialTaxLabel(provinceKey) {
+  return provinceKey === "MB" ? "RST" : "PST";
+}
+
+/**
+ * Return the tax-type label used in the math explainer heading.
+ *
+ * @param {string} provinceKey
+ * @returns {string}
+ */
+function getExplainerTaxTypeLabel(provinceKey) {
+  const province = TAX_RATES[provinceKey];
+  if (province.type === "HST") return "HST";
+  if (province.type === "GST") return "GST";
+  if (province.type === "GST+QST") return "GST + QST";
+  if (province.type === "GST+PST") {
+    return provinceKey === "MB" ? "GST + RST" : "GST + PST";
+  }
+  return "Sales Tax";
+}
+
+/**
+ * Build a worked example anchored on a $100.00 net base using the same
+ * calculation engine as the calculator.
+ *
+ * @param {string} provinceKey
+ * @returns {{ gross: number, pretax: number, tax1: number, tax2: number }}
+ */
+function buildExplainerExample(provinceKey) {
+  const province = TAX_RATES[provinceKey];
+  const pretaxScaled = 1000000; // $100.00 net base
+  let tax1Scaled;
+  let tax2Scaled = 0;
+
+  if (province.type === "GST+QST") {
+    tax1Scaled = Math.round(pretaxScaled * province.gst);
+    tax2Scaled = Math.round(pretaxScaled * province.qst);
+  } else if (province.type === "GST+PST") {
+    tax1Scaled = Math.round(pretaxScaled * province.gst);
+    tax2Scaled = Math.round(pretaxScaled * province.pst);
+  } else {
+    tax1Scaled = Math.round(pretaxScaled * province.rate);
+  }
+
+  const grossScaled = pretaxScaled + tax1Scaled + tax2Scaled;
+
+  return {
+    gross: grossScaled / 10000,
+    pretax: pretaxScaled / 10000,
+    tax1: tax1Scaled / 10000,
+    tax2: tax2Scaled / 10000
+  };
+}
+
+/**
+ * Update the homepage math explainer section for the selected province.
+ * Called on page load and on every province selector change.
+ *
+ * @param {string} provinceKey
+ */
+function updateMathExplainer(provinceKey) {
+  const province = TAX_RATES[provinceKey];
+  if (!province) return;
+
+  const headingEl = document.getElementById("math-explainer-heading");
+  const introEl   = document.getElementById("math-explainer-intro");
+  const formulaEl = document.getElementById("math-explainer-formula");
+  const exampleEl = document.getElementById("math-explainer-example");
+
+  if (!headingEl || !introEl || !formulaEl || !exampleEl) return;
+
+  const example  = buildExplainerExample(provinceKey);
+  const divisor  = formatDivisor(
+    province.type === "GST+QST" ? province.gst + province.qst
+      : province.type === "GST+PST" ? province.gst + province.pst
+      : province.rate
+  );
+
+  headingEl.textContent = province.name + " \u2014 " + getExplainerTaxTypeLabel(provinceKey) + " Reverse Calculation";
+
+  if (province.type === "HST") {
+    introEl.textContent =
+      "To extract the net pre-tax amount from a gross " + province.name +
+      " total, divide by " + divisor + ". The HST portion is the difference " +
+      "between gross and net. HST is fully ITC-eligible for CRA-registered businesses.";
+
+    formulaEl.innerHTML =
+      "Net = Gross \u00F7 " + divisor + "<br>" +
+      "HST = Gross \u2212 Net  (ITC-eligible)";
+
+    exampleEl.textContent =
+      "Worked example: " + formatExplainerMoney(example.gross) + " gross \u00F7 " + divisor +
+      " = " + formatExplainerMoney(example.pretax) + " net. " +
+      formatExplainerMoney(example.tax1) + " HST is ITC-eligible for CRA-registered businesses.";
+
+  } else if (province.type === "GST") {
+    introEl.textContent =
+      province.name + " has no provincial sales tax \u2014 only the 5% federal GST applies. " +
+      "Divide the gross total by 1.05 to extract the net amount; the GST portion is ITC-eligible.";
+
+    formulaEl.innerHTML =
+      "Net = Gross \u00F7 1.05<br>" +
+      "GST = Gross \u2212 Net  (ITC-eligible)";
+
+    exampleEl.textContent =
+      "Worked example: " + formatExplainerMoney(example.gross) + " gross \u00F7 1.05" +
+      " = " + formatExplainerMoney(example.pretax) + " net. " +
+      formatExplainerMoney(example.tax1) + " GST is ITC-eligible for CRA-registered businesses.";
+
+  } else if (province.type === "GST+QST") {
+    introEl.textContent =
+      "In Quebec, GST (" + formatRatePercent(province.gst) + ") and QST (" +
+      formatRatePercent(province.qst) + ") both apply directly to the net consideration base \u2014 " +
+      "QST does not compound on top of GST. GST is ITC-eligible; QST is recoverable via an " +
+      "Input Tax Refund (ITR) filed with Revenu Qu\u00E9bec.";
+
+    formulaEl.innerHTML =
+      "Net = Gross \u00F7 " + divisor + "<br>" +
+      "GST = Net \u00D7 " + province.gst + "  (ITC-eligible)<br>" +
+      "QST = Net \u00D7 " + province.qst + "  (recoverable via ITR)<br>" +
+      "Gross = Net + GST + QST";
+
+    exampleEl.textContent =
+      "Worked example: " + formatExplainerMoney(example.gross) + " gross \u00F7 " + divisor +
+      " = " + formatExplainerMoney(example.pretax) + " net. " +
+      formatExplainerMoney(example.tax1) + " GST (ITC-eligible) and " +
+      formatExplainerMoney(example.tax2) + " QST (recoverable via ITR with Revenu Qu\u00E9bec).";
+
+  } else if (province.type === "GST+PST") {
+    const provLabel = getProvincialTaxLabel(provinceKey);
+
+    introEl.textContent =
+      "In " + province.name + ", GST (" + formatRatePercent(province.gst) + ") and " +
+      provLabel + " (" + formatRatePercent(province.pst) + ") both apply to the pre-tax base. " +
+      "GST is ITC-eligible; " + provLabel + " is a provincial consumer tax and is not " +
+      "recoverable as an ITC.";
+
+    formulaEl.innerHTML =
+      "Net = Gross \u00F7 " + divisor + "<br>" +
+      "GST = Net \u00D7 " + province.gst + "  (ITC-eligible)<br>" +
+      provLabel + " = Net \u00D7 " + province.pst + "  (not ITC-eligible)<br>" +
+      "Gross = Net + GST + " + provLabel;
+
+    exampleEl.textContent =
+      "Worked example: " + formatExplainerMoney(example.gross) + " gross \u00F7 " + divisor +
+      " = " + formatExplainerMoney(example.pretax) + " net. " +
+      formatExplainerMoney(example.tax1) + " GST (ITC-eligible) and " +
+      formatExplainerMoney(example.tax2) + " " + provLabel + " (" + provLabel +
+      " is not ITC-eligible).";
+  }
+}
+
+// ---------------------------------------------------------------------------
 // UI ? province selector
 // ---------------------------------------------------------------------------
 
@@ -206,6 +403,7 @@ function handleProvinceChange() {
   const provinceKey = document.getElementById("province-select").value;
   clearResults();
   updateTax2Tooltip(provinceKey);
+  updateMathExplainer(provinceKey);
 }
 
 /**
@@ -507,6 +705,7 @@ export function init() {
   const provinceSelect = document.getElementById("province-select");
   if (provinceSelect) {
     updateTax2Tooltip(provinceSelect.value);
+    updateMathExplainer(provinceSelect.value);
     provinceSelect.addEventListener("change", handleProvinceChange);
   }
 
