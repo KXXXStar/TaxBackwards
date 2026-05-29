@@ -1,0 +1,244 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ontario HST Rate History — Tax Changes Since 1991 | TaxBackwards.ca</title>
+  <meta name="description" content="A complete history of Ontario sales tax rates from the GST introduction in 1991 through HST harmonization in 2010 to the current 13% HST rate.">
+  <link rel="canonical" href="https://taxbackwards.ca/rate-history/ontario/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
+
+  <style>
+  .rate-history-ontario-milestones th:nth-child(1),
+  .rate-history-ontario-milestones td:nth-child(1) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-ontario-milestones th:nth-child(2),
+  .rate-history-ontario-milestones td:nth-child(2) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-ontario-milestones th:nth-child(3),
+  .rate-history-ontario-milestones td:nth-child(3) {
+    min-width: 60px;
+    white-space: nowrap;
+  }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Ontario HST Rate History — Tax Changes Since 1991",
+    "description": "A complete history of Ontario sales tax rates from the GST introduction in 1991 through HST harmonization in 2010 to the current 13% HST rate.",
+    "url": "https://taxbackwards.ca/rate-history/ontario/",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "datePublished": "2026-05-29",
+    "dateModified": "2026-05-25",
+    "about": {
+      "@type": "AdministrativeArea",
+      "name": "Ontario"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Ontario Sales Tax Rate History</h1>
+
+        <p>From the introduction of the federal Goods and Services Tax in 1991 through the harmonization of Ontario's provincial Retail Sales Tax into the Harmonized Sales Tax in 2010, Ontario's consumption tax structure has changed several times. This page documents every major rate milestone and the reverse-calculation formula that applied in each era.</p>
+
+        <h2>Rate Milestones</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table rate-history-ontario-milestones">
+          <thead>
+            <tr>
+              <th scope="col">Effective Date</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>GST introduced federally, replacing Manufacturers' Sales Tax (MST)</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>Ontario PST (RST)</td>
+              <td>8%</td>
+              <td>Provincial Retail Sales Tax ran alongside GST</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2006</td>
+              <td>GST</td>
+              <td>6%</td>
+              <td>GST reduced 1 point by federal government</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 2008</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>GST reduced a further 1 point</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2010</td>
+              <td>HST</td>
+              <td>13%</td>
+              <td>Ontario RST and GST merged into single HST (5% federal + 8% provincial); Ontario RST abolished</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-05-25T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>Historical Context</h2>
+
+        <h3>1991: GST and Ontario RST</h3>
+
+        <p>When the federal Goods and Services Tax replaced the hidden Manufacturers' Sales Tax (MST) on January 1, 1991, Ontario retained its own provincial Retail Sales Tax (RST) at 8%. Businesses and consumers faced two separate taxes — the 7% GST administered by the Canada Revenue Agency and the 8% RST administered by the Ontario Ministry of Finance. RST was a provincial tax on the sale or rental of most goods and certain services; it was not harmonized with the federal system and had its own registration, filing, and exemption rules.</p>
+
+        <h3>2006–2008: Federal GST Reductions</h3>
+
+        <p>The federal government reduced the GST by one percentage point on July 1, 2006 (from 7% to 6%) and again on January 1, 2008 (from 6% to 5%), under the Harper government. Ontario's 8% RST rate did not change during this period. The combined effective rate on a pre-tax purchase therefore fell from 15% to 14% to 13% as the federal component was cut, but the dual-tax structure remained in place.</p>
+
+        <h3>2010: HST Harmonization</h3>
+
+        <p>On July 1, 2010, Ontario abolished its Retail Sales Tax and merged the provincial component with the federal GST into a single 13% Harmonized Sales Tax (HST) — 5% federal plus 8% provincial. HST is administered entirely by the Canada Revenue Agency on one combined return, eliminating the separate provincial filing obligation. The harmonization was one of the largest provincial tax reforms in Canadian history, simplifying compliance for businesses while shifting some previously RST-exempt items into the HST base.</p>
+
+        <h2>Reverse Calculation by Era</h2>
+
+        <p>When working backwards from a gross total to extract the pre-tax amount, the divisor depends on which tax structure was in effect at the time of the transaction.</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Era</th>
+              <th scope="col">Tax Structure</th>
+              <th scope="col">Reverse Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1991–2006</td>
+              <td>GST 7% + RST 8%</td>
+              <td>Pre-tax = Total &divide; 1.15</td>
+            </tr>
+            <tr>
+              <td>2006–2008</td>
+              <td>GST 6% + RST 8%</td>
+              <td>Pre-tax = Total &divide; 1.14</td>
+            </tr>
+            <tr>
+              <td>2008–2010</td>
+              <td>GST 5% + RST 8%</td>
+              <td>Pre-tax = Total &divide; 1.13</td>
+            </tr>
+            <tr>
+              <td>2010–present</td>
+              <td>HST 13%</td>
+              <td>Pre-tax = Total &divide; 1.13</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>Before harmonization, GST and RST were not combined into a single tax — RST applied to the pre-GST selling price, not the GST-inclusive amount. The divisors above (1.15, 1.14, 1.13) are simplified approximations for quick reverse calculations; precise historical filings may require separating GST and RST components individually. For current transactions, divide by 1.13 and subtract to isolate HST.</p>
+
+        <div class="cra-reference-panel">
+          <h3>Current Rate</h3>
+          <p><strong>HST 13%</strong> (5% federal + 8% provincial), administered by the Canada Revenue Agency since July 1, 2010.</p>
+        </div>
+
+        <p class="back-link"><a href="/provinces/ontario/">&#8592; Ontario Province Tax Guide</a></p>
+
+        <div class="cra-reference-panel">
+          <h3>Official CRA Resources</h3>
+          <ul>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
+          </ul>
+        </div>
+
+        <p class="back-link"><a href="/">&#8592; Back to TaxBackwards.ca calculator</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>
