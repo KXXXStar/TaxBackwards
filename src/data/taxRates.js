@@ -131,7 +131,7 @@ export const TAX_RATES = {
     editorialSummary: "Yukon levies no territorial sales tax. Only the 5% federal GST applies.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under federal GST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   NT: {
     name: "Northwest Territories",
@@ -141,7 +141,7 @@ export const TAX_RATES = {
     editorialSummary: "The Northwest Territories levies no territorial sales tax. Only the 5% federal GST applies.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under federal GST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   },
   NU: {
     name: "Nunavut",
@@ -151,7 +151,7 @@ export const TAX_RATES = {
     editorialSummary: "Nunavut levies no territorial sales tax. Only the 5% federal GST applies.",
     exemptionsNotice: "Basic groceries, prescription drugs, and certain medical devices are zero-rated under federal GST rules.",
     officialCraLink: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html",
-    active: false
+    active: true
   }
 };
 
