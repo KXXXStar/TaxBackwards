@@ -1,0 +1,219 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse GST Calculator — Yukon, Northwest Territories &amp; Nunavut | TaxBackwards.ca</title>
+  <meta name="description" content="Calculate the pre-tax amount and GST paid for purchases in Yukon, Northwest Territories, and Nunavut. All three territories apply GST only at 5%.">
+  <link rel="canonical" href="https://taxbackwards.ca/territories/">
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../src/css/style.css?v=7">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the sales tax rate in Yukon, Northwest Territories, and Nunavut?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three Canadian territories — Yukon, Northwest Territories, and Nunavut — apply only the 5% federal Goods and Services Tax (GST). None of the territories levy a territorial sales tax."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate GST backwards from a total in the territories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide the gross total by 1.05 to get the net pre-tax amount. Subtract the net from the gross to get the GST portion. For example: $105.00 ÷ 1.05 = $100.00 net, $105.00 − $100.00 = $5.00 GST."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I claim territorial GST as an Input Tax Credit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If your business is registered for GST with the CRA, the GST paid on eligible business expenses in any Canadian territory is recoverable as an Input Tax Credit (ITC). The ITC reduces your net federal tax remittance to the CRA."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Reverse GST Calculator — Yukon, Northwest Territories & Nunavut",
+    "description": "Free reverse GST calculator for Canada's three territories. Extract the net pre-tax amount and Input Tax Credit from any gross transaction total at the 5% federal GST rate — no territorial sales tax applies in Yukon, Northwest Territories, or Nunavut.",
+    "url": "https://taxbackwards.ca/territories/",
+    "provider": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Yukon"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Northwest Territories"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Nunavut"
+      }
+    ],
+    "feesAndCommissionsSpecification": "Free"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Canadian Territories: GST 5%</h1>
+
+        <p>Need to extract GST from a gross total in Yukon, Northwest Territories, or Nunavut? <a href="/">Use the TaxBackwards.ca reverse GST calculator</a>.</p>
+
+        <p>All three Canadian territories apply only the 5% federal Goods and Services Tax (GST), administered by the Canada Revenue Agency. None of the territories levy a territorial sales tax. For every $105.00 paid, $100.00 is the net consideration base and $5.00 is GST. Businesses registered for GST can claim the $5.00 as an Input Tax Credit.</p>
+
+        <h2>Territory Tax Rates</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Yukon (YT)</th>
+              <th scope="col">Northwest Territories (NT)</th>
+              <th scope="col">Nunavut (NU)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GST</th>
+              <td>5%</td>
+              <td>5%</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <th scope="row">Territorial Tax</th>
+              <td>None</td>
+              <td>None</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <th scope="row">Total</th>
+              <td>5%</td>
+              <td>5%</td>
+              <td>5%</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-05-25T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>How GST Reverse Calculation Works in the Territories</h2>
+
+        <p>Yukon, Northwest Territories, and Nunavut share the same tax structure — only the 5% federal GST applies. To extract the net pre-tax amount from a gross total, divide by 1.05. To isolate the GST portion, subtract the net from the gross.</p>
+
+        <div class="math-explainer-formula" aria-label="Reverse GST formula">
+          Pre-tax amount = Total &divide; 1.05<br>
+          GST paid = Total &minus; Pre-tax amount
+        </div>
+
+        <p>Worked example: $105.00 total &divide; 1.05 = $100.00 pre-tax amount. $105.00 &minus; $100.00 = $5.00 GST paid. The $5.00 is ITC-eligible for a GST-registered business.</p>
+
+        <h2>What Is an Input Tax Credit (ITC)?</h2>
+
+        <p>If your business is registered for GST with the CRA, the GST you paid on eligible business expenses is recoverable as an Input Tax Credit. The ITC reduces your net tax remittance to the CRA. Use the extracted GST amount from this calculator as your ITC-eligible figure, and verify eligibility against CRA guidelines before filing.</p>
+
+        <h2>Yukon (YT)</h2>
+
+        <p>Yukon — capital Whitehorse — has never enacted a territorial sales tax. Only the 5% federal GST applies to most purchases, administered entirely by the Canada Revenue Agency. With a population of roughly 44,000, Yukon has the smallest population of the three territories. Its economy is driven by mining, tourism, and public-sector employment, and the absence of a territorial sales tax keeps the total consumption tax rate at the federal minimum.</p>
+
+        <h2>Northwest Territories (NT)</h2>
+
+        <p>The Northwest Territories — capital Yellowknife — levies no territorial sales tax. The sole consumption tax on most goods and services is the 5% federal GST. The NWT has a population of approximately 45,000 spread across a vast northern landmass. Diamond mining, oil and gas, and government services form the core of the territorial economy, and businesses need only register and file with the CRA — there is no separate territorial tax authority.</p>
+
+        <h2>Nunavut (NU)</h2>
+
+        <p>Nunavut — capital Iqaluit — has no territorial sales tax. Like Yukon and the Northwest Territories, only the 5% federal GST applies. Created in 1999 as Canada's newest territory, Nunavut has a population of roughly 40,000, the majority of whom are Inuit. The economy relies on mining, federal transfers, and public-sector employment, and the single-rate GST structure means no split filing between federal and territorial authorities.</p>
+
+        <div class="cra-reference-panel">
+          <h3>Official CRA Resources</h3>
+          <ul>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html" rel="noopener noreferrer" target="_blank">GST/HST for businesses — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" rel="noopener noreferrer" target="_blank">GST/HST rates by province — Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" rel="noopener noreferrer" target="_blank">Input Tax Credits — Canada.ca</a></li>
+          </ul>
+        </div>
+
+        <p class="back-link"><a href="/">&#8592; Calculate territorial GST on TaxBackwards.ca</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../src/js/app.js"></script>
+
+</body>
+</html>
