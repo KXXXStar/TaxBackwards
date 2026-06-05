@@ -1,0 +1,233 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEI Sales Tax Rate History | TaxBackwards.ca</title>
+  <meta name="description" content="A history of Prince Edward Island sales tax rates from 1991 to present — GST and PST pre-2013, HST from April 2013, and the 2016 increase to 15%.">
+  <link rel="canonical" href="https://taxbackwards.ca/rate-history/prince-edward-island/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
+
+  <style>
+  .rate-history-pei-milestones th:nth-child(1),
+  .rate-history-pei-milestones td:nth-child(1) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-pei-milestones th:nth-child(2),
+  .rate-history-pei-milestones td:nth-child(2) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-pei-milestones th:nth-child(3),
+  .rate-history-pei-milestones td:nth-child(3) {
+    min-width: 60px;
+    white-space: nowrap;
+  }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "PEI Sales Tax Rate History",
+    "description": "A history of Prince Edward Island sales tax rates from 1991 to present — GST and PST pre-2013, HST from April 2013, and the 2016 increase to 15%.",
+    "url": "https://taxbackwards.ca/rate-history/prince-edward-island/",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "datePublished": "2026-06-04",
+    "dateModified": "2026-06-04",
+    "about": {
+      "@type": "AdministrativeArea",
+      "name": "Prince Edward Island"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>PEI Sales Tax Rate History</h1>
+
+        <p>Prince Edward Island was the last Canadian province to adopt the Harmonized Sales Tax, harmonizing on April 1, 2013 — more than sixteen years after the original three Atlantic provinces. PEI's pre-HST era is notable for its tax-on-tax calculation method, where the provincial PST was applied to the GST-inclusive price rather than the pre-tax base. This page documents every major rate milestone and the reverse-calculation formulas that apply in each period.</p>
+
+        <h2>Rate Milestones</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table rate-history-pei-milestones">
+          <thead>
+            <tr>
+              <th scope="col">Effective Date</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>GST introduced federally, replacing Manufacturers' Sales Tax (MST)</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>PEI PST</td>
+              <td>10%</td>
+              <td>Provincial Sales Tax; applied to GST-included price (tax-on-tax era)</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2006</td>
+              <td>GST</td>
+              <td>6%</td>
+              <td>Federal GST reduced 1 point; PST still applied on GST-included price</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 2008</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>Federal GST reduced a further 1 point</td>
+            </tr>
+            <tr>
+              <td>Apr 1, 2013</td>
+              <td>HST</td>
+              <td>14%</td>
+              <td>GST + PST harmonized; tax-on-tax era ended; PEI was last province to adopt HST</td>
+            </tr>
+            <tr>
+              <td>Oct 1, 2016</td>
+              <td>HST</td>
+              <td>15%</td>
+              <td>Provincial component increased from 9% to 10%</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-06-04T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>Historical Context</h2>
+
+        <h3>1991–2013: GST and PEI PST (Tax-on-Tax Era)</h3>
+
+        <p>When the federal Goods and Services Tax came into effect on January 1, 1991, PEI retained its 10% Provincial Sales Tax. Unlike most provincial sales taxes of the era, PEI PST was calculated on the GST-inclusive price — meaning consumers paid tax on a base that already included the federal GST. This compounding structure produced an effective combined rate higher than simply adding the two nominal rates together. For example, at the original 7% GST and 10% PST rates, the actual combined burden was approximately 17.7% rather than a flat 17%.</p>
+
+        <p>This tax-on-tax approach was similar to Quebec's pre-2013 QST system. The federal GST reductions in 2006 and 2008 changed the magnitude of the compounding effect, since PST continued to be applied to a GST-inclusive base throughout this period. As a result, reverse calculations for transactions before April 1, 2013 cannot use a simple combined-rate divisor — the PST component must account for the compounded base.</p>
+
+        <h3>2013: HST Adoption and Tax-on-Tax Elimination</h3>
+
+        <p>On April 1, 2013, PEI harmonized its provincial sales tax with the federal GST, adopting a 14% HST (5% federal + 9% provincial). The harmonization ended the tax-on-tax era: PEI PST was abolished and the new HST applied directly to the pre-tax selling price in the same manner as the federal GST. PEI was the last Canadian province to adopt HST — Nova Scotia, New Brunswick, and Newfoundland and Labrador had harmonized sixteen years earlier, in 1997, and Ontario and BC had harmonized in 2010 before BC reversed course. All HST administration moved to the Canada Revenue Agency, eliminating the need for a separate provincial return.</p>
+
+        <h3>2016: Provincial Component Increase</h3>
+
+        <p>On October 1, 2016, PEI increased the provincial component of HST from 9% to 10%, raising the total rate from 14% to 15%. The increase was announced in the province's April 2016 budget. This brought PEI into alignment with New Brunswick and Newfoundland and Labrador, which had both moved to 15% on July 1, 2016. This was the most recent HST rate change in Canada before the Nova Scotia reduction in April 2025.</p>
+
+        <h2>Reverse Calculation by Era</h2>
+
+        <p>PEI's pre-2013 tax-on-tax structure means historical reverse calculations require special treatment. For all transactions after April 1, 2013, a straightforward divisor applies.</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Era</th>
+              <th scope="col">Tax Structure</th>
+              <th scope="col">Reverse Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1991–2013</td>
+              <td>GST + PST (tax-on-tax)</td>
+              <td>Not a simple divisor — see note</td>
+            </tr>
+            <tr>
+              <td>Apr 2013–Sep 2016</td>
+              <td>HST 14%</td>
+              <td>Pre-tax = Total &divide; 1.14</td>
+            </tr>
+            <tr>
+              <td>Oct 2016–present</td>
+              <td>HST 15%</td>
+              <td>Pre-tax = Total &divide; 1.15</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>For transactions before April 1, 2013, PEI PST was applied to the GST-included price (tax-on-tax), so the effective combined rate was higher than simply adding the PST rate to the GST rate. Reverse calculations for the pre-2013 era should be verified against CRA archives for the specific transaction date and the PST rate and GST rate in effect at that time. For current transactions, divide by 1.15 to isolate the net pre-tax amount.</p>
+
+        <p class="back-link"><a href="/provinces/prince-edward-island/">&#8592; PEI Province Tax Guide</a></p>
+
+        <p class="back-link"><a href="/">&#8592; Back to TaxBackwards.ca calculator</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>

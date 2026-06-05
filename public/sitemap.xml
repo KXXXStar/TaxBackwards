@@ -97,4 +97,28 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/nova-scotia/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/new-brunswick/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/prince-edward-island/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/newfoundland-labrador/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
