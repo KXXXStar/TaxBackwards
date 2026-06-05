@@ -1,0 +1,235 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canadian Territories Sales Tax Rate History | TaxBackwards.ca</title>
+  <meta name="description" content="A history of sales tax rates in Yukon, Northwest Territories, and Nunavut from 1991 to present — all three territories collect federal GST only, with no territorial sales tax.">
+  <link rel="canonical" href="https://taxbackwards.ca/rate-history/territories/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
+
+  <style>
+  .rate-history-territories-milestones th:nth-child(1),
+  .rate-history-territories-milestones td:nth-child(1) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-territories-milestones th:nth-child(2),
+  .rate-history-territories-milestones td:nth-child(2) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-territories-milestones th:nth-child(3),
+  .rate-history-territories-milestones td:nth-child(3) {
+    min-width: 60px;
+    white-space: nowrap;
+  }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Canadian Territories Sales Tax Rate History",
+    "description": "A history of sales tax rates in Yukon, Northwest Territories, and Nunavut from 1991 to present — all three territories collect federal GST only, with no territorial sales tax.",
+    "url": "https://taxbackwards.ca/rate-history/territories/",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "datePublished": "2026-06-04",
+    "dateModified": "2026-06-04",
+    "about": {
+      "@type": "AdministrativeArea",
+      "name": "Canadian Territories"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Canadian Territories Sales Tax Rate History</h1>
+
+        <p>The Yukon, Northwest Territories, and Nunavut share the simplest consumption tax history in Canada: all three collect only the federal Goods and Services Tax, and none has ever introduced a territorial sales tax. Their GST history mirrors the federal rate changes and nothing else. This page documents those milestones and the one structural note unique to the territories — the creation of Nunavut in 1999.</p>
+
+        <h2>Rate Milestones</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table rate-history-territories-milestones">
+          <thead>
+            <tr>
+              <th scope="col">Effective Date</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>GST introduced federally, replacing MST; applies to YT and NT (NU did not yet exist)</td>
+            </tr>
+            <tr>
+              <td>Apr 1, 1999</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>Nunavut created from eastern NWT; GST applies from territorial inception</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2006</td>
+              <td>GST</td>
+              <td>6%</td>
+              <td>Federal GST reduced 1 point; applies to all three territories</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 2008</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>Federal GST reduced a further 1 point; current rate</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-06-04T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>Historical Context</h2>
+
+        <h3>1991: GST Introduction in Yukon and Northwest Territories</h3>
+
+        <p>When the federal Goods and Services Tax replaced the Manufacturers' Sales Tax on January 1, 1991, it applied immediately to Yukon and the Northwest Territories. Neither territory had a territorial sales tax at the time, and neither introduced one as a result of the GST's arrival. The Canada Revenue Agency administers GST in the territories on the same basis as in non-participating provinces — businesses register with the CRA, file a single federal return, and recover eligible Input Tax Credits through that return. There is no territorial tax authority for consumption taxes.</p>
+
+        <h3>1999: Creation of Nunavut</h3>
+
+        <p>On April 1, 1999, Nunavut was created as Canada's newest and largest territory, carved from the eastern portion of the Northwest Territories under the Nunavut Act and the Nunavut Land Claims Agreement. From its first day of existence, Nunavut has collected only the federal GST — the same rate that applied in the NWT area before separation. No territorial sales tax was introduced at the time of Nunavut's creation, and none has been introduced since. Prior to April 1, 1999, the geographic area that became Nunavut was administered as part of the Northwest Territories, and the NWT GST rate in effect at that time applied.</p>
+
+        <h3>2006–2008: Federal GST Reductions</h3>
+
+        <p>The federal government reduced the GST by one percentage point on July 1, 2006 (from 7% to 6%) and again on January 1, 2008 (from 6% to 5%), under the Harper government. These reductions applied uniformly across all three territories, exactly as they did in Alberta and the other non-participating provinces. The 5% rate that came into effect on January 1, 2008 remains in effect today in all three territories.</p>
+
+        <h3>Why No Territorial Sales Tax?</h3>
+
+        <p>Territorial governments have never introduced a territorial sales tax, and the primary structural reason is fiscal: all three territories rely heavily on federal Territorial Formula Financing transfers rather than own-source revenue to fund public services. The cost-of-living burden in northern communities — driven by remote geography, limited transportation infrastructure, and high prices for goods and food — has made territorial sales tax proposals politically untenable. The NWT government has explicitly stated on multiple occasions that it has no plans to introduce a territorial sales tax, citing the impact on northern residents. Yukon and Nunavut have taken similar positions.</p>
+
+        <p>Under the federal Excise Tax Act, all three territories are classified as "non-participating" — the same designation as Alberta, British Columbia, Saskatchewan, and Manitoba. For businesses, this means there is no territorial tax component, no territorial filing obligation for sales tax purposes, and no split-rate calculation. The full 5% GST on eligible business inputs is recoverable as an Input Tax Credit through the CRA.</p>
+
+        <h2>Reverse Calculation by Era</h2>
+
+        <p>Because only the federal GST applies in all three territories, the reverse calculation history follows federal rate changes only. The table reflects the different start date for Nunavut, which did not exist before April 1, 1999.</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Era</th>
+              <th scope="col">Applies To</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Reverse Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1991–Jun 2006</td>
+              <td>YT, NT</td>
+              <td>GST 7%</td>
+              <td>Pre-tax = Total &divide; 1.07</td>
+            </tr>
+            <tr>
+              <td>Apr 1999–Jun 2006</td>
+              <td>NU</td>
+              <td>GST 7%</td>
+              <td>Pre-tax = Total &divide; 1.07</td>
+            </tr>
+            <tr>
+              <td>Jul 2006–Dec 2007</td>
+              <td>YT, NT, NU</td>
+              <td>GST 6%</td>
+              <td>Pre-tax = Total &divide; 1.06</td>
+            </tr>
+            <tr>
+              <td>Jan 2008–present</td>
+              <td>YT, NT, NU</td>
+              <td>GST 5%</td>
+              <td>Pre-tax = Total &divide; 1.05</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>Nunavut's history begins April 1, 1999. For transactions in the Nunavut area before that date, the applicable rate was the NWT GST rate in effect at the time. For current transactions in all three territories, divide by 1.05 to isolate the net pre-tax amount — the same formula as Alberta.</p>
+
+        <p class="back-link"><a href="/territories/">&#8592; Territories Tax Guide</a></p>
+
+        <p class="back-link"><a href="/">&#8592; Back to TaxBackwards.ca calculator</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>

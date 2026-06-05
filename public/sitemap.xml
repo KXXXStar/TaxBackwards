@@ -121,4 +121,22 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/territories/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/saskatchewan/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://taxbackwards.ca/rate-history/manitoba/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

@@ -1,0 +1,236 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saskatchewan Sales Tax Rate History | TaxBackwards.ca</title>
+  <meta name="description" content="A history of Saskatchewan sales tax rates from 1991 to present — GST and PST alongside each other, and the 2017 PST increase from 5% to 6%.">
+  <link rel="canonical" href="https://taxbackwards.ca/rate-history/saskatchewan/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
+
+  <style>
+  .rate-history-saskatchewan-milestones th:nth-child(1),
+  .rate-history-saskatchewan-milestones td:nth-child(1) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-saskatchewan-milestones th:nth-child(2),
+  .rate-history-saskatchewan-milestones td:nth-child(2) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-saskatchewan-milestones th:nth-child(3),
+  .rate-history-saskatchewan-milestones td:nth-child(3) {
+    min-width: 60px;
+    white-space: nowrap;
+  }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Saskatchewan Sales Tax Rate History",
+    "description": "A history of Saskatchewan sales tax rates from 1991 to present — GST and PST alongside each other, and the 2017 PST increase from 5% to 6%.",
+    "url": "https://taxbackwards.ca/rate-history/saskatchewan/",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "datePublished": "2026-06-04",
+    "dateModified": "2026-06-04",
+    "about": {
+      "@type": "AdministrativeArea",
+      "name": "Saskatchewan"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Saskatchewan Sales Tax Rate History</h1>
+
+        <p>Saskatchewan has maintained a separate Provincial Sales Tax alongside the federal GST since 1991 and has never joined the HST system. The PST rate held steady at 5% for more than 26 years before a single increase in 2017. This page documents every rate milestone and the reverse-calculation formulas that apply in each period.</p>
+
+        <h2>Rate Milestones</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table rate-history-saskatchewan-milestones">
+          <thead>
+            <tr>
+              <th scope="col">Effective Date</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>GST introduced federally, replacing Manufacturers' Sales Tax (MST)</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>SK PST</td>
+              <td>5%</td>
+              <td>Provincial Sales Tax alongside GST</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2006</td>
+              <td>GST</td>
+              <td>6%</td>
+              <td>Federal GST reduced 1 point</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 2008</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>Federal GST reduced a further 1 point</td>
+            </tr>
+            <tr>
+              <td>Mar 23, 2017</td>
+              <td>SK PST</td>
+              <td>6%</td>
+              <td>PST increased from 5% to 6% in 2017-18 Budget to address provincial deficit</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-06-04T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>Historical Context</h2>
+
+        <h3>1991: GST and Saskatchewan PST</h3>
+
+        <p>When the federal Goods and Services Tax replaced the Manufacturers' Sales Tax on January 1, 1991, Saskatchewan retained its own Provincial Sales Tax at 5% alongside the new federal levy. The two taxes have operated separately ever since — the GST administered by the Canada Revenue Agency on a value-added basis with ITC recovery for registered businesses, and the SK PST administered by the Saskatchewan Ministry of Finance as a single-stage consumer tax with no equivalent recovery mechanism. Saskatchewan has never entered discussions to join the HST framework and is classified as a non-participating province under the Excise Tax Act.</p>
+
+        <h3>2006–2008: Federal GST Reductions</h3>
+
+        <p>The federal government reduced the GST by one percentage point on July 1, 2006 (from 7% to 6%) and again on January 1, 2008 (from 6% to 5%), under the Harper government. Saskatchewan's 5% PST rate did not change during this period. The combined effective rate on a pre-tax purchase fell from 12% to 11% to 10% as the federal component was cut.</p>
+
+        <h3>2017: PST Rate Increase and Base Expansion</h3>
+
+        <p>On March 23, 2017, Saskatchewan's Brad Wall government tabled the 2017-18 provincial budget, which increased the PST rate from 5% to 6% effective immediately on that date. The increase was introduced to address a provincial deficit driven largely by falling potash and oil revenues. The March 23 effective date is notable — unlike most provincial tax changes, which take effect on April 1 or July 1 to align with fiscal year or quarter boundaries, this increase was applied on the budget date itself.</p>
+
+        <p>The 2017 budget also substantially expanded the PST base alongside the rate increase. PST was applied to restaurant meals, children's clothing, and insurance premiums for the first time — categories that had previously been PST-exempt. The combined effect of the rate increase and base expansion made 2017 the most significant structural change to Saskatchewan's provincial sales tax since 1991. The 6% rate and expanded base remain in effect today.</p>
+
+        <h3>PST Is Not a Value-Added Tax</h3>
+
+        <p>Unlike the federal GST or the HST in participating provinces, Saskatchewan PST is not a value-added tax. Businesses cannot claim input tax credits on PST paid on business inputs — PST flows through as a real cost to the business and is not recoverable after the fact. Only the GST portion of a Saskatchewan purchase qualifies for ITC recovery for CRA-registered businesses. This distinction is the most important practical difference between Saskatchewan's tax structure and the HST provinces, and it affects the bookkeeping treatment of every taxable purchase made in Saskatchewan.</p>
+
+        <h2>Reverse Calculation by Era</h2>
+
+        <p>When working backwards from a gross total to extract the pre-tax amount, the divisor depends on the combined GST and PST rates in effect at the time of the transaction.</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Era</th>
+              <th scope="col">Tax Structure</th>
+              <th scope="col">Reverse Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1991–Jun 2006</td>
+              <td>GST 7% + PST 5%</td>
+              <td>Pre-tax = Total &divide; 1.12</td>
+            </tr>
+            <tr>
+              <td>Jul 2006–Dec 2007</td>
+              <td>GST 6% + PST 5%</td>
+              <td>Pre-tax = Total &divide; 1.11</td>
+            </tr>
+            <tr>
+              <td>Jan 2008–Mar 22, 2017</td>
+              <td>GST 5% + PST 5%</td>
+              <td>Pre-tax = Total &divide; 1.10</td>
+            </tr>
+            <tr>
+              <td>Mar 23, 2017–present</td>
+              <td>GST 5% + PST 6%</td>
+              <td>Pre-tax = Total &divide; 1.11</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>For current transactions, divide by 1.11 to isolate the net pre-tax amount. To split the taxes: GST = Total &divide; 1.11 &times; 0.05; PST = Total &divide; 1.11 &times; 0.06. Note that the Jan 2008–Mar 22, 2017 era produced the lowest combined Saskatchewan rate in modern history at 10%, as both GST and PST were at 5%. The current 11% combined rate (5% GST + 6% PST) is coincidentally the same divisor as the Jul 2006–Dec 2007 era, but the underlying tax structure — and ITC eligibility of each component — is the same in both periods.</p>
+
+        <p class="back-link"><a href="/provinces/saskatchewan/">&#8592; Saskatchewan Province Tax Guide</a></p>
+
+        <p class="back-link"><a href="/">&#8592; Back to TaxBackwards.ca calculator</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA and Saskatchewan Ministry of Finance guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>
