@@ -1,0 +1,257 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BC Sales Tax Rate History | TaxBackwards.ca</title>
+  <meta name="description" content="A history of British Columbia sales tax rates from 1991 to present — GST, the 2010 HST transition, the 2011 referendum, and the return to GST + PST in 2013.">
+  <link rel="canonical" href="https://taxbackwards.ca/rate-history/bc/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../src/css/style.css?v=7">
+
+  <style>
+  .rate-history-bc-milestones th:nth-child(1),
+  .rate-history-bc-milestones td:nth-child(1) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-bc-milestones th:nth-child(2),
+  .rate-history-bc-milestones td:nth-child(2) {
+    min-width: 90px;
+    white-space: nowrap;
+  }
+  .rate-history-bc-milestones th:nth-child(3),
+  .rate-history-bc-milestones td:nth-child(3) {
+    min-width: 60px;
+    white-space: nowrap;
+  }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BC Sales Tax Rate History",
+    "description": "A history of British Columbia sales tax rates from 1991 to present — GST, the 2010 HST transition, the 2011 referendum, and the return to GST + PST in 2013.",
+    "url": "https://taxbackwards.ca/rate-history/bc/",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    },
+    "datePublished": "2026-06-04",
+    "dateModified": "2026-06-04",
+    "about": {
+      "@type": "AdministrativeArea",
+      "name": "British Columbia"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>BC Sales Tax Rate History</h1>
+
+        <p>British Columbia's consumption tax history is unlike any other province in Canada. BC adopted the Harmonized Sales Tax in 2010 alongside Ontario, then became the only province to reverse that decision through a democratic referendum in 2011, returning to a split GST + PST structure in 2013. This page documents every major rate milestone, the HST era, and the reverse-calculation formulas that apply in each period.</p>
+
+        <h2>Rate Milestones</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table rate-history-bc-milestones">
+          <thead>
+            <tr>
+              <th scope="col">Effective Date</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>GST</td>
+              <td>7%</td>
+              <td>GST introduced federally, replacing Manufacturers' Sales Tax (MST)</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 1991</td>
+              <td>BC PST</td>
+              <td>7%</td>
+              <td>Provincial sales tax alongside GST (known as Social Services Tax until 2013 reinstatement)</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2006</td>
+              <td>GST</td>
+              <td>6%</td>
+              <td>Federal GST reduced 1 point</td>
+            </tr>
+            <tr>
+              <td>Jan 1, 2008</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>Federal GST reduced a further 1 point</td>
+            </tr>
+            <tr>
+              <td>Jul 1, 2010</td>
+              <td>HST</td>
+              <td>12%</td>
+              <td>BC PST + GST merged (5% federal + 7% provincial); PST temporarily abolished</td>
+            </tr>
+            <tr>
+              <td>Apr 1, 2013</td>
+              <td>GST</td>
+              <td>5%</td>
+              <td>HST eliminated following 2011 referendum (54.73% voted to scrap HST); GST reinstated</td>
+            </tr>
+            <tr>
+              <td>Apr 1, 2013</td>
+              <td>BC PST</td>
+              <td>7%</td>
+              <td>PST reinstated alongside GST; separate tax authorities restored</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="rates-verified-pill" id="rates-verified-province">&#10003; Rates verified <span id="rates-verified-province-date"></span></p>
+<script>
+(function(){
+  var d = new Date("2026-06-04T00:00:00");
+  var el = document.getElementById("rates-verified-province-date");
+  if (el) { el.textContent = d.toLocaleString("en-CA", { month: "long", year: "numeric" }); }
+})();
+</script>
+
+        <h2>Historical Context</h2>
+
+        <h3>1991: GST and the Social Services Tax</h3>
+
+        <p>When the federal Goods and Services Tax replaced the Manufacturers' Sales Tax on January 1, 1991, British Columbia retained its provincial consumption tax — formally named the Social Services Tax, though widely referred to as PST — at 7%. The two taxes operated independently: GST was administered by the Canada Revenue Agency on a value-added basis with ITC recovery for registered businesses, while the Social Services Tax was administered by the BC Ministry of Finance as a single-stage consumer tax with no equivalent recovery mechanism for businesses.</p>
+
+        <h3>2006–2008: Federal GST Reductions</h3>
+
+        <p>The federal government reduced the GST by one percentage point on July 1, 2006 (from 7% to 6%) and again on January 1, 2008 (from 6% to 5%), under the Harper government. BC's 7% provincial tax rate did not change during this period. The combined effective rate on a pre-tax purchase fell from 14% to 13% to 12% as the federal component was cut, but the dual-tax structure remained in place.</p>
+
+        <h3>2010: HST Adoption</h3>
+
+        <p>On July 1, 2010, BC abolished its Social Services Tax and merged the provincial component with the federal GST into a single 12% Harmonized Sales Tax — 5% federal plus 7% provincial. The announcement came just months after a May 2009 provincial election in which the governing BC Liberal party had not campaigned on HST adoption. The surprise announcement — and its expansion of taxable goods and services beyond what the former PST covered — triggered a citizen-initiated referendum process under BC's Recall and Initiative Act. Former Premier Bill Vander Zalm led the anti-HST campaign, gathering enough signatures to force a formal vote.</p>
+
+        <h3>2011: The Referendum</h3>
+
+        <p>BC held a mail-in referendum on the HST in the summer of 2011. The results, announced August 26, 2011, confirmed that 54.73% of voters chose to extinguish the HST and return to the separate GST + PST structure. The result was binding under the initiative legislation. BC became the only province in Canadian history to adopt HST and then formally repeal it through a democratic vote.</p>
+
+        <h3>2013: Return to GST + PST</h3>
+
+        <p>The transition back from HST to the separate GST + PST structure took 18 months to execute. The split system was reinstated on April 1, 2013, at which point the provincial tax was formally rebranded as the Provincial Sales Tax — the Social Services Tax name was retired. Since then, BC has operated under the same two-authority structure as before 2010: 5% federal GST administered by the Canada Revenue Agency and 7% BC PST administered by the BC Ministry of Finance.</p>
+
+        <p>Unlike the HST that briefly replaced it, BC PST is not a value-added tax. Businesses cannot claim Input Tax Credits on PST paid on business inputs — PST flows through as a real cost to the business. Only the GST portion is ITC-eligible for CRA-registered businesses. This distinction is the most important practical difference between BC's current tax structure and the HST provinces.</p>
+
+        <h2>Reverse Calculation by Era</h2>
+
+        <p>When working backwards from a gross total to extract the pre-tax amount, the divisor depends on which tax structure was in effect at the time of the transaction.</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Era</th>
+              <th scope="col">Tax Structure</th>
+              <th scope="col">Reverse Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1991–2006</td>
+              <td>GST 7% + PST 7%</td>
+              <td>Pre-tax = Total &divide; 1.14</td>
+            </tr>
+            <tr>
+              <td>2006–2008</td>
+              <td>GST 6% + PST 7%</td>
+              <td>Pre-tax = Total &divide; 1.13</td>
+            </tr>
+            <tr>
+              <td>2008–Jul 2010</td>
+              <td>GST 5% + PST 7%</td>
+              <td>Pre-tax = Total &divide; 1.12</td>
+            </tr>
+            <tr>
+              <td>Jul 2010–Apr 2013</td>
+              <td>HST 12%</td>
+              <td>Pre-tax = Total &divide; 1.12</td>
+            </tr>
+            <tr>
+              <td>Apr 2013–present</td>
+              <td>GST 5% + PST 7%</td>
+              <td>Pre-tax = Total &divide; 1.12</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>For current transactions, divide by 1.12 to isolate the net pre-tax amount. To split the taxes: GST = Total &divide; 1.12 &times; 0.05; PST = Total &divide; 1.12 &times; 0.07. Note that although the combined rate during the 2008–2010 pre-HST era, the 2010–2013 HST era, and the current era all produce the same 1.12 divisor, the tax structure — and therefore which portion is ITC-eligible — differs materially. During the HST era the full 12% was value-added and ITC-eligible; under the current split structure only the 5% GST portion qualifies for ITCs.</p>
+
+        <p class="back-link"><a href="/provinces/bc/">&#8592; BC Province Tax Guide</a></p>
+
+        <p class="back-link"><a href="/">&#8592; Back to TaxBackwards.ca calculator</a></p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA and BC Ministry of Finance guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../src/js/app.js"></script>
+
+</body>
+</html>
