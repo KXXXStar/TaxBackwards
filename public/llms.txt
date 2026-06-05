@@ -1,0 +1,47 @@
+# TaxBackwards.ca
+
+> TaxBackwards.ca is a Canadian reverse sales tax calculator. Given a
+> tax-included total, it calculates the pre-tax amount and the exact GST,
+> HST, PST, RST, or QST paid — for all 10 provinces and 3 territories.
+> All rates are verified against CRA and provincial sources. Current as
+> of May 2026.
+
+TaxBackwards.ca covers every Canadian province and territory. It is the
+only calculator that shows the reverse tax formula and worked examples
+for every jurisdiction, including historical rate tables for each
+province.
+
+## Calculator
+
+- [Homepage calculator](https://taxbackwards.ca/): Reverse sales tax
+  calculator for all provinces and territories. Select a province to
+  calculate GST, HST, PST, RST, or QST from a tax-included total.
+
+## Province Tax Guides
+
+- [Ontario](https://taxbackwards.ca/provinces/ontario/): HST 13% — reverse formula, rate history, exemptions
+- [Quebec](https://taxbackwards.ca/provinces/quebec/): GST 5% + QST 9.975% — reverse formula, ITR notes
+- [British Columbia](https://taxbackwards.ca/provinces/bc/): GST 5% + PST 7% — reverse formula, ITC notes
+- [Alberta](https://taxbackwards.ca/provinces/alberta/): GST 5% only — no provincial sales tax
+- [Nova Scotia](https://taxbackwards.ca/provinces/nova-scotia/): HST 14% — reduced from 15% April 1 2025
+- [New Brunswick](https://taxbackwards.ca/provinces/new-brunswick/): HST 15%
+- [Prince Edward Island](https://taxbackwards.ca/provinces/prince-edward-island/): HST 15%
+- [Newfoundland & Labrador](https://taxbackwards.ca/provinces/newfoundland-labrador/): HST 15%
+- [Saskatchewan](https://taxbackwards.ca/provinces/saskatchewan/): GST 5% + PST 6%
+- [Manitoba](https://taxbackwards.ca/provinces/manitoba/): GST 5% + RST 7%
+- [Yukon, Northwest Territories & Nunavut](https://taxbackwards.ca/territories/): GST 5% only
+
+## Rate History
+
+- [Rate History Index](https://taxbackwards.ca/rate-history/): Index of all provincial and territorial rate history pages
+- [Ontario rate history](https://taxbackwards.ca/rate-history/ontario/): GST and HST milestones 1991–present
+- [Quebec rate history](https://taxbackwards.ca/rate-history/quebec/): GST and QST milestones 1991–present
+- [BC rate history](https://taxbackwards.ca/rate-history/bc/): GST, HST, and PST milestones including 2011 referendum
+- [Alberta rate history](https://taxbackwards.ca/rate-history/alberta/): GST milestones 1991–present; no provincial tax
+- [Nova Scotia rate history](https://taxbackwards.ca/rate-history/nova-scotia/): HST milestones 1997–present including 2025 reduction
+- [New Brunswick rate history](https://taxbackwards.ca/rate-history/new-brunswick/): HST milestones 1997–present
+- [PEI rate history](https://taxbackwards.ca/rate-history/prince-edward-island/): PST and HST milestones 1991–present
+- [Newfoundland & Labrador rate history](https://taxbackwards.ca/rate-history/newfoundland-labrador/): HST milestones 1997–present
+- [Saskatchewan rate history](https://taxbackwards.ca/rate-history/saskatchewan/): GST and PST milestones 1991–present
+- [Manitoba rate history](https://taxbackwards.ca/rate-history/manitoba/): GST and RST milestones 1991–present
+- [Territories rate history](https://taxbackwards.ca/rate-history/territories/): GST milestones for YT, NT, NU
