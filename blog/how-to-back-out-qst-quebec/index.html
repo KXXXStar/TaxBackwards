@@ -1,0 +1,191 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Back Out QST from a Quebec Invoice (14.975%) | TaxBackwards.ca</title>
+  <meta name="description" content="Learn how to remove GST and QST from a Quebec invoice total. Step-by-step reverse tax formula with 4 worked examples and a free calculator.">
+  <link rel="canonical" href="https://taxbackwards.ca/blog/how-to-back-out-qst-quebec/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css?v=7">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Back Out QST from a Quebec Invoice",
+    "description": "Learn how to remove GST and QST from a Quebec invoice total. Step-by-step reverse tax formula with 4 worked examples and a free calculator.",
+    "url": "https://taxbackwards.ca/blog/how-to-back-out-qst-quebec/",
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>How to Back Out QST from a Quebec Invoice</h1>
+
+        <p>Quebec is the only province that applies two separate taxes — federal GST (5%) and provincial QST (9.975%) — each calculated independently. The combined rate is 14.975%. When you have a tax-included total and need to work backwards to the pre-tax amount, you need the reverse formula.</p>
+
+        <h2>The Reverse GST + QST Formula (Quebec 14.975%)</h2>
+
+        <p>The formula is straightforward:</p>
+
+        <p><strong>Pre-tax amount = Total ÷ 1.14975</strong></p>
+
+        <p>Quebec's two taxes break down as follows:</p>
+
+        <ul>
+          <li><strong>GST rate:</strong> 5% (federal)</li>
+          <li><strong>QST rate:</strong> 9.975% (provincial — applied to pre-tax amount, not on top of GST)</li>
+          <li><strong>Combined rate:</strong> 14.975%</li>
+          <li><strong>Formula:</strong> Pre-tax = Total ÷ 1.14975</li>
+          <li><strong>Total tax:</strong> Total − Pre-tax</li>
+        </ul>
+
+        <p>Unlike some provinces where PST is calculated on the GST-included amount, Quebec's QST is applied to the pre-tax price only, so the combined divisor is simply 1.14975.</p>
+
+        <h2>4 Worked Examples</h2>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Total Paid</th>
+              <th scope="col">Pre-Tax Amount</th>
+              <th scope="col">GST (5%)</th>
+              <th scope="col">QST (9.975%)</th>
+              <th scope="col">Total Tax</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$11.50</td>
+              <td>$10.00</td>
+              <td>$0.50</td>
+              <td>$1.00</td>
+              <td>$1.50</td>
+            </tr>
+            <tr>
+              <td>$57.49</td>
+              <td>$50.00</td>
+              <td>$2.50</td>
+              <td>$4.99</td>
+              <td>$7.49</td>
+            </tr>
+            <tr>
+              <td>$114.98</td>
+              <td>$100.00</td>
+              <td>$5.00</td>
+              <td>$9.98</td>
+              <td>$14.98</td>
+            </tr>
+            <tr>
+              <td>$287.43</td>
+              <td>$250.00</td>
+              <td>$12.50</td>
+              <td>$24.94</td>
+              <td>$37.43</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p><strong>Example 1 — $11.50 total:</strong> $11.50 ÷ 1.14975 = $10.00 pre-tax. GST: $10.00 × 0.05 = $0.50. QST: $10.00 × 0.09975 = $1.00. Total tax: $1.50.</p>
+
+        <p><strong>Example 2 — $57.49 total:</strong> $57.49 ÷ 1.14975 = $50.00 pre-tax. GST: $50.00 × 0.05 = $2.50. QST: $50.00 × 0.09975 = $4.99. Total tax: $7.49.</p>
+
+        <p><strong>Example 3 — $114.98 total:</strong> $114.98 ÷ 1.14975 = $100.00 pre-tax. GST: $100.00 × 0.05 = $5.00. QST: $100.00 × 0.09975 = $9.98. Total tax: $14.98.</p>
+
+        <p><strong>Example 4 — $287.43 total:</strong> $287.43 ÷ 1.14975 = $250.00 pre-tax. GST: $250.00 × 0.05 = $12.50. QST: $250.00 × 0.09975 = $24.94. Total tax: $37.43.</p>
+
+        <h2>Skip the Math — Use the Calculator</h2>
+
+        <p>Enter any Quebec invoice total into the free <a href="https://taxbackwards.ca/provinces/quebec/">Quebec reverse GST + QST calculator</a> and get the pre-tax amount, GST, and QST breakdown instantly — no division required.</p>
+
+        <h2>What If You're a Business? (Input Tax Credits and ITRs)</h2>
+
+        <p>If your business is registered for GST, you may be able to claim Input Tax Credits (ITCs) to recover the 5% GST paid on eligible business expenses. If you are registered for QST, you may be able to claim Input Tax Refunds (ITRs) to recover the 9.975% QST. Eligibility depends on your registration status and the nature of the expense — consult a tax professional for advice specific to your situation.</p>
+
+        <h2>Quebec Sales Tax Exemptions</h2>
+
+        <p>Not every Quebec purchase includes GST and QST. Common exempt and zero-rated items include:</p>
+
+        <ul>
+          <li>Basic groceries</li>
+          <li>Prescription drugs</li>
+          <li>Most medical devices</li>
+          <li>Books (QST-exempt only; GST still applies)</li>
+        </ul>
+
+        <p>If an item is exempt, there is no tax to back out — do not apply the ÷ 1.14975 formula to those totals.</p>
+
+        <p>Use the free <a href="https://taxbackwards.ca/provinces/quebec/">Quebec reverse GST + QST calculator</a> to extract GST and QST from any Quebec total instantly.</p>
+
+        <p>For the full Quebec tax reference including common amounts table and ITC/ITR rules, see the <a href="https://taxbackwards.ca/provinces/quebec/">Quebec Province Tax Guide</a>.</p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../public/js/main.js"></script>
+
+</body>
+</html>
