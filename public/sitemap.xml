@@ -180,4 +180,11 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://taxbackwards.ca/blog/gst-vs-hst-vs-pst-canada/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
