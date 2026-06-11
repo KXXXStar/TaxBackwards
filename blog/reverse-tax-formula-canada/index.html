@@ -1,0 +1,236 @@
+<!-- © 2026 TaxBackwards.ca. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Tax Formula Canada — How to Back Tax Out of Any Price | TaxBackwards.ca</title>
+  <meta name="description" content="Learn the reverse tax formula used across every Canadian province and territory. Remove GST, HST, or PST from any total with simple division.">
+  <link rel="canonical" href="https://taxbackwards.ca/blog/reverse-tax-formula-canada/">
+  <link rel="icon" href="../../public/images/favicon.png" type="image/png">
+
+  <!--
+    Anti-FOUC theme script — must run before CSS is applied.
+    Reads localStorage key 'tb-theme'; falls back to prefers-color-scheme.
+    Hash in CSP: sha256-QYrcSNNrtA0ESAV2mhPBWROIuByLokjRbRaun4xDP6s=
+    This exact script content (246 chars) must match that hash exactly.
+  -->
+  <script>(function(){var t=localStorage.getItem('tb-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <!--
+    Inter typeface — Google Fonts.
+    SRI hashes cannot be applied to Google Fonts dynamic CSS endpoints because
+    the response varies per user-agent. Security is enforced via CSP
+    font-src https://fonts.gstatic.com in public/_headers.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css?v=7">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Reverse Tax Formula Canada — How It Works",
+    "description": "Learn the reverse tax formula used across every Canadian province and territory. Remove GST, HST, or PST from any total with simple division.",
+    "url": "https://taxbackwards.ca/blog/reverse-tax-formula-canada/",
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "author": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TaxBackwards.ca",
+      "url": "https://taxbackwards.ca"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="../../public/images/logo.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-screen">
+    <img src="../../public/images/logo-print.png"
+         alt="TaxBackwards.ca"
+         class="logo logo-print"
+         aria-hidden="true">
+    <button id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode">
+      <span class="theme-icon-dark" aria-hidden="true">&#9788;</span>
+      <span class="theme-icon-light" aria-hidden="true">&#9790;</span>
+    </button>
+  </header>
+
+  <main class="main--prose">
+    <div class="card card--prose">
+      <div class="prose">
+
+        <h1>Reverse Tax Formula Canada — How It Works</h1>
+
+        <p>When you know the tax-included total but need the pre-tax amount, you use the reverse tax formula. It works the same way across every Canadian province and territory — the only difference is the rate you divide by. This page explains the formula, shows how it applies to every province, and links to free calculators for each one.</p>
+
+        <h2>The Formula</h2>
+
+        <p>The reverse tax formula is:</p>
+
+        <p><strong>Pre-tax amount = Total ÷ (1 + tax rate)</strong></p>
+
+        <p>For example, if the total tax rate is 13% (Ontario HST):</p>
+
+        <ul>
+          <li><code>Pre-tax = Total ÷ 1.13</code></li>
+          <li>Tax amount = <code>Total − Pre-tax</code></li>
+        </ul>
+
+        <p>That's it. No multiplication, no separate steps. One division gives you the pre-tax amount; subtract from the total to get the tax.</p>
+
+        <h2>Rates by Province and Territory</h2>
+
+        <p>Canada has three tax structures — HST (single harmonized rate), GST + PST (two separate taxes), and GST only (Alberta and territories). Use the divisor that matches your province or territory:</p>
+
+        <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Province / Territory</th>
+              <th scope="col">Tax Type</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Divisor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ontario</td>
+              <td>HST</td>
+              <td>13%</td>
+              <td>1.13</td>
+            </tr>
+            <tr>
+              <td>Nova Scotia</td>
+              <td>HST</td>
+              <td>14%</td>
+              <td>1.14</td>
+            </tr>
+            <tr>
+              <td>New Brunswick</td>
+              <td>HST</td>
+              <td>15%</td>
+              <td>1.15</td>
+            </tr>
+            <tr>
+              <td>Newfoundland and Labrador</td>
+              <td>HST</td>
+              <td>15%</td>
+              <td>1.15</td>
+            </tr>
+            <tr>
+              <td>Prince Edward Island</td>
+              <td>HST</td>
+              <td>15%</td>
+              <td>1.15</td>
+            </tr>
+            <tr>
+              <td>Quebec</td>
+              <td>GST + QST</td>
+              <td>14.975%</td>
+              <td>1.14975</td>
+            </tr>
+            <tr>
+              <td>British Columbia</td>
+              <td>GST + PST</td>
+              <td>12%</td>
+              <td>1.12</td>
+            </tr>
+            <tr>
+              <td>Saskatchewan</td>
+              <td>GST + PST</td>
+              <td>11%</td>
+              <td>1.11</td>
+            </tr>
+            <tr>
+              <td>Manitoba</td>
+              <td>GST + RST</td>
+              <td>12%</td>
+              <td>1.12</td>
+            </tr>
+            <tr>
+              <td>Alberta</td>
+              <td>GST only</td>
+              <td>5%</td>
+              <td>1.05</td>
+            </tr>
+            <tr>
+              <td>Yukon</td>
+              <td>GST only</td>
+              <td>5%</td>
+              <td>1.05</td>
+            </tr>
+            <tr>
+              <td>Northwest Territories</td>
+              <td>GST only</td>
+              <td>5%</td>
+              <td>1.05</td>
+            </tr>
+            <tr>
+              <td>Nunavut</td>
+              <td>GST only</td>
+              <td>5%</td>
+              <td>1.05</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h2>Worked Example for Each Tax Structure</h2>
+
+        <p><strong>HST example (Ontario 13%):</strong> $226.00 ÷ 1.13 = $200.00 — tax = $26.00</p>
+
+        <p><strong>GST + PST example (BC 12%):</strong> $112.00 ÷ 1.12 = $100.00 — tax = $12.00</p>
+
+        <p><strong>GST only example (Alberta 5%):</strong> $105.00 ÷ 1.05 = $100.00 — tax = $5.00</p>
+
+        <p><strong>GST + QST example (Quebec 14.975%):</strong> $149.75 ÷ 1.14975 = $130.25 — tax = $19.50</p>
+
+        <h2>Use a Calculator Instead</h2>
+
+        <p>Rather than doing the division manually, use the free province-specific calculators on TaxBackwards.ca:</p>
+
+        <ul>
+          <li><a href="https://taxbackwards.ca/provinces/ontario/">Ontario</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/quebec/">Quebec</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/bc/">British Columbia</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/alberta/">Alberta</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/nova-scotia/">Nova Scotia</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/new-brunswick/">New Brunswick</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/newfoundland-labrador/">Newfoundland and Labrador</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/prince-edward-island/">Prince Edward Island</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/saskatchewan/">Saskatchewan</a></li>
+          <li><a href="https://taxbackwards.ca/provinces/manitoba/">Manitoba</a></li>
+          <li><a href="https://taxbackwards.ca/territories/">Yukon, Northwest Territories &amp; Nunavut</a></li>
+        </ul>
+
+        <p>Use the free <a href="https://taxbackwards.ca/">Canadian reverse tax calculator</a> to extract tax from any total instantly.</p>
+
+        <p class="disclaimer">Calculations are arithmetic estimations only and do not constitute formal tax or corporate auditing advice. All figures must be verified against current CRA guidelines before filing.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TaxBackwards.ca. All rights reserved. Calculations are estimates only and do not constitute tax advice.</p>
+    <p><a href="https://github.com/KXXXStar/TaxBackwards" rel="noopener noreferrer" target="_blank">View source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="../../public/js/main.js"></script>
+
+</body>
+</html>
