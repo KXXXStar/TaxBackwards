@@ -1197,3 +1197,20 @@ select option:disabled {
 .math-explainer .prose p#math-explainer-example {
   margin-bottom: 0;
 }
+
+/* FAQ list — province pages */
+.faq-list {
+  margin: 1.5rem 0 2rem;
+}
+.faq-list dt {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+.faq-list dd {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
