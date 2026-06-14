@@ -30,44 +30,84 @@
   <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the sales tax rate in Quebec?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Quebec applies two taxes: the 5% federal GST administered by the CRA, and the 9.975% QST administered by Revenu Québec. The combined effective rate is 14.975%."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I calculate GST and QST backwards from a total in Quebec?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide the gross total by 1.14975 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.09975 for QST. Both taxes apply to the same net base — QST does not compound on top of GST."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does QST apply on top of GST in Quebec?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Since January 1, 2013, QST is calculated directly on the net consideration base at 9.975%, not on top of GST. Both taxes apply independently to the same pre-tax amount."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who administers QST in Quebec?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "QST is administered by Revenu Québec, not the Canada Revenue Agency. Businesses must register separately for QST with Revenu Québec and file QST returns independently from their federal GST returns."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the sales tax rate in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quebec applies two taxes: the 5% federal GST and the 9.975% QST, for a combined effective rate of 14.975%. GST is administered by the Canada Revenue Agency; QST is administered by Revenu Québec. In Quebec, Revenu Québec also administers GST on behalf of the CRA for most businesses, so a single registration covers both taxes."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate GST and QST backwards from a total in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the gross total by 1.14975 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.09975 for QST. Both taxes apply independently to the same net base — QST does not compound on top of GST. Example: $114.975 gross ÷ 1.14975 = $100.00 net; GST = $5.00; QST = $9.975."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does QST apply on top of GST in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Since January 1, 2013, QST is calculated directly on the net consideration base at 9.975%, not on top of GST. Both taxes apply independently to the same pre-tax amount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who administers QST in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "QST is administered by Revenu Québec. Uniquely, Revenu Québec also administers GST on behalf of the Canada Revenue Agency for most Quebec businesses, meaning a single registration with Revenu Québec covers both GST and QST obligations. Businesses file one combined return with Revenu Québec rather than separate returns with the CRA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need to register for QST in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You must register for QST with Revenu Québec once your total taxable revenues exceed $30,000 over any four consecutive calendar quarters. Once registered, you receive a QST number (format: 123456789 TQ0001) which must appear on all invoices. Voluntary registration is available before reaching the threshold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is exempt from QST in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic groceries, prescription drugs, most medical devices, residential rent, most financial services, and insurance premiums are exempt or zero-rated from QST in Quebec. Some items unique to Quebec include certain maple products and baby items. Consult the Revenu Québec exemption schedule for the full list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I claim QST as an Input Tax Credit in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but the terminology differs. For GST, registered businesses claim Input Tax Credits (ITCs). For QST, the equivalent is an Input Tax Refund (ITR), claimed on your QST return with Revenu Québec. Both ITCs and ITRs allow registered businesses to recover tax paid on eligible business inputs, reducing net tax remittance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do out-of-province or foreign businesses need to register for QST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Quebec requires out-of-province and non-resident businesses — including foreign digital service providers — to register for QST if they supply taxable goods or services to Quebec consumers. The $30,000 revenue threshold applies. This rule specifically captures e-commerce and digital product sellers regardless of where the business is physically located."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I verify a QST registration number in Quebec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Revenu Québec online QST registry to verify any supplier's QST registration number. Confirming registration is important when claiming Input Tax Refunds (ITRs) — you must be able to demonstrate the supplier was registered at the time of the transaction."
+      }
+    }
+  ]
+}
   </script>
 
   <script type="application/ld+json">
@@ -206,6 +246,39 @@
         <h2>French-Canadian Number Formatting</h2>
 
         <p>In Quebec, monetary amounts are conventionally displayed with a comma as the decimal separator and a non-breaking space before the dollar sign — for example, 100,00&#x00A0;$. TaxBackwards.ca automatically applies this formatting when Quebec is selected as the target jurisdiction.</p>
+
+        <h2>Quebec GST + QST — Frequently Asked Questions</h2>
+
+        <dl class="faq-list">
+
+          <dt>What is the sales tax rate in Quebec?</dt>
+          <dd>Quebec applies two taxes: the 5% federal GST and the 9.975% QST, for a combined effective rate of 14.975%. Revenu Québec administers both taxes for most Quebec businesses — a single registration covers GST and QST obligations.</dd>
+
+          <dt>How do I calculate GST and QST backwards from a total in Quebec?</dt>
+          <dd>Divide the gross total by 1.14975 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.09975 for QST. Neither tax compounds on the other — both apply independently to the same net base. Example: $114.975 ÷ 1.14975 = $100.00 net; GST = $5.00; QST = $9.975.</dd>
+
+          <dt>Does QST apply on top of GST in Quebec?</dt>
+          <dd>No. Since January 1, 2013, QST is calculated directly on the net consideration base at 9.975%, not on top of GST. Both taxes apply independently to the same pre-tax amount.</dd>
+
+          <dt>Who administers QST in Quebec?</dt>
+          <dd>Revenu Québec administers QST and also handles GST on behalf of the CRA for most Quebec businesses. This means one registration and one combined return covers both taxes — unlike other provinces where GST is filed separately with the CRA.</dd>
+
+          <dt>When do I need to register for QST in Quebec?</dt>
+          <dd>Once your total taxable revenues exceed $30,000 over any four consecutive calendar quarters. Once registered, your QST number (format: 123456789 TQ0001) must appear on all invoices. Voluntary early registration is available.</dd>
+
+          <dt>What is exempt from QST in Quebec?</dt>
+          <dd>Basic groceries, prescription drugs, most medical devices, residential rent, most financial services, and insurance premiums are exempt or zero-rated. Consult the Revenu Québec exemption schedule for the full list.</dd>
+
+          <dt>Can I claim QST as an Input Tax Credit?</dt>
+          <dd>Yes, but it's called an Input Tax Refund (ITR) for QST — not an ITC. GST-registered businesses claim ITCs; QST-registered businesses claim ITRs on their Revenu Québec return. Both recover tax paid on eligible business inputs.</dd>
+
+          <dt>Do out-of-province or foreign businesses need to register for QST?</dt>
+          <dd>Yes. Quebec requires out-of-province and non-resident businesses — including foreign digital service and e-commerce sellers — to register for QST once they exceed the $30,000 threshold supplying to Quebec consumers, regardless of physical location.</dd>
+
+          <dt>How do I verify a QST registration number?</dt>
+          <dd>Use the Revenu Québec online QST registry to confirm a supplier's registration. Verification is important when claiming ITRs — you must show the supplier was registered at the time of the transaction.</dd>
+
+        </dl>
 
         <h2>Quebec and GST + QST: Background</h2>
 

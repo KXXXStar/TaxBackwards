@@ -30,44 +30,84 @@
   <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the combined sales tax rate in British Columbia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "British Columbia charges 5% federal GST plus 7% provincial PST, for a combined rate of 12%. The two taxes are administered separately: GST by the Canada Revenue Agency, and PST by the BC Ministry of Finance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I reverse-calculate GST and PST from a BC gross total?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for the GST portion and by 0.07 for the PST portion. For example: $112.00 ÷ 1.12 = $100.00 net; $100.00 × 0.05 = $5.00 GST; $100.00 × 0.07 = $7.00 PST."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is BC PST an Input Tax Credit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. BC PST is a consumer-level tax and is generally not recoverable as an Input Tax Credit. Unlike GST, PST paid on business inputs cannot be claimed back from the BC Ministry of Finance. It is a real cost to the business. Only the GST portion qualifies as an ITC for GST-registered businesses."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is exempt from PST in British Columbia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Basic groceries, prescription drugs, and certain medical equipment are exempt from BC PST. Some business inputs used in manufacturing or resale may also qualify for PST exemptions. Consult the BC Ministry of Finance exemption schedule for the full list."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the combined sales tax rate in British Columbia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "British Columbia charges 5% federal GST plus 7% provincial PST, for a combined rate of 12% on most goods. The two taxes are administered separately: GST by the Canada Revenue Agency, and PST by the BC Ministry of Finance."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reverse-calculate GST and PST from a BC gross total?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for the GST portion and by 0.07 for the PST portion. For example: $112.00 ÷ 1.12 = $100.00 net; $100.00 × 0.05 = $5.00 GST; $100.00 × 0.07 = $7.00 PST."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BC PST an Input Tax Credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BC PST is a consumer-level tax and is not recoverable as an Input Tax Credit. Unlike GST, PST paid on business inputs cannot be claimed back — it is a real cost to the business. Only the GST portion qualifies as an ITC for GST-registered businesses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is exempt from PST in British Columbia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic groceries, prescription drugs, most medical devices, children's clothing and footwear, and certain business inputs used in manufacturing or resale may qualify for PST exemptions in BC. Most services are also exempt from PST. Consult the BC Ministry of Finance PST exemptions schedule for the full list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need to register for PST in BC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You must register for PST with the BC Ministry of Finance if you sell taxable goods or certain services in BC and do not qualify as a small seller. Small sellers with under $10,000 in annual taxable sales are generally exempt from the registration requirement. Registration is done online through the eTaxBC portal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I charge PST on services in British Columbia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most services in BC are exempt from PST. PST generally applies to goods (tangible personal property), not services. Key exceptions include telecommunication services, legal services, and certain software. If your business provides pure consulting, bookkeeping, design, or personal services without selling taxable goods, PST typically does not apply to your service fees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PST charged on used cars in BC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but the PST rate on vehicles in BC is tiered based on the vehicle's value, not a flat 7%. For passenger vehicles purchased from a dealer, PST ranges from 7% (under $55,000) up to 20% for vehicles over $150,000, plus 5% GST. For private sales, PST only applies (no GST) and is based on the greater of the purchase price or the Canadian Black Book wholesale value, with the same tiered rate structure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GST charged on private vehicle sales in BC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. When buying a vehicle from a private seller in BC, GST does not apply. Only PST is charged on private vehicle sales, collected at the time of ICBC registration. When buying from a licensed dealership, both GST (5%) and PST apply."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I register for PST in BC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Register for PST online through the eTaxBC portal at etax.gov.bc.ca. Registration typically takes less than 15 minutes. Once registered, you can file and pay PST returns through the same portal. Use the BC government's online tool to confirm whether your business is required to register before applying."
+      }
+    }
+  ]
+}
   </script>
 
   <script type="application/ld+json">
@@ -214,6 +254,39 @@
           <li>Certain medical devices and assistive technologies</li>
           <li>Some manufacturing inputs and qualifying resale inventory (PST exemption at point of purchase — requires a PST exemption certificate)</li>
         </ul>
+
+        <h2>BC GST + PST — Frequently Asked Questions</h2>
+
+        <dl class="faq-list">
+
+          <dt>What is the combined sales tax rate in British Columbia?</dt>
+          <dd>BC charges 5% federal GST plus 7% provincial PST, for a combined rate of 12% on most goods. The two taxes are administered separately: GST by the CRA, and PST by the BC Ministry of Finance.</dd>
+
+          <dt>How do I reverse-calculate GST and PST from a BC gross total?</dt>
+          <dd>Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.07 for PST. Example: $112.00 ÷ 1.12 = $100.00 net; GST = $5.00; PST = $7.00.</dd>
+
+          <dt>Is BC PST an Input Tax Credit?</dt>
+          <dd>No. BC PST is a consumer-level tax and cannot be recovered as an Input Tax Credit. Unlike GST, PST paid on business inputs is a real cost — it stays with the business. Only the GST portion qualifies as an ITC for GST-registered businesses.</dd>
+
+          <dt>What is exempt from PST in BC?</dt>
+          <dd>Basic groceries, prescription drugs, most medical devices, children's clothing and footwear, and most services are exempt from PST. Certain business inputs for manufacturing or resale may also qualify. Consult the BC Ministry of Finance PST exemptions schedule for the full list.</dd>
+
+          <dt>When do I need to register for PST in BC?</dt>
+          <dd>If you sell taxable goods or certain services in BC and your annual taxable sales exceed $10,000, you are generally required to register. Small sellers under $10,000 are typically exempt. Register online through the eTaxBC portal at etax.gov.bc.ca.</dd>
+
+          <dt>Do I charge PST on services in BC?</dt>
+          <dd>Most services in BC are PST-exempt. PST generally applies to goods, not services. Key exceptions include telecommunication services, legal services, and certain software. Pure consulting, bookkeeping, design, and personal services typically do not attract PST on the service fee itself.</dd>
+
+          <dt>Is PST charged on used cars in BC?</dt>
+          <dd>Yes, but BC vehicle PST is tiered — not a flat 7%. For dealer purchases, PST ranges from 7% (under $55,000) up to 20% for vehicles over $150,000, plus 5% GST. For private sales, only PST applies (no GST), based on the greater of the purchase price or Canadian Black Book wholesale value, using the same tiered rates.</dd>
+
+          <dt>Is GST charged on private vehicle sales in BC?</dt>
+          <dd>No. Private vehicle sales in BC are subject to PST only — no GST. PST is paid at the time of ICBC registration. GST only applies when buying from a licensed dealership.</dd>
+
+          <dt>How do I register for PST in BC?</dt>
+          <dd>Register online through the eTaxBC portal at etax.gov.bc.ca. Registration takes under 15 minutes in most cases. File and pay PST returns through the same portal once registered.</dd>
+
+        </dl>
 
         <h2>British Columbia and GST + PST: Background</h2>
 
