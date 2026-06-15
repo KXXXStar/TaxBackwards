@@ -18,44 +18,84 @@
   <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the sales tax rate in Manitoba?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Manitoba applies two separate taxes on most purchases: the 5% federal Goods and Services Tax (GST) administered by the Canada Revenue Agency, and the 7% provincial Retail Sales Tax (RST) administered by Manitoba Finance — Taxation Division, for a combined effective rate of 12%. The two taxes are levied independently on the same pre-tax base — they are not stacked."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Manitoba RST and how is it different from HST?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Manitoba RST (Retail Sales Tax) is a provincial consumer-level tax administered by Manitoba Finance — Taxation Division, separate from the federal GST. Unlike the Harmonized Sales Tax (HST) used in Ontario and the Atlantic provinces — where federal and provincial components are combined into a single tax administered by the CRA — Manitoba RST is filed and remitted directly to the provincial government on a separate return. RST is not recoverable as an Input Tax Credit; it is a permanent cost to the purchaser. Manitoba has never adopted HST."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I reverse-calculate GST and RST from a Manitoba invoice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for the GST portion and by 0.07 for the RST portion. For example: $112.00 ÷ 1.12 = $100.00 net; $100.00 × 0.05 = $5.00 GST; $100.00 × 0.07 = $7.00 RST. Total tax = $12.00. Only the $5.00 GST is ITC-eligible for a CRA-registered business."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is exempt from Manitoba RST?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Manitoba RST exemptions include basic groceries and most food intended for human consumption (with a full grocery store exemption taking effect July 1, 2026 under the 2026–27 provincial budget), prescription drugs, children's clothing and footwear, books and audiobooks, and residential energy including home heating fuel and electricity. Certain agricultural inputs and manufacturing equipment may also qualify for RST exemptions. Consult the Manitoba Finance — Taxation Division RST bulletins for the full exemption schedule."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the combined sales tax rate in Manitoba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manitoba charges 5% federal GST plus 7% provincial Retail Sales Tax (RST), for a combined rate of 12% on most goods and services. RST is Manitoba's term for its provincial sales tax. The two taxes are administered separately: GST by the CRA, and RST by the Manitoba Ministry of Finance – Taxation Division."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reverse-calculate GST and RST from a Manitoba gross total?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.07 for RST. Both taxes apply independently to the same pre-tax base. Example: $112.00 ÷ 1.12 = $100.00 net; GST = $5.00; RST = $7.00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Manitoba RST recoverable as an Input Tax Credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Manitoba RST is a consumer-level tax and cannot be recovered as an Input Tax Credit. Only the 5% federal GST qualifies as an ITC for GST-registered businesses. RST paid on business inputs is a real cost that stays with the business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is exempt from RST in Manitoba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic groceries, prescription drugs, most medical devices, books (including audiobooks and ebooks), children's clothing and footwear, children's car seats and booster seats, feminine hygiene products, residential energy (home heating), and farm and industrial products are exempt from RST in Manitoba."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need to register for RST in Manitoba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most businesses making taxable retail sales in Manitoba must register for RST with the Manitoba Ministry of Finance – Taxation Division, regardless of revenue size. There is no small supplier exemption equivalent to GST's $30,000 threshold for in-province businesses. Out-of-province online sellers must register once they reach $10,000 in taxable sales to Manitoba customers in a 12-month period. Register via the TAXcess portal at taxcess.gov.mb.ca."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Has Manitoba's RST rate changed recently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Manitoba's RST rate increased from 7% to 8% on July 1, 2013, then returned to 7% on July 1, 2019 following a provincial government commitment. The current rate of 7% has been in place since July 2019."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Manitoba RST apply to SaaS and cloud software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, effective January 1, 2026, Manitoba RST now applies to all cloud software, SaaS subscriptions, and remote data storage, regardless of where the software is hosted. This is a significant 2026 change — previously, RST only applied to software downloaded to a local Manitoba device or server. Businesses selling software or SaaS to Manitoba customers should confirm their RST registration and collection obligations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do self-employed people in Manitoba pay RST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Self-employed individuals selling taxable goods or services in Manitoba must register for RST with the Manitoba Ministry of Finance, with no revenue-based exemption for in-province sellers. For GST, the standard $30,000 threshold applies separately. Both registrations may be required depending on what is being sold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a low-income RST credit in Manitoba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Manitoba Education Property Tax Credit and other provincial credits are available to help low and modest-income Manitoba residents offset the cost of taxes including RST. Eligibility is typically assessed when you file your annual provincial income tax return."
+      }
+    }
+  ]
+}
   </script>
 
   <script type="application/ld+json">
@@ -203,6 +243,39 @@
           <li>Certain agricultural inputs used in farming or ranching operations</li>
           <li>Certain manufacturing equipment and qualifying resale inventory (RST exemption must be claimed at point of purchase — requires documentation)</li>
         </ul>
+
+        <h2>Manitoba GST + RST — Frequently Asked Questions</h2>
+
+        <dl class="faq-list">
+
+          <dt>What is the combined sales tax rate in Manitoba?</dt>
+          <dd>Manitoba charges 5% federal GST plus 7% provincial Retail Sales Tax (RST), for a combined rate of 12% on most goods and services. RST is Manitoba's term for its provincial sales tax. The two taxes are administered separately: GST by the CRA, and RST by the Manitoba Ministry of Finance – Taxation Division.</dd>
+
+          <dt>How do I reverse-calculate GST and RST from a Manitoba gross total?</dt>
+          <dd>Divide the gross total by 1.12 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.07 for RST. Both taxes apply independently to the same pre-tax base. Example: $112.00 ÷ 1.12 = $100.00 net; GST = $5.00; RST = $7.00.</dd>
+
+          <dt>Is Manitoba RST recoverable as an Input Tax Credit?</dt>
+          <dd>No. Manitoba RST is a consumer-level tax and cannot be recovered as an Input Tax Credit. Only the 5% federal GST qualifies as an ITC for GST-registered businesses. RST paid on business inputs is a real cost that stays with the business.</dd>
+
+          <dt>What is exempt from RST in Manitoba?</dt>
+          <dd>Basic groceries, prescription drugs, most medical devices, books (including audiobooks and ebooks), children's clothing and footwear, children's car seats and booster seats, feminine hygiene products, residential energy (home heating), and farm and industrial products are exempt from RST in Manitoba.</dd>
+
+          <dt>When do I need to register for RST in Manitoba?</dt>
+          <dd>Most businesses making taxable retail sales in Manitoba must register for RST with the Manitoba Ministry of Finance – Taxation Division, regardless of revenue size. There is no small supplier exemption equivalent to GST's $30,000 threshold for in-province businesses. Out-of-province online sellers must register once they reach $10,000 in taxable sales to Manitoba customers in a 12-month period. Register via the TAXcess portal at taxcess.gov.mb.ca.</dd>
+
+          <dt>Has Manitoba's RST rate changed recently?</dt>
+          <dd>Yes. Manitoba's RST rate increased from 7% to 8% on July 1, 2013, then returned to 7% on July 1, 2019 following a provincial government commitment. The current rate of 7% has been in place since July 2019.</dd>
+
+          <dt>Does Manitoba RST apply to SaaS and cloud software?</dt>
+          <dd>Yes, effective January 1, 2026, Manitoba RST now applies to all cloud software, SaaS subscriptions, and remote data storage, regardless of where the software is hosted. This is a significant 2026 change — previously, RST only applied to software downloaded to a local Manitoba device or server. Businesses selling software or SaaS to Manitoba customers should confirm their RST registration and collection obligations.</dd>
+
+          <dt>Do self-employed people in Manitoba pay RST?</dt>
+          <dd>Self-employed individuals selling taxable goods or services in Manitoba must register for RST with the Manitoba Ministry of Finance, with no revenue-based exemption for in-province sellers. For GST, the standard $30,000 threshold applies separately. Both registrations may be required depending on what is being sold.</dd>
+
+          <dt>Is there a low-income RST credit in Manitoba?</dt>
+          <dd>Yes. The Manitoba Education Property Tax Credit and other provincial credits are available to help low and modest-income Manitoba residents offset the cost of taxes including RST. Eligibility is typically assessed when you file your annual provincial income tax return.</dd>
+
+        </dl>
 
         <h2>Manitoba and GST + RST: Background</h2>
 

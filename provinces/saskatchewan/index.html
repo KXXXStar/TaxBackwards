@@ -18,44 +18,84 @@
   <link rel="stylesheet" href="../../src/css/style.css?v=7">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the sales tax rate in Saskatchewan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Saskatchewan applies two separate taxes on most purchases: the 5% federal Goods and Services Tax (GST) administered by the Canada Revenue Agency, and the 6% Provincial Sales Tax (PST) administered by the Saskatchewan Ministry of Finance, for a combined effective rate of 11%. The two taxes are levied independently on the same pre-tax base — they are not stacked."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Saskatchewan PST recoverable as an ITC?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Saskatchewan PST is a consumer-level tax and is not recoverable as an Input Tax Credit. Unlike the federal GST — which GST-registered businesses can claim back through the CRA's ITC mechanism — Saskatchewan PST paid on business inputs is a real, permanent cost to the business. There is no equivalent refund or recovery mechanism for PST after the point of purchase. Only the federal GST portion qualifies as an ITC."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I reverse-calculate GST and PST from a Saskatchewan invoice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide the gross total by 1.11 to get the net pre-tax amount. Multiply the net by 0.05 for the GST portion and by 0.06 for the PST portion. For example: $111.00 ÷ 1.11 = $100.00 net; $100.00 × 0.05 = $5.00 GST; $100.00 × 0.06 = $6.00 PST. Total tax = $11.00. Only the $5.00 GST is ITC-eligible for a CRA-registered business."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What goods and services are exempt from Saskatchewan PST?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Saskatchewan PST exemptions include basic groceries and most food intended for human consumption, prescription drugs, certain medical and assistive devices, and children's clothing. Agricultural supplies used in farming operations and certain manufacturing inputs may also qualify for exemptions. Unlike federal GST, Saskatchewan PST applies broadly to many services — including insurance premiums and certain professional services — that would be exempt under federal rules. Consult the Saskatchewan Ministry of Finance PST bulletins for the full exemption schedule."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the combined sales tax rate in Saskatchewan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Saskatchewan charges 5% federal GST plus 6% provincial PST, for a combined rate of 11% on most goods and services. The two taxes are administered separately: GST by the CRA, and PST by the Saskatchewan Ministry of Finance."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reverse-calculate GST and PST from a Saskatchewan gross total?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the gross total by 1.11 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.06 for PST. Both taxes apply independently to the same pre-tax base — PST does not compound on GST. Example: $111.00 ÷ 1.11 = $100.00 net; GST = $5.00; PST = $6.00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Saskatchewan PST recoverable as an Input Tax Credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Saskatchewan PST is a consumer-level tax and cannot be recovered as an Input Tax Credit. Only the 5% federal GST qualifies as an ITC for GST-registered businesses. PST paid on business inputs is a real cost that stays with the business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is exempt from PST in Saskatchewan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic groceries, prescription drugs, children's clothing and footwear (sizes 0–16), residential utilities, farm machinery, and most medical devices are exempt from PST in Saskatchewan. Notably, restaurant meals are also exempt from PST in Saskatchewan — one of the few provinces where eating out does not attract provincial sales tax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need to register for PST in Saskatchewan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike GST — which has a $30,000 small supplier threshold — Saskatchewan PST has no registration exemption based on revenue. Any business making taxable retail sales in Saskatchewan must register for PST with the Saskatchewan Ministry of Finance, regardless of size. PST returns are filed with the Ministry of Finance, not the CRA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PST charged on used cars in Saskatchewan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PST at 6% applies to used vehicle purchases in Saskatchewan. Unlike some provinces, Saskatchewan does not exempt trade-in values — PST applies to the full purchase price of the vehicle, not the amount after a trade-in credit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a PST rebate on new homes in Saskatchewan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Saskatchewan offers a PST Rebate for New Home Construction of up to 42% of the PST paid on qualifying new homes. To qualify, the home must be valued at less than $550,000 and must be your primary residence. The maximum rebate is $11,340 for a home at the $450,000 base threshold, decreasing to $0 at $550,000. Applications are submitted to the Saskatchewan Ministry of Finance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do self-employed people in Saskatchewan pay PST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Self-employed individuals selling taxable goods or services in Saskatchewan must register for PST with the Ministry of Finance regardless of revenue size. For GST, the standard $30,000 threshold applies. Both registrations are required if selling taxable supplies — they are separate obligations with separate filings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Saskatchewan PST apply to digital products and services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Saskatchewan PST applies broadly to goods and certain services, including many digital products. Software, streaming services, and digital downloads may be subject to PST depending on how they are supplied and consumed. Businesses selling digital products into Saskatchewan should confirm their specific PST obligations with the Saskatchewan Ministry of Finance."
+      }
+    }
+  ]
+}
   </script>
 
   <script type="application/ld+json">
@@ -202,6 +242,39 @@
           <li>Agricultural supplies used directly in farming or ranching operations</li>
           <li>Certain manufacturing inputs and qualifying resale inventory (PST exemption must be claimed at point of purchase — requires documentation)</li>
         </ul>
+
+        <h2>Saskatchewan GST + PST — Frequently Asked Questions</h2>
+
+        <dl class="faq-list">
+
+          <dt>What is the combined sales tax rate in Saskatchewan?</dt>
+          <dd>Saskatchewan charges 5% federal GST plus 6% provincial PST, for a combined rate of 11% on most goods and services. The two taxes are administered separately: GST by the CRA, and PST by the Saskatchewan Ministry of Finance.</dd>
+
+          <dt>How do I reverse-calculate GST and PST from a Saskatchewan gross total?</dt>
+          <dd>Divide the gross total by 1.11 to get the net pre-tax amount. Multiply the net by 0.05 for GST and by 0.06 for PST. Both taxes apply independently to the same pre-tax base — PST does not compound on GST. Example: $111.00 ÷ 1.11 = $100.00 net; GST = $5.00; PST = $6.00.</dd>
+
+          <dt>Is Saskatchewan PST recoverable as an Input Tax Credit?</dt>
+          <dd>No. Saskatchewan PST is a consumer-level tax and cannot be recovered as an Input Tax Credit. Only the 5% federal GST qualifies as an ITC for GST-registered businesses. PST paid on business inputs is a real cost that stays with the business.</dd>
+
+          <dt>What is exempt from PST in Saskatchewan?</dt>
+          <dd>Basic groceries, prescription drugs, children's clothing and footwear (sizes 0–16), residential utilities, farm machinery, and most medical devices are exempt from PST in Saskatchewan. Notably, restaurant meals are also exempt from PST in Saskatchewan — one of the few provinces where eating out does not attract provincial sales tax.</dd>
+
+          <dt>When do I need to register for PST in Saskatchewan?</dt>
+          <dd>Unlike GST — which has a $30,000 small supplier threshold — Saskatchewan PST has no registration exemption based on revenue. Any business making taxable retail sales in Saskatchewan must register for PST with the Saskatchewan Ministry of Finance, regardless of size. PST returns are filed with the Ministry of Finance, not the CRA.</dd>
+
+          <dt>Is PST charged on used cars in Saskatchewan?</dt>
+          <dd>Yes. PST at 6% applies to used vehicle purchases in Saskatchewan. Unlike some provinces, Saskatchewan does not exempt trade-in values — PST applies to the full purchase price of the vehicle, not the amount after a trade-in credit.</dd>
+
+          <dt>Is there a PST rebate on new homes in Saskatchewan?</dt>
+          <dd>Yes. Saskatchewan offers a PST Rebate for New Home Construction of up to 42% of the PST paid on qualifying new homes. To qualify, the home must be valued at less than $550,000 and must be your primary residence. The maximum rebate is $11,340 for a home at the $450,000 base threshold, decreasing to $0 at $550,000. Applications are submitted to the Saskatchewan Ministry of Finance.</dd>
+
+          <dt>Do self-employed people in Saskatchewan pay PST?</dt>
+          <dd>Self-employed individuals selling taxable goods or services in Saskatchewan must register for PST with the Ministry of Finance regardless of revenue size. For GST, the standard $30,000 threshold applies. Both registrations are required if selling taxable supplies — they are separate obligations with separate filings.</dd>
+
+          <dt>Does Saskatchewan PST apply to digital products and services?</dt>
+          <dd>Saskatchewan PST applies broadly to goods and certain services, including many digital products. Software, streaming services, and digital downloads may be subject to PST depending on how they are supplied and consumed. Businesses selling digital products into Saskatchewan should confirm their specific PST obligations with the Saskatchewan Ministry of Finance.</dd>
+
+        </dl>
 
         <h2>Saskatchewan and GST + PST: Background</h2>
 
