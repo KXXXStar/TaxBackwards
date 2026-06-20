@@ -1214,3 +1214,36 @@ select option:disabled {
   color: var(--color-text-muted);
   line-height: 1.6;
 }
+
+/* =============================================================================
+   32. Homepage page heading and intro — above the calculator card
+   ============================================================================= */
+
+.page-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 8px;
+  transition: color var(--transition-theme);
+}
+
+.page-intro {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  transition: color var(--transition-theme);
+}
+
+@media (max-width: 719px) {
+  .page-heading {
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
+  .page-intro {
+    padding: 0 20px;
+  }
+}
