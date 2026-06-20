@@ -1204,14 +1204,14 @@ select option:disabled {
 }
 .faq-list dt {
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--text-primary);
   margin-top: 1.25rem;
   margin-bottom: 0.25rem;
   font-size: 1rem;
 }
 .faq-list dd {
   margin: 0 0 0.5rem 0;
-  color: var(--color-text-muted);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
